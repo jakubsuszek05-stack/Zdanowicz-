@@ -1,17 +1,16 @@
 # Projekt procesu technologicznego naprawy – wymiana przednich klocków hamulcowych
 
 **Pojazd:** Toyota Corolla IX (E12) Hatchback 1.6 VVT-i (silnik 3ZZ-FE, 81 kW / 110 KM), kod ZZE121
-**Plik projektu:** `Karta_technologiczna_wymiana_klockow_Toyota_Corolla_E12.docx`
+**Plik projektu:** `Projekt_wymiana_klockow_Toyota_Corolla_E12.docx` (35 stron, układ jak we wzorze z zajęć)
+
+**Temat dla prowadzącego:** Jakub Suszek – Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy – Toyota Corolla IX (E12) 1.6 VVT-i
 
 ## Zawartość dokumentu
-1. Cel i zakres
-2. Identyfikacja obiektu naprawy
-3. Wymiary nominalne i dopuszczalne (tabela)
-4. Momenty dokręcania i rozmiar oraz typ kluczy (tabela)
-5. Narzędzia, materiały, BHP
-6. Karta instrukcyjna: 32 czynności, 30 ramek na zdjęcia (format jak we wzorze z zajęć)
-7. Uwagi końcowe
-8. Bibliografia
+1. Wstęp · 2. Opis pojazdu (Tabela 1) · 3. Układ hamulcowy (3.1 wymiary nominalne/dopuszczalne, 3.2 momenty + klucze)
+4. Diagnoza (4.1 objawy, 4.2 metody, 4.3 przypadek) · 5. Narzędzia i oprogramowanie (Tabela 4)
+6. Karta instrukcyjna – schemat procesu + 16 arkuszy, 32 czynności
+7. **Kontrola jakości po naprawie** (wyróżnik: pedał wg Toyoty, stanowisko rolkowe ≥50% / ≤30%, protokół)
+8. Koszty (≈383 zł brutto) · 9. Wnioski · Bibliografia (23 pozycje)
 
 ## Kluczowe dane (z instrukcji naprawy Toyota)
 | Parametr | Wartość nominalna | Wartość dopuszczalna | Źródło |
@@ -30,8 +29,8 @@ https://club.autodoc.co.uk/manuals/how-to-change-front-brake-pads-on-toyota-coro
 
 ## Do zrobienia przed oddaniem
 - [ ] Wpisać nazwę uczelni, wydziału i zakładu w nagłówku karty i na stronie tytułowej.
-- [ ] Wkleić zdjęcia w 30 ramek „MIEJSCE NA ZDJĘCIE” (opis zdjęcia i źródło są pod każdą ramką).
+- [ ] Wkleić zdjęcia w ramki „MIEJSCE NA ZDJĘCIE” (w każdej ramce jest opis, co wkleić i skąd).
 - [ ] Otworzyć każdy link z bibliografii i porównać z nim wartości z tabel 2 i 3.
-- [ ] W Wordzie zaznaczyć wszystko (Ctrl+A) i nacisnąć F9, żeby odświeżyć liczbę arkuszy w nagłówku.
+- [ ] Po wklejeniu zdjęć sprawdzić numery stron w spisie treści (są wpisane ręcznie).
 
-`narzedzia/build_karta.js` to skrypt, który generuje plik .docx (biblioteka `docx` dla Node.js).
+`narzedzia/build_projekt.js` generuje plik .docx (biblioteka `docx` dla Node.js), `narzedzia/schemat.html` → `schemat.png` to schemat procesu.
