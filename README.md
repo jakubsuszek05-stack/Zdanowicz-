@@ -5,12 +5,19 @@
 
 **Temat dla prowadzącego:** Jakub Suszek – Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy – Toyota Corolla IX (E12) 1.6 VVT-i
 
-## Zawartość dokumentu
-1. Wstęp · 2. Opis pojazdu (Tabela 1) · 3. Układ hamulcowy (3.1 wymiary nominalne/dopuszczalne, 3.2 momenty + klucze)
-4. Diagnoza (4.1 objawy, 4.2 metody, 4.3 przypadek) · 5. Narzędzia i oprogramowanie (Tabela 4)
-6. Karta instrukcyjna – schemat procesu + 16 arkuszy, 32 czynności
-7. **Kontrola jakości po naprawie** (wyróżnik: pedał wg Toyoty, stanowisko rolkowe ≥50% / ≤30%, protokół)
-8. Koszty (≈383 zł brutto) · 9. Wnioski · Bibliografia (23 pozycje)
+## Zawartość dokumentu (własny układ – inny niż wzór z zajęć)
+1. Wstęp (cel, zakres, hierarchia źródeł)
+2. Charakterystyka obiektu naprawy – dane pojazdu + **tabela elementów zespołu i postępowania z nimi**
+3. Warunki techniczne – wymiary nominalne/dopuszczalne, momenty + klucze, **środki smarne wg producenta**
+4. Diagnostyka – **macierz diagnostyczna objawów** + **karta weryfikacji części** (dobra / do naprawy / do wymiany)
+5. Wyposażenie stanowiska – narzędzia przypisane do **numerów czynności w karcie**
+6. Proces technologiczny – **schemat z punktami decyzyjnymi** + karta instrukcyjna (16 arkuszy, 32 czynności)
+7. **Kontrola jakości po naprawie** – pedał wg Toyoty, stanowisko rolkowe (≥50%, ≤30%), protokół
+8. **Typowe błędy wykonawcze i ich skutki**
+9. Analiza kosztów – **3 warianty części** (326 / 383 / 453 zł brutto)
+10. Wnioski · Bibliografia (25 pozycji)
+
+Ze wzoru zostawiono tylko formularz karty (nagłówek uczelni, Arkusz/Arkuszy, stopka Opracował/Sprawdził/Zatwierdził) i sposób podpisywania rysunków.
 
 ## Kluczowe dane (z instrukcji naprawy Toyota)
 | Parametr | Wartość nominalna | Wartość dopuszczalna | Źródło |
