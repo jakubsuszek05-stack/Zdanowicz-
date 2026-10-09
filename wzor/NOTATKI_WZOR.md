@@ -128,6 +128,18 @@ Spisane ze zdjęć ekranu, które przysłał Jakub. Służą do odwzorowania str
 - Bibliografia ma co najmniej 48 pozycji.
 
 ## Brakujące fragmenty wzoru (nie przysłane)
-- Rozdz. 4.1 Objawy zużycia, 4.2 Metody diagnostyczne, początek 4.3 (str. 10–15), rysunki 4–6.
+- Początek 4.3 (str. 12–13) i rysunki 4–6.
 - Rozdz. 5 Wykaz narzędzi i oprogramowania (str. 16–17).
 - Bibliografia (po str. 34) – potrzebna, żeby skopiować format zapisu źródeł.
+
+## Partia 5 (7 zdjęć): rozdz. 4, 4.1, 4.2
+- **4. Diagnoza zużycia** – akapit wstępny: monitorowanie stanu klocków; pojazd ma rozwiązania elektroniczne i klasyczne objawy mechaniczne.
+- **4.1 Objawy** – 6 punktów, każdy: pogrubiony tytuł z dwukropkiem + akapit:
+  1) Słyszalne dźwięki (pisk, zgrzyt; czujnik zużycia kod PR 9U1),
+  2) Kontrolka zużycia na tablicy (ok. 2 mm),
+  3) Wydłużona droga hamowania,
+  4) Wibracje i bicie na kierownicy (też zużycie tarcz),
+  5) Nierównomierne hamowanie / ściąganie (zapieczony tłoczek lub prowadnica),
+  6) Wizualne zużycie (suwmiarka; min. 2 mm; w przypadku 2,1 mm → do wymiany) [20–24].
+- **4.2 Metody diagnostyczne** – wstęp + 5 metod: 1. kontrola wizualna (przez otwory inspekcyjne / po zdjęciu koła; <3 mm zwykle do wymiany), 2. pomiar suwmiarką lub miernikiem (min. 2–3 mm), 3. wskaźnik zużycia mechaniczny (blaszka – pisk) lub elektroniczny (przerwanie obwodu → komunikat), 4. ocena hałasu, 5. kontrola tarcz (rowki, niebieskie przebarwienia, pęknięcia) [20–24].
+- U nas: Corolla E12 nie ma elektronicznego czujnika – ma **akustyczny (mechaniczny) wskaźnik zużycia** (blaszka na klocku, TRW GDB3288). Min. grubość okładziny wg Toyoty 1,0 mm (nie 2 mm). Dodać 6. metodę: badanie na stanowisku rolkowym (wiąże się z naszym rozdziałem kontroli jakości).
