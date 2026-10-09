@@ -94,11 +94,13 @@ Spisane ze zdjęć ekranu, które przysłał Jakub. Służą do odwzorowania str
 | 19 | Montaż śrub zacisku | Ręczne przykręcenie | Brak | 26 |
 | 20 | Dokręcenie śrub mocujących zacisk – kluczem dynamometrycznym do 35 Nm | Nasadka 13 mm, klucz dynamometryczny | Brak | 27 |
 | 21 | Czyszczenie piasty koła | Szczotka druciana, smar ceramiczny | Brak | 28 |
-| 22 | (nie widać) | | | 29 |
+| 22 | Posmarowanie miejsca styku tarczy z felgą smarem ceramicznym | Smar ceramiczny, pędzelek | Brak | 29 |
 | 23 | Czyszczenie powierzchni tarczy | Środek czyszczący | Po sprayu odczekać kilka minut | 30 |
-| 24–25 | (nie widać) | | | 31–32 |
+| 24 | Montaż koła (nałożenie na piastę) | Ręcznie | Przytrzymywać koło podczas przykręcania | 31 |
+| 25 | Przykręcenie śrub koła (wstępnie) | Nasadka udarowa 17 mm | Brak | 32 |
 | 26 | Dokręcenie śrub koła 120 Nm | Klucz dynamometryczny, nasadka 17 mm | Brak | 33 |
-| 27 | Demontaż podstawek i klinów | Brak | Nacisnąć pedał kilka razy do wyczucia oporu | 34 |
+| 27 | Demontaż podstawek i klinów („układ hamulcowy odpowietrzony” – błąd, nie było odpowietrzania) | Brak | Nacisnąć pedał kilka razy do wyczucia oporu | 34 |
+| 28 | Dokręcenie korka zbiornika i zamknięcie maski | Brak | Przez pierwsze 150–200 km unikać gwałtownego hamowania | 35 |
 
 ### Słabe strony wzoru (u nas zrobić lepiej)
 - Moment śrub zacisku jest (czynność 20: 35 Nm, nasadka 13 mm), ale wzięty z filmu AUTODOC, a nie z instrukcji producenta – u nas 34,3 N·m z instrukcji Toyoty [1] (AUTODOC: 35 N·m).
@@ -115,3 +117,17 @@ Spisane ze zdjęć ekranu, które przysłał Jakub. Służą do odwzorowania str
 - Cytaty „Niezbędne narzędzia: …” pod zdjęciami: cz. 13 „nylonowa szczotka, spray do czyszczenia układu hamulcowego”; cz. 14 „przyrząd do wciskania tłoczka hamulcowego zacisku”; cz. 15 „szczotka druciana, spray do czyszczenia układów hamulcowych”; cz. 16 „smar antyskrzypiący do układu hamulcowego”; cz. 20 „klucz dynamometryczny, nasadka nasadowa nr 13”; cz. 21 „szczotka druciana, smar ceramiczny”.
 - Cz. 18 „Montaż zacisku hamulcowego” – ręczny montaż; cz. 19 „Montaż śrub” – ręczne przykręcenie (wstępne), dopiero cz. 20 dokręca momentem.
 - Na klatkach filmu widać nakładkę z momentem (np. „35 Nm”) – u nas podobne kadry z filmu AUTODOC dla Corolli E120.
+
+## Partia 4 (15 zdjęć): arkusze 12–15, rozdz. 7 i 8
+- Karta kończy się na czynności 28 (arkusz 15/15, rys. 35). Pod kartą akapit podsumowujący („Na podstawie przeprowadzonych operacji można stwierdzić…”).
+- **7. Koszty** – wstęp (klient płaci części + usługę; smary/środki w cenie usługi).
+  - 7.1 Części: 3 przykłady z cenami i źródłami (TRW GDB1956 144,98 zł [43], ATE 13.0460-2785.2 189,99 zł [44], Brembo P 85 144 208,79 zł [45]) → średnia 182 zł.
+  - 7.2 Robocizna: średnia stawka 222,19 zł netto, zakres 110–385 zł netto → przyjęto 222 zł [46–48].
+  - 7.3 Łącznie: czas 0,9 h (z materiałów i filmu), **ale liczy 200 zł/h** (niespójne z 222) → 180 + 182 = 362 zł.
+- **8. Wnioski** – 3 akapity (zgodność z technologią, narzędzia standardowe bez oprogramowania diagnostycznego, analiza czasu i kosztów, wiedza o organizacji pracy). Pisze „1.8 TSI” zamiast 1.4 TSI.
+- Bibliografia ma co najmniej 48 pozycji.
+
+## Brakujące fragmenty wzoru (nie przysłane)
+- Rozdz. 4.1 Objawy zużycia, 4.2 Metody diagnostyczne, początek 4.3 (str. 10–15), rysunki 4–6.
+- Rozdz. 5 Wykaz narzędzi i oprogramowania (str. 16–17).
+- Bibliografia (po str. 34) – potrzebna, żeby skopiować format zapisu źródeł.
