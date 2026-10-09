@@ -88,11 +88,11 @@ Spisane ze zdjęć ekranu, które przysłał Jakub. Służą do odwzorowania str
 | 13 | Czyszczenie tłoczka zacisku | Szczotka nylonowa, środek czyszczący | Odczekać kilka minut | 20 |
 | 14 | Wciśnięcie tłoczka | Narzędzie do cofania tłoczków [34] | Brak | 21 |
 | 15 | Czyszczenie uchwytu (jarzma) zacisku | Szczotka druciana, środek czyszczący | Skontrolować sworznie prowadzące | 22 |
-| 16 | Pokrycie klocków pastą przeciwpiskową | Smar antyskrzypiący | – | 23 |
+| 16 | Posmarowanie pastą antypiszczową (tylna część nowych klocków) | Pasta antypiszczowa, pędzelek | Przed montażem upewnić się, że tarcza jest czysta | 23 |
 | 17 | Montaż nowych klocków | Ręczne osadzenie | Brak | 24 |
 | 18 | Montaż zacisku | Ręczny montaż | Brak | 25 |
 | 19 | Montaż śrub zacisku | Ręczne przykręcenie | Brak | 26 |
-| 20 | (nie widać) | | | 27 |
+| 20 | Dokręcenie śrub mocujących zacisk – kluczem dynamometrycznym do 35 Nm | Nasadka 13 mm, klucz dynamometryczny | Brak | 27 |
 | 21 | Czyszczenie piasty koła | Szczotka druciana, smar ceramiczny | Brak | 28 |
 | 22 | (nie widać) | | | 29 |
 | 23 | Czyszczenie powierzchni tarczy | Środek czyszczący | Po sprayu odczekać kilka minut | 30 |
@@ -101,7 +101,7 @@ Spisane ze zdjęć ekranu, które przysłał Jakub. Służą do odwzorowania str
 | 27 | Demontaż podstawek i klinów | Brak | Nacisnąć pedał kilka razy do wyczucia oporu | 34 |
 
 ### Słabe strony wzoru (u nas zrobić lepiej)
-- Brak momentu dokręcenia śrub zacisku w karcie (czynność 19 „ręczne przykręcenie”) – u nas 34,3 N·m z kluczem dynamometrycznym.
+- Moment śrub zacisku jest (czynność 20: 35 Nm, nasadka 13 mm), ale wzięty z filmu AUTODOC, a nie z instrukcji producenta – u nas 34,3 N·m z instrukcji Toyoty [1] (AUTODOC: 35 N·m).
 - Brak pomiarów (grubość okładziny/tarczy, bicie) w karcie – u nas są w osobnych czynnościach z wartościami nominalnymi i dopuszczalnymi.
 - Podpis Rys. 13 niezgodny ze zdjęciem.
 
@@ -109,3 +109,9 @@ Spisane ze zdjęć ekranu, które przysłał Jakub. Służą do odwzorowania str
 - Objawy: pisk przy lekkim nacisku na pedał; nierównomierne zużycie lewa/prawa.
 - „Po demontażu koła potwierdzono, że grubość okładzin wynosiła poniżej 2,5 mm, a tarcza wykazywała delikatne rowkowanie i przebarwienia cieplne…” [20–24].
 - Rysunek 5 – wizualna kontrola grubości okładzin.
+
+## Partia 3 (16 zdjęć): arkusze 6–11, czynności 11–21
+- Potwierdzone przydziały arkuszy: ark. 6 = czynn. 10–11, ark. 7 = 12–13, ark. 8 = 14–15, ark. 9 = 16–17, ark. 10 = 18–19, ark. 11 = 20–21.
+- Cytaty „Niezbędne narzędzia: …” pod zdjęciami: cz. 13 „nylonowa szczotka, spray do czyszczenia układu hamulcowego”; cz. 14 „przyrząd do wciskania tłoczka hamulcowego zacisku”; cz. 15 „szczotka druciana, spray do czyszczenia układów hamulcowych”; cz. 16 „smar antyskrzypiący do układu hamulcowego”; cz. 20 „klucz dynamometryczny, nasadka nasadowa nr 13”; cz. 21 „szczotka druciana, smar ceramiczny”.
+- Cz. 18 „Montaż zacisku hamulcowego” – ręczny montaż; cz. 19 „Montaż śrub” – ręczne przykręcenie (wstępne), dopiero cz. 20 dokręca momentem.
+- Na klatkach filmu widać nakładkę z momentem (np. „35 Nm”) – u nas podobne kadry z filmu AUTODOC dla Corolli E120.
