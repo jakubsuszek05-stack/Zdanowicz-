@@ -143,23 +143,22 @@ const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Wa
   '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
   '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
 const GOTOWE = ['1.', '2.', '3.', 'Bibliografia'];
+const TAB_STR = PW - 1300, TAB_PROC = PW;
 const tocCzesc1 = [
-  P('Spis treści', { size: 30, bold: true, align: AlignmentType.LEFT, after: 200, before: 0 }),
-  new Table({ width: { size: PW, type: WidthType.DXA }, columnWidths: [6038, 1100, 1300, 1200], rows: [
-    new TableRow({ tableHeader: true, children: ['Rozdział', 'Strona', 'Udział w projekcie [%]', 'Stan']
-      .map((t, j) => cell(t, [6038, 1100, 1300, 1200][j], { bold: true, fill: 'C9D7EE', size: 19, align: AlignmentType.CENTER })) }),
-    ...TOC.map(([t, lvl]) => {
-      const done = GOTOWE.some(g => t.startsWith(g));
-      return new TableRow({ cantSplit: true, children: [
-        cell(lvl ? '      ' + t : `**${t}**`, 6038, { size: 19 }),
-        cell(done && PAGES[t] ? String(PAGES[t]) : '–', 1100, { size: 19, align: AlignmentType.CENTER }),
-        cell(lvl ? '' : `${UDZIAL[t]}%`, 1300, { size: 19, align: AlignmentType.CENTER, bold: !lvl }),
-        cell(lvl ? '' : (done ? 'opracowany' : 'w przygotowaniu'), 1200, { size: 17, align: AlignmentType.CENTER }),
-      ] });
-    }),
-    new TableRow({ children: [cell('**Razem**', 6038, { size: 19 }), cell('', 1100), cell('**100%**', 1300, { size: 19, align: AlignmentType.CENTER }), cell('', 1200)] }),
-  ] }),
-  P('Udział procentowy oszacowano na podstawie planowanej objętości poszczególnych części projektu. Największą część (ok. 50%) stanowi rozdział 6 – karta instrukcyjna operacji (16 arkuszy, 32 czynności z dokumentacją fotograficzną).', { size: 19, italics: true, before: 160 }),
+  P('Spis treści', { size: 30, bold: false, align: AlignmentType.LEFT, after: 160, before: 0 }),
+  new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: TAB_STR }, { type: TabStopType.RIGHT, position: TAB_PROC }], spacing: { after: 60 },
+    children: [new TextRun({ text: '\tstrona\tudział', font: FONT, size: 18, italics: true, color: '595959' })] }),
+  ...TOC.map(([t, lvl]) => {
+    const done = GOTOWE.some(g => t.startsWith(g));
+    return new Paragraph({
+      tabStops: [{ type: TabStopType.RIGHT, position: TAB_STR, leader: 'dot' }, { type: TabStopType.RIGHT, position: TAB_PROC }],
+      indent: { left: lvl ? 400 : 0 }, spacing: { after: 70 },
+      children: [new TextRun({ text: t, font: FONT, size: 22 }),
+        new TextRun({ text: `\t${done && PAGES[t] ? PAGES[t] : ''}\t${lvl ? '' : UDZIAL[t] + '%'}`, font: FONT, size: 22 })],
+    });
+  }),
+  new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: TAB_PROC }], spacing: { before: 80 },
+    children: [new TextRun({ text: 'Razem\t100%', font: FONT, size: 22, bold: true })] }),
 ];
 
 // tabela z wierszami grup (wiersz grupy = scalona komórka z pogrubionym tytułem)
