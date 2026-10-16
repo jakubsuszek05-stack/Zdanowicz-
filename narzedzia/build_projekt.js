@@ -10,6 +10,7 @@ const {
 
 const OUT = process.argv[2];
 const PAGES = process.argv[3] && fs.existsSync(process.argv[3]) ? JSON.parse(fs.readFileSync(process.argv[3])) : {};
+const CZESC1 = process.argv[4] === 'czesc1'; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1–3, bibliografia
 const FONT = 'Calibri';
 const PW = 11906 - 2 * 1134; // szerokość tekstu A4, marginesy 2 cm = 9638 DXA
 const AUTOR = 'Jakub Suszek';
@@ -133,6 +134,32 @@ const tocPage = [
     children: [new TextRun({ text: t, font: FONT, size: 22, bold: !lvl }),
       new TextRun({ text: `\t${PAGES[t] || '00'}`, font: FONT, size: 22 })],
   })),
+];
+
+
+// udział procentowy rozdziałów w objętości projektu (szacunek na podstawie liczby stron pełnej wersji)
+const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Warunki techniczne weryfikacji i montażu': 6,
+  '4. Diagnostyka i kwalifikacja pojazdu do naprawy': 6, '5. Wyposażenie stanowiska pracy': 4,
+  '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
+  '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
+const GOTOWE = ['1.', '2.', '3.', 'Bibliografia'];
+const tocCzesc1 = [
+  P('Spis treści', { size: 30, bold: true, align: AlignmentType.LEFT, after: 200, before: 0 }),
+  new Table({ width: { size: PW, type: WidthType.DXA }, columnWidths: [6038, 1100, 1300, 1200], rows: [
+    new TableRow({ tableHeader: true, children: ['Rozdział', 'Strona', 'Udział w projekcie [%]', 'Stan']
+      .map((t, j) => cell(t, [6038, 1100, 1300, 1200][j], { bold: true, fill: 'C9D7EE', size: 19, align: AlignmentType.CENTER })) }),
+    ...TOC.map(([t, lvl]) => {
+      const done = GOTOWE.some(g => t.startsWith(g));
+      return new TableRow({ cantSplit: true, children: [
+        cell(lvl ? '      ' + t : `**${t}**`, 6038, { size: 19 }),
+        cell(done && PAGES[t] ? String(PAGES[t]) : '–', 1100, { size: 19, align: AlignmentType.CENTER }),
+        cell(lvl ? '' : `${UDZIAL[t]}%`, 1300, { size: 19, align: AlignmentType.CENTER, bold: !lvl }),
+        cell(lvl ? '' : (done ? 'opracowany' : 'w przygotowaniu'), 1200, { size: 17, align: AlignmentType.CENTER }),
+      ] });
+    }),
+    new TableRow({ children: [cell('**Razem**', 6038, { size: 19 }), cell('', 1100), cell('**100%**', 1300, { size: 19, align: AlignmentType.CENTER }), cell('', 1200)] }),
+  ] }),
+  P('Udział procentowy oszacowano na podstawie planowanej objętości poszczególnych części projektu. Największą część (ok. 50%) stanowi rozdział 6 – karta instrukcyjna operacji (16 arkuszy, 32 czynności z dokumentacją fotograficzną).', { size: 19, italics: true, before: 160 }),
 ];
 
 // tabela z wierszami grup (wiersz grupy = scalona komórka z pogrubionym tytułem)
@@ -666,7 +693,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1000, bottom: 1000, left: 1134, right: 1134, footer: 400 } } },
     footers: { default: footer, first: new Footer({ children: [] }) },
-    children: [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
+    children: CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep, ...opisPojazdu, ...uklad, ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
       ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib],
   }],
 });
