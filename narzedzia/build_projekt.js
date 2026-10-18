@@ -21,8 +21,11 @@ const BORDERS = { top: B, bottom: B, left: B, right: B };
 const NONE = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
 const NOB = { top: NONE, bottom: NONE, left: NONE, right: NONE };
 
+// w wersji cząstkowej numery źródeł są przenumerowane (bibliografia zawiera tylko źródła użyte w tej części)
+const REMAP1 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 13: 7, 14: 8, 5: 9 };
+const remap = t => (CZESC1 ? String(t).replace(/\[(\d+)\]/g, (m, n) => (REMAP1[n] ? `[${REMAP1[n]}]` : m)) : String(t));
 function runs(text, o = {}) {
-  return String(text).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => new TextRun({
+  return remap(text).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => new TextRun({
     text: p.startsWith('**') ? p.slice(2, -2) : p,
     bold: p.startsWith('**') || o.bold, italics: o.italics, font: FONT, size: o.size || 22, color: o.color,
   }));
@@ -190,16 +193,32 @@ const wstep = [
   P('**Źródła danych.** Wszystkie wymiary, luzy, bicia i momenty dokręcania przyjęto z instrukcji naprawy producenta Toyota Corolla (E120) Repair Manual [1], [4]–[6]. Producent nie podaje w niej rozmiarów kluczy ani dokumentacji fotograficznej, dlatego te informacje uzupełniono instrukcją wymiany krok po kroku przygotowaną dla tego modelu [2], [3]. W przypadku rozbieżności (np. moment śrub zacisku 34,3 N·m wg [1] i 35 N·m wg [2]) przyjmowano wartość producenta. Wymagania kontroli na stanowisku rolkowym oparto na kryteriach stosowanych w badaniach technicznych pojazdów [15]–[17], a dane katalogowe części i ceny – na katalogach i ofertach handlowych [11]–[14], [18], [19], [24], [25].'),
 ];
 
+
+const wstep1 = [
+  H1('1. Wstęp'),
+  P('Hamulec tarczowy osi przedniej przenosi w samochodzie osobowym większą część sił hamowania, a jego elementy cierne zużywają się w sposób ciągły podczas eksploatacji. Klocki hamulcowe są więc częścią, której stan decyduje bezpośrednio o drodze hamowania i stabilności pojazdu. Ich wymiana jest zabiegiem krótkim, ale wymagającym zachowania wymiarów granicznych i momentów dokręcania określonych przez producenta – błędy popełnione podczas montażu ujawniają się często dopiero w czasie jazdy.'),
+  P('**Celem projektu** jest opracowanie procesu technologicznego weryfikacji i wymiany przednich klocków hamulcowych dla konkretnego pojazdu – Toyoty Corolli IX (E12) hatchback 1.6 VVT-i (silnik 3ZZ-FE, 81 kW, kod typu ZZE121) – zakończonego kontrolą jakości wykonanej naprawy.'),
+  P('Planowany zakres opracowania obejmuje:', { keepNext: true, after: 60 }),
+  BUL('charakterystykę obiektu naprawy – danych technicznych pojazdu oraz budowy hamulca osi przedniej,'),
+  BUL('warunki techniczne weryfikacji i montażu: wymiary nominalne i dopuszczalne, momenty dokręcania, rozmiary i typy kluczy oraz środki smarne,'),
+  BUL('diagnostykę i kwalifikację pojazdu do naprawy na podstawie objawów i pomiarów części,'),
+  BUL('wyposażenie stanowiska pracy,'),
+  BUL('schemat procesu technologicznego i kartę instrukcyjną operacji,'),
+  BUL('kontrolę jakości po naprawie, w tym badanie skuteczności hamowania na stanowisku rolkowym,'),
+  BUL('analizę typowych błędów wykonawczych oraz kalkulację kosztów usługi.'),
+  P('**Źródła danych.** Podstawowym źródłem danych technicznych jest instrukcja naprawy producenta Toyota Corolla (E120) Repair Manual [1], z której przyjmowane będą wymiary nominalne i dopuszczalne, luzy oraz momenty dokręcania. Producent nie podaje w niej rozmiarów kluczy ani dokumentacji fotograficznej poszczególnych czynności, dlatego informacje te zostaną uzupełnione na podstawie instrukcji wymiany krok po kroku przygotowanej dla tego modelu [2]. W przypadku rozbieżności między źródłami przyjmowana będzie wartość podana przez producenta. Dane techniczne pojazdu zestawione w rozdziale 2 zaczerpnięto z katalogów i serwisów motoryzacyjnych [7]–[10].'),
+];
+
 // ---------- 2. CHARAKTERYSTYKA OBIEKTU ----------
 const f1 = fig(), f3 = fig(), f4 = fig();
 const H22 = H2('2.2. Budowa hamulca tarczowego osi przedniej');
 const opisPojazdu = [
   H1('2. Charakterystyka obiektu naprawy'),
   H2('2.1. Dane techniczne pojazdu'),
-  P('Obiektem naprawy jest samochód osobowy Toyota Corolla IX generacji (oznaczenie fabryczne E12/E120), produkowany w latach 2001–2007. Analizowany egzemplarz to 5-drzwiowy hatchback z benzynowym silnikiem 1.6 VVT-i o kodzie 3ZZ-FE i oznaczeniu typu ZZE121 [10]. Z punktu widzenia procesu najważniejsze są: dopuszczalna masa całkowita (wykorzystana w rozdziale 7 do obliczenia wymaganej siły hamowania), rodzaj hamulców osi przedniej oraz typ hamulca postojowego (decydujący o braku potrzeby użycia testera diagnostycznego).'),
+  P('Obiektem naprawy jest samochód osobowy Toyota Corolla IX generacji (oznaczenie fabryczne E12/E120), produkowany w latach 2001–2007. Analizowany egzemplarz to 5-drzwiowy hatchback z benzynowym silnikiem 1.6 VVT-i o kodzie 3ZZ-FE i oznaczeniu typu ZZE121 [10]. Z punktu widzenia procesu najważniejsze są: dopuszczalna masa całkowita (potrzebna do wyznaczenia wymaganej siły hamowania w kontroli jakości po naprawie), rodzaj hamulców osi przedniej oraz typ hamulca postojowego (decydujący o braku potrzeby użycia testera diagnostycznego).'),
   P(`Na rysunku numer ${f1} poniżej pokazano analizowany model pojazdu.`, { keepNext: true }),
-  photoBox(7000, 3400, 'Toyota Corolla E12 hatchback – zdjęcie ogólne pojazdu (np. Wikimedia Commons, z podaniem źródła)'),
-  CAP(`Rysunek ${f1}. Toyota Corolla IX (E12) hatchback, [źródło zdjęcia]`),
+  photoBox(7000, 3400, 'Toyota Corolla E12 hatchback – zdjęcie ogólne pojazdu (AutoCentrum [7])'),
+  CAP(`Rysunek ${f1}. Toyota Corolla IX (E12) hatchback, [7]`),
   TCAP('Tabela 1. Dane techniczne pojazdu Toyota Corolla IX (E12) 1.6 VVT-i, [7]–[10]'),
   grpTable([4300, 5338], ['Parametr', 'Wartość'], [
     ['Identyfikacja', [
@@ -676,7 +695,8 @@ const BIB = [
   'AUTODOC: Ridex 402B0107 Klocki hamulcowe (WVA 23766), https://www.autodoc.pl/ridex/12754705 (dostęp: 09.10.2026).',
   'AUTODOC: ATE 13.0460-5815.2 Klocki hamulcowe, https://www.autodoc.pl/ate/955966 (dostęp: 09.10.2026).',
 ];
-const bib = [H1('Bibliografia'), ...BIB.map((b, i) => new Paragraph({
+const BIB_USED = CZESC1 ? [1, 2, 7, 8, 9, 10, 13, 14, 5].map(n => BIB[n - 1]) : BIB;
+const bib = [H1('Bibliografia'), ...BIB_USED.map((b, i) => new Paragraph({
   spacing: { after: 100 }, indent: { left: 560, hanging: 560 },
   children: [new TextRun({ text: `[${i + 1}]\t`, font: FONT, size: 20 }), new TextRun({ text: b, font: FONT, size: 20 })],
   tabStops: [{ type: TabStopType.LEFT, position: 560 }],
@@ -693,7 +713,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1000, bottom: 1000, left: 1134, right: 1134, footer: 400 } } },
     footers: { default: footer, first: new Footer({ children: [] }) },
-    children: CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
+    children: CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
       ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib],
   }],
 });
