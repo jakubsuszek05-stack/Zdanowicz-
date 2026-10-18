@@ -22,7 +22,7 @@ const NONE = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
 const NOB = { top: NONE, bottom: NONE, left: NONE, right: NONE };
 
 // w wersji cząstkowej numery źródeł są przenumerowane (bibliografia zawiera tylko źródła użyte w tej części)
-const REMAP1 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 13: 7, 14: 8, 5: 9 };
+const REMAP1 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10 };
 const remap = t => (CZESC1 ? String(t).replace(/\[(\d+)\]/g, (m, n) => (REMAP1[n] ? `[${REMAP1[n]}]` : m)) : String(t));
 function runs(text, o = {}) {
   return remap(text).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => new TextRun({
@@ -206,19 +206,26 @@ const wstep1 = [
   BUL('schemat procesu technologicznego i kartę instrukcyjną operacji (rozdział 6),'),
   BUL('kontrolę jakości po naprawie, w tym badanie na stanowisku rolkowym i protokół odbioru (rozdział 7),'),
   BUL('analizę typowych błędów wykonawczych (rozdział 8) oraz analizę kosztów naprawy (rozdział 9).'),
-  P('**Źródła danych.** Wymiary, luzy, bicia i momenty dokręcania przyjęto z instrukcji naprawy producenta Toyota Corolla (E120) Repair Manual [1]. Producent nie podaje w niej rozmiarów kluczy ani dokumentacji fotograficznej, dlatego te informacje uzupełniono instrukcją wymiany krok po kroku przygotowaną dla tego modelu [2]. W przypadku rozbieżności (np. moment dokręcenia śrub zacisku 34,3 N·m według [1] i 35 N·m według [2]) przyjmowano wartość producenta. Dane techniczne pojazdu zestawione w rozdziale 2 pochodzą z katalogów i serwisów motoryzacyjnych [7]–[10], a dane katalogowe części – z katalogów części zamiennych [13], [14].'),
+  P('**Źródła danych.** Wymiary, luzy, bicia i momenty dokręcania przyjęto z instrukcji naprawy producenta Toyota Corolla (E120) Repair Manual [1]. Producent nie podaje w niej rozmiarów kluczy ani dokumentacji fotograficznej, dlatego te informacje uzupełniono instrukcją wymiany krok po kroku przygotowaną dla tego modelu [2]. W przypadku rozbieżności (np. moment dokręcenia śrub zacisku 34,3 N·m według [1] i 35 N·m według [2]) przyjmowano wartość producenta. Dane techniczne pojazdu zestawione w rozdziale 2 pochodzą z katalogów i serwisów motoryzacyjnych [7]–[10], zdjęcia pojazdu – z serwisu [26], a dane katalogowe części – z katalogów części zamiennych [13], [14].'),
 ];
 
 // ---------- 2. CHARAKTERYSTYKA OBIEKTU ----------
-const f1 = fig(), f3 = fig(), f4 = fig();
+const f1 = fig(), f2 = fig(), f3 = fig(), f4 = fig();
+function foto(plik, szer) {
+  const p = path.join(__dirname, 'zdjecia', plik);
+  const { width, height } = (() => { const b = fs.readFileSync(p); let i = 2; while (i < b.length) { if (b[i] !== 0xFF) { i++; continue; } const m = b[i + 1]; if (m >= 0xC0 && m <= 0xC3) return { height: b.readUInt16BE(i + 5), width: b.readUInt16BE(i + 7) }; i += 2 + b.readUInt16BE(i + 2); } return { width: 4, height: 3 }; })();
+  return new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { after: 60 }, children: [new ImageRun({ type: 'jpg', data: fs.readFileSync(p), transformation: { width: szer, height: Math.round(szer * height / width) } })] });
+}
 const H22 = H2('2.2. Budowa hamulca tarczowego osi przedniej');
 const opisPojazdu = [
   H1('2. Charakterystyka obiektu naprawy'),
   H2('2.1. Dane techniczne pojazdu'),
   P('Obiektem naprawy jest samochód osobowy Toyota Corolla IX generacji (oznaczenie fabryczne E12/E120), produkowany w latach 2001–2007. Analizowany egzemplarz to 5-drzwiowy hatchback z benzynowym silnikiem 1.6 VVT-i o kodzie 3ZZ-FE i oznaczeniu typu ZZE121 [10]. Z punktu widzenia procesu najważniejsze są: dopuszczalna masa całkowita (potrzebna do wyznaczenia wymaganej siły hamowania w kontroli jakości po naprawie), rodzaj hamulców osi przedniej oraz typ hamulca postojowego (decydujący o braku potrzeby użycia testera diagnostycznego).'),
-  P(`Na rysunku numer ${f1} poniżej pokazano analizowany model pojazdu.`, { keepNext: true }),
-  photoBox(7000, 3400, 'Toyota Corolla E12 hatchback – zdjęcie ogólne pojazdu (AutoCentrum [7])'),
-  CAP(`Rysunek ${f1}. Toyota Corolla IX (E12) hatchback, [7]`),
+  P(`Na rysunkach numer ${f1} i ${f2} poniżej pokazano analizowany model pojazdu w widoku z przodu i z tyłu.`, { keepNext: true }),
+  foto('corolla_przod.jpg', 420),
+  CAP(`Rysunek ${f1}. Toyota Corolla IX (E12) hatchback 5-drzwiowy – widok z przodu, [26]`),
+  foto('corolla_tyl.jpg', 420),
+  CAP(`Rysunek ${f2}. Toyota Corolla IX (E12) hatchback 5-drzwiowy – widok z tyłu, [26]`),
   TCAP('Tabela 1. Dane techniczne pojazdu Toyota Corolla IX (E12) 1.6 VVT-i, [7]–[10]'),
   grpTable([4300, 5338], ['Parametr', 'Wartość'], [
     ['Identyfikacja', [
@@ -694,8 +701,9 @@ const BIB = [
   'Toyota Motor Europe: portal informacji technicznej dla niezależnych operatorów, https://www.toyota-tech.eu (dostęp: 09.10.2026).',
   'AUTODOC: Ridex 402B0107 Klocki hamulcowe (WVA 23766), https://www.autodoc.pl/ridex/12754705 (dostęp: 09.10.2026).',
   'AUTODOC: ATE 13.0460-5815.2 Klocki hamulcowe, https://www.autodoc.pl/ate/955966 (dostęp: 09.10.2026).',
+  'Motointegrator: Toyota Corolla E12 – dane techniczne: spalanie, cena i opinie (zdjęcia pojazdu), https://www.motointegrator.pl (dostęp: 18.10.2026).',
 ];
-const BIB_USED = CZESC1 ? [1, 2, 7, 8, 9, 10, 13, 14, 5].map(n => BIB[n - 1]) : BIB;
+const BIB_USED = CZESC1 ? [1, 2, 7, 8, 9, 10, 26, 13, 14, 5].map(n => BIB[n - 1]) : BIB;
 const bib = [H1('Bibliografia'), ...BIB_USED.map((b, i) => new Paragraph({
   spacing: { after: 100 }, indent: { left: 560, hanging: 560 },
   children: [new TextRun({ text: `[${i + 1}]\t`, font: FONT, size: 20 }), new TextRun({ text: b, font: FONT, size: 20 })],
