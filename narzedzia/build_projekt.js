@@ -701,7 +701,7 @@ const BIB = [
   'Toyota Motor Europe: portal informacji technicznej dla niezależnych operatorów, https://www.toyota-tech.eu (dostęp: 09.10.2026).',
   'AUTODOC: Ridex 402B0107 Klocki hamulcowe (WVA 23766), https://www.autodoc.pl/ridex/12754705 (dostęp: 09.10.2026).',
   'AUTODOC: ATE 13.0460-5815.2 Klocki hamulcowe, https://www.autodoc.pl/ate/955966 (dostęp: 09.10.2026).',
-  'Motointegrator: Toyota Corolla E12 – dane techniczne: spalanie, cena i opinie (zdjęcia pojazdu), https://www.motointegrator.pl (dostęp: 18.10.2026).',
+  'Motointegrator: Toyota Corolla E12 – przepis na tanie i niezawodne auto (zdjęcia pojazdu), https://motointegrator.com/pl/pl/poradniki/zycie-kierowcy/toyota-corolla-e12-przepis-na-tanie-i-niezawodne-auto (dostęp: 18.10.2026).',
 ];
 const BIB_USED = CZESC1 ? [1, 2, 7, 8, 9, 10, 26, 13, 14, 5].map(n => BIB[n - 1]) : BIB;
 const bib = [H1('Bibliografia'), ...BIB_USED.map((b, i) => new Paragraph({
