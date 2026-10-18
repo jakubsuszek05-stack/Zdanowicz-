@@ -10,7 +10,7 @@ const {
 
 const OUT = process.argv[2];
 const PAGES = process.argv[3] && fs.existsSync(process.argv[3]) ? JSON.parse(fs.readFileSync(process.argv[3])) : {};
-const CZESC1 = process.argv[4] === 'czesc1'; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1–3, bibliografia
+const CZESC1 = process.argv[4] === 'czesc1'; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
 const FONT = 'Calibri';
 const PW = 11906 - 2 * 1134; // szerokość tekstu A4, marginesy 2 cm = 9638 DXA
 const AUTOR = 'Jakub Suszek';
@@ -142,7 +142,7 @@ const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Wa
   '4. Diagnostyka i kwalifikacja pojazdu do naprawy': 6, '5. Wyposażenie stanowiska pracy': 4,
   '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
   '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
-const GOTOWE = ['1.', '2.', '3.', 'Bibliografia'];
+const GOTOWE = ['1.', '2.', 'Bibliografia'];
 const TAB_STR = PW - 1300, TAB_PROC = PW;
 const tocCzesc1 = [
   P('Spis treści', { size: 30, bold: false, align: AlignmentType.LEFT, after: 160, before: 0 }),
@@ -192,6 +192,7 @@ const wstep = [
 
 // ---------- 2. CHARAKTERYSTYKA OBIEKTU ----------
 const f1 = fig(), f3 = fig(), f4 = fig();
+const H22 = H2('2.2. Budowa hamulca tarczowego osi przedniej');
 const opisPojazdu = [
   H1('2. Charakterystyka obiektu naprawy'),
   H2('2.1. Dane techniczne pojazdu'),
@@ -227,7 +228,7 @@ const opisPojazdu = [
     ]],
   ]),
   P('', { after: 60 }),
-  H2('2.2. Budowa hamulca tarczowego osi przedniej'),
+  H22,
   P('Hamulec przedni jest hamulcem tarczowym z zaciskiem pływającym. Korpus cylindra z jednym tłoczkiem osadzony jest na dwóch sworzniach prowadzących, które przesuwają się w jarzmie przykręconym do zwrotnicy. Podczas hamowania tłoczek dociska klocek wewnętrzny, a reakcja przesuwa korpus na sworzniach i dociska klocek zewnętrzny. Klocki prowadzone są w jarzmie przez dwie płytki podporowe, a drgania tłumią podkładki przeciwpiskowe nr 1 i nr 2 [1]. Zużycie okładzin sygnalizuje mechanicznie płytka wskaźnika zużycia, zamocowana na klocku wewnętrznym [1], [11].'),
   P(`Na rysunku numer ${f3} poniżej pokazano hamulec przedni po zdjęciu koła, a na rysunku numer ${f4} – elementy składowe zacisku według instrukcji producenta.`, { keepNext: true }),
   photoBox(7000, 3200, 'Hamulec przedni Corolli E12 po zdjęciu koła – kadr z poradnika / filmu AUTODOC [2], [3]'),
@@ -692,7 +693,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1000, bottom: 1000, left: 1134, right: 1134, footer: 400 } } },
     footers: { default: footer, first: new Footer({ children: [] }) },
-    children: CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep, ...opisPojazdu, ...uklad, ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
+    children: CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
       ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib],
   }],
 });
