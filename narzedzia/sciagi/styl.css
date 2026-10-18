@@ -1,0 +1,12 @@
+body{font-family:Calibri,Carlito,"DejaVu Sans",sans-serif;font-size:15px;line-height:1.45;margin:22px;color:#111;background:#fff}
+h1{font-size:23px;margin:0 0 4px}
+h2{font-size:18px;margin:22px 0 6px;border-bottom:2px solid #2f4f7f;padding-bottom:2px;color:#1f3a63;page-break-after:avoid}
+h3{font-size:16px;margin:14px 0 4px;color:#1f3a63;page-break-after:avoid}
+.say{background:#eef3fb;border-left:4px solid #2f4f7f;padding:8px 12px;margin:8px 0}
+.tip{background:#fff6e0;border-left:4px solid #a66b00;padding:8px 12px;margin:8px 0}
+table{border-collapse:collapse;width:100%;margin:6px 0;page-break-inside:avoid}
+td,th{border:1px solid #999;padding:4px 7px;vertical-align:top}
+th{background:#dfe7f3;text-align:left}
+.q{font-weight:bold;margin:10px 0 2px}
+.q+p{margin-top:0}
+small{color:#555}

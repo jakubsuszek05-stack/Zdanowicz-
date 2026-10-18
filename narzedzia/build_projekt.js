@@ -196,17 +196,17 @@ const wstep = [
 
 const wstep1 = [
   H1('1. Wstęp'),
-  P('Hamulec tarczowy osi przedniej przenosi w samochodzie osobowym większą część sił hamowania, a jego elementy cierne zużywają się w sposób ciągły podczas eksploatacji. Klocki hamulcowe są więc częścią, której stan decyduje bezpośrednio o drodze hamowania i stabilności pojazdu. Ich wymiana jest zabiegiem krótkim, ale wymagającym zachowania wymiarów granicznych i momentów dokręcania określonych przez producenta – błędy popełnione podczas montażu ujawniają się często dopiero w czasie jazdy.'),
-  P('**Celem projektu** jest opracowanie procesu technologicznego weryfikacji i wymiany przednich klocków hamulcowych dla konkretnego pojazdu – Toyoty Corolli IX (E12) hatchback 1.6 VVT-i (silnik 3ZZ-FE, 81 kW, kod typu ZZE121) – zakończonego kontrolą jakości wykonanej naprawy.'),
-  P('Planowany zakres opracowania obejmuje:', { keepNext: true, after: 60 }),
-  BUL('charakterystykę obiektu naprawy – danych technicznych pojazdu oraz budowy hamulca osi przedniej,'),
-  BUL('warunki techniczne weryfikacji i montażu: wymiary nominalne i dopuszczalne, momenty dokręcania, rozmiary i typy kluczy oraz środki smarne,'),
-  BUL('diagnostykę i kwalifikację pojazdu do naprawy na podstawie objawów i pomiarów części,'),
-  BUL('wyposażenie stanowiska pracy,'),
-  BUL('schemat procesu technologicznego i kartę instrukcyjną operacji,'),
-  BUL('kontrolę jakości po naprawie, w tym badanie skuteczności hamowania na stanowisku rolkowym,'),
-  BUL('analizę typowych błędów wykonawczych oraz kalkulację kosztów usługi.'),
-  P('**Źródła danych.** Podstawowym źródłem danych technicznych jest instrukcja naprawy producenta Toyota Corolla (E120) Repair Manual [1], z której przyjmowane będą wymiary nominalne i dopuszczalne, luzy oraz momenty dokręcania. Producent nie podaje w niej rozmiarów kluczy ani dokumentacji fotograficznej poszczególnych czynności, dlatego informacje te zostaną uzupełnione na podstawie instrukcji wymiany krok po kroku przygotowanej dla tego modelu [2]. W przypadku rozbieżności między źródłami przyjmowana będzie wartość podana przez producenta. Dane techniczne pojazdu zestawione w rozdziale 2 zaczerpnięto z katalogów i serwisów motoryzacyjnych [7]–[10].'),
+  P('Hamulec tarczowy osi przedniej przenosi w samochodzie osobowym większą część sił hamowania, a jego elementy cierne zużywają się w sposób ciągły podczas eksploatacji. Klocki hamulcowe są więc częścią, której stan decyduje bezpośrednio o drodze hamowania i stabilności pojazdu. Ich wymiana jest zabiegiem krótkim, ale – jak pokazano w rozdziale 8 – podatnym na błędy wykonawcze, których skutki ujawniają się dopiero podczas jazdy.'),
+  P('**Celem projektu** jest opracowanie kompletnego procesu technologicznego weryfikacji i wymiany przednich klocków hamulcowych dla konkretnego pojazdu – Toyoty Corolli IX (E12) hatchback 1.6 VVT-i (silnik 3ZZ-FE, 81 kW, kod typu ZZE121) – zakończonego mierzalną kontrolą jakości naprawy.'),
+  P('Zakres opracowania obejmuje:', { keepNext: true, after: 60 }),
+  BUL('charakterystykę obiektu naprawy i elementów hamulca osi przedniej (rozdział 2),'),
+  BUL('warunki techniczne weryfikacji i montażu: wymiary nominalne i dopuszczalne, momenty dokręcania, rozmiary i typy kluczy oraz środki smarne (rozdział 3),'),
+  BUL('macierz diagnostyczną objawów i kartę weryfikacji części, na podstawie których pojazd kwalifikowany jest do naprawy (rozdział 4),'),
+  BUL('wyposażenie stanowiska pracy z przypisaniem narzędzi do numerów czynności (rozdział 5),'),
+  BUL('schemat procesu technologicznego i kartę instrukcyjną operacji (rozdział 6),'),
+  BUL('kontrolę jakości po naprawie, w tym badanie na stanowisku rolkowym i protokół odbioru (rozdział 7),'),
+  BUL('analizę typowych błędów wykonawczych (rozdział 8) oraz analizę kosztów naprawy (rozdział 9).'),
+  P('**Źródła danych.** Wymiary, luzy, bicia i momenty dokręcania przyjęto z instrukcji naprawy producenta Toyota Corolla (E120) Repair Manual [1]. Producent nie podaje w niej rozmiarów kluczy ani dokumentacji fotograficznej, dlatego te informacje uzupełniono instrukcją wymiany krok po kroku przygotowaną dla tego modelu [2]. W przypadku rozbieżności (np. moment dokręcenia śrub zacisku 34,3 N·m według [1] i 35 N·m według [2]) przyjmowano wartość producenta. Dane techniczne pojazdu zestawione w rozdziale 2 pochodzą z katalogów i serwisów motoryzacyjnych [7]–[10], a dane katalogowe części – z katalogów części zamiennych [13], [14].'),
 ];
 
 // ---------- 2. CHARAKTERYSTYKA OBIEKTU ----------
