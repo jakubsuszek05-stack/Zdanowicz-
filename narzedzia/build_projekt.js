@@ -261,7 +261,7 @@ const opisPojazdu = [
   H22,
   P('Hamulec przedni jest hamulcem tarczowym z zaciskiem pływającym. Korpus cylindra z jednym tłoczkiem osadzony jest na dwóch sworzniach prowadzących, które przesuwają się w jarzmie przykręconym do zwrotnicy. Podczas hamowania tłoczek dociska klocek wewnętrzny, a reakcja przesuwa korpus na sworzniach i dociska klocek zewnętrzny. Klocki prowadzone są w jarzmie przez dwie płytki podporowe, a drgania tłumią podkładki przeciwpiskowe nr 1 i nr 2 [1]. Zużycie okładzin sygnalizuje mechanicznie płytka wskaźnika zużycia, zamocowana na klocku wewnętrznym [1], [11].'),
   P(`Na rysunku numer ${f3} poniżej pokazano hamulec przedni po zdjęciu koła, a na rysunku numer ${f4} – elementy składowe zacisku według instrukcji producenta.`, { keepNext: true }),
-  photoBox(7000, 3200, 'Hamulec przedni Corolli E12 po zdjęciu koła – kadr z poradnika / filmu AUTODOC [2], [3]'),
+  foto('autodoc_hamulec.jpg', 420),
   CAP(`Rysunek ${f3}. Hamulec tarczowy osi przedniej pojazdu Toyota Corolla E12, [2]`),
   photoBox(7000, 3600, 'Rysunek rozstrzelony zacisku z instrukcji Toyota Repair Manual – Front brake – Overhaul [1]'),
   CAP(`Rysunek ${f4}. Elementy składowe zacisku hamulca przedniego, [1]`),
