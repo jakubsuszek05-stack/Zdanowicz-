@@ -107,13 +107,14 @@ const fig = () => ++FIG;
 
 // ---------- STRONA TYTUŁOWA ----------
 const title = [
-  C('[NAZWA UCZELNI]', { size: 32, bold: true, before: 600, after: 120 }),
-  C('[Wydział]', { size: 28, after: 60 }),
-  C('[Zakład / Katedra]', { size: 26, after: 2000 }),
+  C('POLITECHNIKA WARSZAWSKA', { size: 32, bold: true, before: 600, after: 1200 }),
+  C('Wydział Transportu', { size: 28, after: 60 }),
+  C('Zakład Budowy i Eksploatacji Środków Transportu', { size: 26, after: 2000 }),
   C('Projekt', { size: 44, bold: true, after: 400 }),
-  C('Temat: Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy w pojeździe Toyota Corolla IX (E12) 1.6 VVT-i', { size: 30, after: 2400 }),
+  C('Temat:', { size: 30, bold: true, after: 120 }),
+  C('Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy w pojeździe Toyota Corolla IX (E12) 1.6 VVT-i', { size: 30, after: 2400 }),
   P(`Wykonał: ${AUTOR}`, { size: 24, align: AlignmentType.RIGHT, after: 80 }),
-  P('Nr albumu: ..................', { size: 24, align: AlignmentType.RIGHT, after: 80 }),
+  P('Nr albumu: 340047', { size: 24, align: AlignmentType.RIGHT, after: 80 }),
   P('Prowadzący: ..................', { size: 24, align: AlignmentType.RIGHT, after: 1400 }),
   C('Warszawa, 2026', { size: 24, after: 0 }),
 ];
@@ -263,8 +264,9 @@ const opisPojazdu = [
   P(`Na rysunku numer ${f3} poniżej pokazano hamulec przedni po zdjęciu koła, a na rysunku numer ${f4} – jarzmo zacisku ze sworzniami prowadzącymi po zdjęciu korpusu cylindra i klocków, według instrukcji producenta.`, { keepNext: true }),
   foto('autodoc_hamulec.jpg', 420),
   CAP(`Rysunek ${f3}. Hamulec tarczowy osi przedniej pojazdu Toyota Corolla E12, [2]`),
-  foto('toyota_zacisk.jpg', 400),
+  foto('toyota_zacisk_opis.jpg', 420),
   CAP(`Rysunek ${f4}. Jarzmo zacisku hamulca przedniego na tarczy – rysunek F41561 z instrukcji naprawy Toyota, [1]`),
+  P('1 – tarcza hamulcowa, 2 – śruby koła w piaście, 3 – jarzmo (mocowanie zacisku), 4 – osłony sworzni prowadzących, 5 – śruby mocowania jarzma do zwrotnicy; oznaczenia numeryczne – opracowanie własne', { size: 20, align: AlignmentType.LEFT }),
   P('Sposób postępowania z poszczególnymi elementami zespołu podczas naprawy zestawiono w tabeli numer 2. Tabela określa, które części wymienia się zawsze, a które podlegają weryfikacji i ponownemu montażowi.'),
   TCAP('Tabela 2. Elementy zespołu hamulca przedniego i postępowanie podczas naprawy, [1], [2], [6]'),
   table([2700, 3000, 3938], [
@@ -500,7 +502,7 @@ function sheetHeader(no) {
   const HW = [2400, 5038, 1200, 1000];
   return new Table({ width: { size: PW, type: WidthType.DXA }, columnWidths: HW, rows: [
     new TableRow({ children: [
-      cell(['[Nazwa uczelni]', '[Wydział]', '[Zakład]'], HW[0], { rowSpan: 2, size: 19, align: AlignmentType.CENTER }),
+      cell(['Politechnika Warszawska', 'Wydział Transportu', 'Zakład Budowy i Eksploatacji Środków Transportu'], HW[0], { rowSpan: 2, size: 19, align: AlignmentType.CENTER }),
       cell('Nazwa zespołu, podzespołu, części:', HW[1], { size: 19, align: AlignmentType.CENTER }),
       cell('Arkusz', HW[2], { size: 19, align: AlignmentType.CENTER }),
       cell(String(no), HW[3], { size: 19, align: AlignmentType.CENTER }),
