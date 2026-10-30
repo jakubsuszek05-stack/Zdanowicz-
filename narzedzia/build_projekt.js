@@ -12,7 +12,8 @@ const OUT = process.argv[2];
 const PAGES = process.argv[3] && fs.existsSync(process.argv[3]) ? JSON.parse(fs.readFileSync(process.argv[3])) : {};
 const CZESC1 = process.argv[4] === 'czesc1';
 const CZESC2 = process.argv[4] === 'czesc2'; // wersja cząstkowa 2: rozdz. 1–3 w całości, rozdz. 4 – wstęp i nagłówek 4.1
-const CZESC = CZESC1 || CZESC2; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
+const CZESC3 = process.argv[4] === 'czesc3'; // wersja cząstkowa 3: rozdz. 1–5 w całości, 6.1 i nagłówek 6.2
+const CZESC = CZESC1 || CZESC2 || CZESC3; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
 const FONT = 'Calibri';
 const PW = 11906 - 2 * 1134; // szerokość tekstu A4, marginesy 2 cm = 9638 DXA
 const AUTOR = 'Jakub Suszek';
@@ -26,8 +27,17 @@ const NOB = { top: NONE, bottom: NONE, left: NONE, right: NONE };
 // w wersji cząstkowej numery źródeł są przenumerowane (bibliografia zawiera tylko źródła użyte w tej części)
 const REMAP1 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10 };
 const REMAP2 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10, 11: 11, 6: 12, 4: 13 };
-const REMAP = CZESC1 ? REMAP1 : CZESC2 ? REMAP2 : null;
-const remap = t => (REMAP ? String(t).replace(/\[(\d+)\]/g, (m, n) => (REMAP[n] ? `[${REMAP[n]}]` : m)) : String(t));
+// REMAP3 – kolejność pierwszego cytowania w części 3, wyznaczana w 1. przebiegu (plik JSON w 5. argumencie)
+const REMAP3 = CZESC3 && process.argv[5] && fs.existsSync(process.argv[5]) ? JSON.parse(fs.readFileSync(process.argv[5])) : null;
+const REMAP = CZESC1 ? REMAP1 : CZESC2 ? REMAP2 : REMAP3;
+// zakres [a]–[b] rozwijany na pozycje, po przenumerowaniu sortowany i scalany w ciągłe zakresy
+const remapZakres = (a, b) => {
+  const n = []; for (let i = +a; i <= +(b || a); i++) n.push(REMAP[i] || i);
+  n.sort((x, y) => x - y);
+  const out = []; for (let i = 0; i < n.length; i++) { let j = i; while (j + 1 < n.length && n[j + 1] === n[j] + 1) j++; out.push(j > i ? `[${n[i]}]–[${n[j]}]` : `[${n[i]}]`); i = j; }
+  return out.join(', ');
+};
+const remap = t => (REMAP ? String(t).replace(/\[(\d+)\](?:–\[(\d+)\])?/g, (m, a, b) => remapZakres(a, b)) : String(t));
 function runs(text, o = {}) {
   return remap(text).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => new TextRun({
     text: p.startsWith('**') ? p.slice(2, -2) : p,
@@ -150,7 +160,7 @@ const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Wa
   '4. Diagnostyka i kwalifikacja pojazdu do naprawy': 6, '5. Wyposażenie stanowiska pracy': 4,
   '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
   '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
-const GOTOWE = CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
+const GOTOWE = CZESC3 ? ['1.', '2.', '3.', '4.', '5.', '6. ', '6.1.', '6.2.', 'Bibliografia'] : CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
 const TAB_STR = PW - 1300, TAB_PROC = PW;
 const tocCzesc1 = [
   P('Spis treści', { size: 30, bold: false, align: AlignmentType.LEFT, after: 160, before: 0 }),
@@ -365,9 +375,9 @@ const diag = [
   ], { center: [1, 2, 3, 4], size: 18 }),
   P('', { after: 60 }),
   P('Wyniki są ze sobą spójne: większe zużycie klocka wewnętrznego po stronie lewej oraz opór przesuwu lewych sworzni wskazują, że korpus zacisku nie przesuwał się swobodnie i klocek wewnętrzny pracował z większym dociskiem. Tłumaczy to zgłoszone ściąganie pojazdu. Tarcze mieszczą się w wymiarach dopuszczalnych, więc pojazd zakwalifikowano do wymiany klocków osi przedniej z naprawą (czyszczeniem i smarowaniem) sworzni prowadzących, bez wymiany tarcz. Skuteczność tej naprawy weryfikuje pomiar różnicy sił hamowania w rozdziale 7.'),
-  P(`Na rysunku numer ${f5} poniżej pokazano zużyte klocki po demontażu zacisku.`, { keepNext: true }),
-  photoBox(7000, 3200, 'Zużyte klocki po zdjęciu zacisku – kadr z poradnika / filmu AUTODOC [2], [3]'),
-  CAP(`Rysunek ${f5}. Zużyte okładziny klocków hamulcowych osi przedniej, [2]`),
+  P(`Na rysunku numer ${f5} poniżej pokazano demontaż klocków z jarzma zacisku – po nim mierzy się grubość okładzin obu klocków.`, { keepNext: true }),
+  foto('autodoc_klocki.jpg', 400),
+  CAP(`Rysunek ${f5}. Demontaż klocków hamulcowych osi przedniej z jarzma zacisku, [2]`),
 ];
 
 // ---------- 5. WYPOSAŻENIE STANOWISKA ----------
@@ -540,6 +550,7 @@ const fFlow = ++FIG; // schemat procesu – numer po rysunkach karty? – nie, w
 for (let i = 0; i < stepFig.length; i++) if (stepFig[i]) stepFig[i] += 1;
 const flowNo = stepFig.find(Boolean) - 1;
 
+const H62 = H2('6.2. Karta instrukcyjna operacji');
 const karta = [
   H1('6. Proces technologiczny wymiany klocków hamulcowych'),
   H2('6.1. Schemat procesu technologicznego'),
@@ -547,7 +558,7 @@ const karta = [
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 60 }, children: [new ImageRun({
     type: 'png', data: fs.readFileSync(path.join(__dirname, 'schemat.png')), transformation: { width: 410, height: Math.round(410 * 2350 / 1664) } })] }),
   CAP(`Rysunek ${flowNo}. Schemat procesu technologicznego wymiany klocków hamulcowych z kontrolą jakości – opracowanie własne na podstawie [1], [4], [6], [15], [16]`),
-  H2('6.2. Karta instrukcyjna operacji'),
+  H62,
   P('Karta instrukcyjna (tabela numer 9) zawiera 32 czynności. W stosunku do samej wymiany części rozszerzono ją o czynności weryfikacyjne (pomiar okładzin, grubości i bicia tarczy, kontrola płytek podporowych i sworzni) oraz o osobną kolumnę z wymiarem nominalnym, wymiarem dopuszczalnym lub momentem dokręcania. Narzędzia w kolumnie czwartej odpowiadają pozycjom tabeli numer 8.'),
 ];
 sheets.forEach((idxs, k) => {
@@ -728,7 +739,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1000, bottom: 1000, left: 1134, right: 1134, footer: 400 } } },
     footers: { default: footer, first: new Footer({ children: [] }) },
-    children: CZESC2 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag.slice(0, diag.indexOf(H41) + 1), ...bib] : CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
+    children: CZESC3 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, karta.indexOf(H62) + 1), ...bib] : CZESC2 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag.slice(0, diag.indexOf(H41) + 1), ...bib] : CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
       ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib],
   }],
 });
