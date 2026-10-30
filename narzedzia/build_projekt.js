@@ -161,22 +161,23 @@ const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Wa
   '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
   '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
 const GOTOWE = CZESC3 ? ['1.', '2.', '3.', '4.', '5.', '6. ', '6.1.', '6.2.', 'Bibliografia'] : CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
-const TAB_STR = PW - 1300, TAB_PROC = PW;
+const PROC = !CZESC3; // od części 3 spis treści bez kolumny udziału %
+const TAB_STR = PROC ? PW - 1300 : PW, TAB_PROC = PW;
 const tocCzesc1 = [
   P('Spis treści', { size: 30, bold: false, align: AlignmentType.LEFT, after: 160, before: 0 }),
   new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: TAB_STR }, { type: TabStopType.RIGHT, position: TAB_PROC }], spacing: { after: 60 },
-    children: [new TextRun({ text: '\tstrona\tudział', font: FONT, size: 18, italics: true, color: '595959' })] }),
+    children: [new TextRun({ text: PROC ? '\tstrona\tudział' : '\tstrona', font: FONT, size: 18, italics: true, color: '595959' })] }),
   ...TOC.map(([t, lvl]) => {
     const done = GOTOWE.some(g => t.startsWith(g));
     return new Paragraph({
       tabStops: [{ type: TabStopType.RIGHT, position: TAB_STR, leader: 'dot' }, { type: TabStopType.RIGHT, position: TAB_PROC }],
       indent: { left: lvl ? 400 : 0 }, spacing: { after: 70 },
       children: [new TextRun({ text: t, font: FONT, size: 22 }),
-        new TextRun({ text: `\t${done && PAGES[t] ? PAGES[t] : ''}\t${lvl ? '' : UDZIAL[t] + '%'}`, font: FONT, size: 22 })],
+        new TextRun({ text: `\t${done && PAGES[t] ? PAGES[t] : ''}` + (PROC ? `\t${lvl ? '' : UDZIAL[t] + '%'}` : ''), font: FONT, size: 22 })],
     });
   }),
-  new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: TAB_PROC }], spacing: { before: 80 },
-    children: [new TextRun({ text: 'Razem\t100%', font: FONT, size: 22, bold: true })] }),
+  ...(PROC ? [new Paragraph({ tabStops: [{ type: TabStopType.RIGHT, position: TAB_PROC }], spacing: { before: 80 },
+    children: [new TextRun({ text: 'Razem\t100%', font: FONT, size: 22, bold: true })] })] : []),
 ];
 
 // tabela z wierszami grup (wiersz grupy = scalona komórka z pogrubionym tytułem)
