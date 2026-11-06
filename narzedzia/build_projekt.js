@@ -13,7 +13,8 @@ const PAGES = process.argv[3] && fs.existsSync(process.argv[3]) ? JSON.parse(fs.
 const CZESC1 = process.argv[4] === 'czesc1';
 const CZESC2 = process.argv[4] === 'czesc2'; // wersja cząstkowa 2: rozdz. 1–3 w całości, rozdz. 4 – wstęp i nagłówek 4.1
 const CZESC3 = process.argv[4] === 'czesc3'; // wersja cząstkowa 3: rozdz. 1–5 w całości, 6.1 i nagłówek 6.2
-const CZESC = CZESC1 || CZESC2 || CZESC3; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
+const CZESC4 = process.argv[4] === 'czesc4'; // wersja cząstkowa 4: jak część 3 + arkusze 1–8 karty (czynności 1–16)
+const CZESC = CZESC1 || CZESC2 || CZESC3 || CZESC4; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
 const FONT = 'Calibri';
 const PW = 11906 - 2 * 1134; // szerokość tekstu A4, marginesy 2 cm = 9638 DXA
 const AUTOR = 'Jakub Suszek';
@@ -28,7 +29,7 @@ const NOB = { top: NONE, bottom: NONE, left: NONE, right: NONE };
 const REMAP1 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10 };
 const REMAP2 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10, 11: 11, 6: 12, 4: 13 };
 // REMAP3 – kolejność pierwszego cytowania w części 3, wyznaczana w 1. przebiegu (plik JSON w 5. argumencie)
-const REMAP3 = CZESC3 && process.argv[5] && fs.existsSync(process.argv[5]) ? JSON.parse(fs.readFileSync(process.argv[5])) : null;
+const REMAP3 = (CZESC3 || CZESC4) && process.argv[5] && fs.existsSync(process.argv[5]) ? JSON.parse(fs.readFileSync(process.argv[5])) : null;
 const REMAP = CZESC1 ? REMAP1 : CZESC2 ? REMAP2 : REMAP3;
 // zakres [a]–[b] rozwijany na pozycje, po przenumerowaniu sortowany i scalany w ciągłe zakresy
 const remapZakres = (a, b) => {
@@ -160,8 +161,8 @@ const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Wa
   '4. Diagnostyka i kwalifikacja pojazdu do naprawy': 6, '5. Wyposażenie stanowiska pracy': 4,
   '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
   '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
-const GOTOWE = CZESC3 ? ['1.', '2.', '3.', '4.', '5.', '6. ', '6.1.', '6.2.', 'Bibliografia'] : CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
-const PROC = !CZESC3; // od części 3 spis treści bez kolumny udziału %
+const GOTOWE = CZESC3 || CZESC4 ? ['1.', '2.', '3.', '4.', '5.', '6. ', '6.1.', '6.2.', 'Bibliografia'] : CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
+const PROC = !(CZESC3 || CZESC4); // od części 3 spis treści bez kolumny udziału %
 const TAB_STR = PROC ? PW - 1300 : PW, TAB_PROC = PW;
 const tocCzesc1 = [
   P('Spis treści', { size: 30, bold: false, align: AlignmentType.LEFT, after: 160, before: 0 }),
@@ -231,6 +232,12 @@ function foto(plik, szer) {
   const p = path.join(__dirname, 'zdjecia', plik);
   const { width, height } = (() => { const b = fs.readFileSync(p); let i = 2; while (i < b.length) { if (b[i] !== 0xFF) { i++; continue; } const m = b[i + 1]; if (m >= 0xC0 && m <= 0xC3) return { height: b.readUInt16BE(i + 5), width: b.readUInt16BE(i + 7) }; i += 2 + b.readUInt16BE(i + 2); } return { width: 4, height: 3 }; })();
   return new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { after: 60 }, children: [new ImageRun({ type: 'jpg', data: fs.readFileSync(p), transformation: { width: szer, height: Math.round(szer * height / width) } })] });
+}
+function fotoMax(plik, szer, wys) {
+  const b = fs.readFileSync(path.join(__dirname, 'zdjecia', plik));
+  let i = 2, w = 4, h = 3;
+  while (i < b.length) { if (b[i] !== 0xFF) { i++; continue; } const m = b[i + 1]; if (m >= 0xC0 && m <= 0xC3) { h = b.readUInt16BE(i + 5); w = b.readUInt16BE(i + 7); break; } i += 2 + b.readUInt16BE(i + 2); }
+  return foto(plik, Math.min(szer, Math.round(wys * w / h)));
 }
 const H22 = H2('2.2. Budowa hamulca tarczowego osi przedniej');
 const opisPojazdu = [
@@ -430,18 +437,18 @@ const S = [
   { n: 'Zabezpieczenie kół klinami.', o: 'Pod koła tylnej osi zostają podłożone kliny.', t: 'Kliny pod koła (2 szt.).', w: '—', u: 'Zapobiega przypadkowemu przemieszczeniu pojazdu.', f: 'zabezpieczenie kół klinami', s: '[2]' },
   { n: 'Poluzowanie nakrętek koła.', o: 'Nakrętki są lekko odkręcane przed podniesieniem samochodu.', t: 'Nasadka udarowa 21 mm, pokrętło lub klucz do kół.', w: '4 nakrętki; moment montażowy 103 N·m [1].', u: 'Zalecane wykonanie na płaskiej, równej powierzchni.', f: 'poluzowanie nakrętek mocujących koło', s: '[2]', q: 'nasadka udarowa do kół nr 21' },
   { n: 'Podniesienie pojazdu.', o: 'Samochód zostaje podniesiony podnośnikiem, a następnie zabezpieczony kozłami warsztatowymi.', t: 'Podnośnik, podstawki (kozły warsztatowe).', w: '—', u: 'Nie wolno wykonywać pracy wyłącznie na podnośniku.', f: 'moment podniesienia pojazdu', s: '[2]' },
-  { n: 'Odkręcenie nakrętek i demontaż koła.', o: 'Nakrętki zostają całkowicie odkręcone, a koło zdjęte z piasty.', t: 'Nasadka udarowa 21 mm, pokrętło.', w: '—', u: 'Aby uniknąć kontuzji, należy przytrzymywać koło podczas odkręcania.', f: 'układ hamulcowy po zdemontowaniu koła', s: '[2]' },
-  { n: 'Oczyszczenie zacisku hamulcowego.', o: 'Zacisk i elementy mocujące zostają oczyszczone szczotką drucianą i spryskane środkiem penetrującym.', t: 'Szczotka druciana, środek penetrujący (WD-40).', w: '—', u: 'Po nałożeniu środka odczekać kilka minut.', f: 'oczyszczanie elementów mocujących zacisk hamulcowy', s: '[2]', q: 'szczotka druciana, WD-40' },
-  { n: 'Odkręcenie śrub mocujących zacisk.', o: 'Przy przytrzymanym sworzniu prowadzącym zostają odkręcone dwie śruby mocujące zacisk.', t: 'Klucz płasko-oczkowy 13 mm, klucz płasko-oczkowy 17 mm (kontra).', w: 'Moment montażowy 34,3 N·m [1].', u: 'Sworzeń prowadzący należy przytrzymać kluczem 17 mm [1].', f: 'odkręcanie śrub mocujących zacisk hamulcowy', s: '[2]', q: 'klucz płasko-oczkowy nr 13, klucz płasko-oczkowy nr 17' },
-  { n: 'Demontaż zacisku.', o: 'Zacisk zostaje zdjęty i zawieszony na haku, bez odłączania przewodu hamulcowego.', t: 'Hak lub drut.', w: '—', u: 'Nie wolno dopuścić do zwisania zacisku na przewodzie. Nie naciskać pedału hamulca.', f: 'zdemontowany i podwieszony zacisk hamulcowy', s: '[2]' },
-  { n: 'Demontaż klocków hamulcowych.', o: 'Zużyte klocki zostają wyjęte z jarzma razem z podkładkami przeciwpiskowymi nr 1 i nr 2.', t: 'Ręczne usunięcie lub łom montażowy.', w: '—', u: 'Zanotować położenie klocka z płytką wskaźnika zużycia.', f: 'demontaż zużytych klocków hamulcowych', s: '[2]', q: 'łom montażowy' },
+  { n: 'Odkręcenie nakrętek i demontaż koła.', o: 'Nakrętki zostają całkowicie odkręcone, a koło zdjęte z piasty.', t: 'Nasadka udarowa 21 mm, pokrętło.', w: '—', u: 'Aby uniknąć kontuzji, należy przytrzymywać koło podczas odkręcania.', f: 'zdejmowanie koła z piasty', s: '[2]', img: 'autodoc_kolo.jpg' },
+  { n: 'Oczyszczenie zacisku hamulcowego.', o: 'Zacisk i elementy mocujące zostają oczyszczone szczotką drucianą i spryskane środkiem penetrującym.', t: 'Szczotka druciana, środek penetrujący (WD-40).', w: '—', u: 'Po nałożeniu środka odczekać kilka minut.', f: 'oczyszczanie elementów mocujących zacisk hamulcowy', s: '[2]', img: 'autodoc_czyszczenie_zacisku.jpg', q: 'szczotka druciana, WD-40' },
+  { n: 'Odkręcenie śrub mocujących zacisk.', o: 'Przy przytrzymanym sworzniu prowadzącym zostają odkręcone dwie śruby mocujące zacisk.', t: 'Klucz płasko-oczkowy 13 mm, klucz płasko-oczkowy 17 mm (kontra).', w: 'Moment montażowy 34,3 N·m [1].', u: 'Sworzeń prowadzący należy przytrzymać kluczem 17 mm [1].', f: 'odkręcanie śruby mocującej zacisk z kontrą sworznia prowadzącego', s: '[2]', img: 'autodoc_sruby_zacisku.jpg', q: 'klucz płasko-oczkowy nr 13, klucz płasko-oczkowy nr 17' },
+  { n: 'Demontaż zacisku.', o: 'Zacisk zostaje zdjęty i zawieszony na haku, bez odłączania przewodu hamulcowego.', t: 'Hak lub drut.', w: '—', u: 'Nie wolno dopuścić do zwisania zacisku na przewodzie. Nie naciskać pedału hamulca.', f: 'zdejmowanie zacisku i podwieszenie go na drucie', s: '[2]', img: 'autodoc_hamulec.jpg' },
+  { n: 'Demontaż klocków hamulcowych.', o: 'Zużyte klocki zostają wyjęte z jarzma razem z podkładkami przeciwpiskowymi nr 1 i nr 2.', t: 'Ręczne usunięcie lub łom montażowy.', w: '—', u: 'Zanotować położenie klocka z płytką wskaźnika zużycia.', f: 'demontaż zużytych klocków hamulcowych', s: '[2]', img: 'autodoc_klocki.jpg', q: 'łom montażowy' },
   { n: 'Demontaż płytek podporowych.', o: 'Z jarzma zostają wyjęte dwie płytki podporowe klocków.', t: 'Wkrętak płaski.', w: '—', u: 'Nie zamieniać płytek górnej i dolnej.', f: 'płytki podporowe klocków w jarzmie zacisku', s: '[1]' },
-  { n: 'Pomiar grubości okładzin klocków.', o: 'Grubość okładziny (bez płyty nośnej) zostaje zmierzona w kilku punktach obu klocków.', t: 'Suwmiarka (0,1 mm).', w: '**Nominalna: 11,0 mm**\n**Dopuszczalna: min. 1,0 mm** [1]', u: 'Przy wartości poniżej 1,0 mm wymiana obowiązkowa. Klocki wymienia się kompletem na oś [2].', f: 'pomiar grubości okładziny klocka', s: '[1]' },
+  { n: 'Pomiar grubości okładzin klocków.', o: 'Grubość okładziny (bez płyty nośnej) zostaje zmierzona w kilku punktach obu klocków.', t: 'Suwmiarka (0,1 mm).', w: '**Nominalna: 11,0 mm**\n**Dopuszczalna: min. 1,0 mm** [1]', u: 'Przy wartości poniżej 1,0 mm wymiana obowiązkowa. Klocki wymienia się kompletem na oś [2].', f: 'pomiar grubości okładziny klocka', s: '[1]', img: 'toyota_okladzina.jpg' },
   { n: 'Kontrola płytek podporowych.', o: 'Płytki zostają sprawdzone pod kątem sprężystości, odkształceń, pęknięć i zużycia oraz oczyszczone z rdzy.', t: 'Oględziny, szczotka druciana.', w: 'Brak odkształceń i pęknięć [1].', u: 'Płytki zużyte wymienić na nowe.', f: null },
-  { n: 'Pomiar grubości tarczy.', o: 'Grubość tarczy zostaje zmierzona w kilku punktach na obwodzie pasa roboczego.', t: 'Mikrometr zewnętrzny 0–25 mm (0,01 mm).', w: '**Nominalna: 25,0 mm**\n**Dopuszczalna: min. 23,0 mm** [1]', u: 'Tarcza poniżej 23,0 mm – wymiana kompletu tarcz na osi.', f: 'pomiar grubości tarczy mikrometrem', s: '[1]' },
-  { n: 'Pomiar bicia tarczy.', o: 'Tarcza zostaje dociśnięta nakrętkami kół; czujnik ustawiony 10 mm od zewnętrznej krawędzi, tarcza obrócona o pełny obrót.', t: 'Czujnik zegarowy ze statywem, nasadka 21 mm, klucz dynamometryczny.', w: 'Nakrętki 103 N·m; **bicie max 0,05 mm** [6].', u: 'Przy przekroczeniu sprawdzić luz łożyska i bicie piasty (max 0,05 mm) [6].', f: 'pomiar bicia tarczy czujnikiem zegarowym', s: '[6]' },
+  { n: 'Pomiar grubości tarczy.', o: 'Grubość tarczy zostaje zmierzona w kilku punktach na obwodzie pasa roboczego.', t: 'Mikrometr zewnętrzny 0–25 mm (0,01 mm).', w: '**Nominalna: 25,0 mm**\n**Dopuszczalna: min. 23,0 mm** [1]', u: 'Tarcza poniżej 23,0 mm – wymiana kompletu tarcz na osi.', f: 'pomiar grubości tarczy mikrometrem', s: '[1]', img: 'toyota_tarcza_grubosc.jpg' },
+  { n: 'Pomiar bicia tarczy.', o: 'Tarcza zostaje dociśnięta nakrętkami kół; czujnik ustawiony 10 mm od zewnętrznej krawędzi, tarcza obrócona o pełny obrót.', t: 'Czujnik zegarowy ze statywem, nasadka 21 mm, klucz dynamometryczny.', w: 'Nakrętki 103 N·m; **bicie max 0,05 mm** [6].', u: 'Przy przekroczeniu sprawdzić luz łożyska i bicie piasty (max 0,05 mm) [6].', f: 'pomiar bicia tarczy czujnikiem zegarowym', s: '[1]', img: 'toyota_bicie.jpg' },
   { n: 'Kontrola sworzni prowadzących, osłon i tłoczka.', o: 'Sworznie zostają wyjęte i sprawdzone; skontrolowane zostają osłony sworzni i osłona tłoczka.', t: 'Oględziny.', w: 'Swobodny przesuw sworzni, osłony bez pęknięć.', u: 'Wyciek płynu spod osłony tłoczka – regeneracja zacisku (poza zakresem karty).', f: null },
-  { n: 'Czyszczenie jarzma zacisku.', o: 'Miejsca osadzenia płytek i klocków zostają oczyszczone z brudu i korozji.', t: 'Szczotka druciana, zmywacz do układów hamulcowych.', w: '—', u: 'Po użyciu zmywacza odczekać kilka minut.', f: 'czyszczenie jarzma zacisku hamulcowego', s: '[2]', q: 'szczotka druciana, zmywacz do układów hamulcowych' },
+  { n: 'Czyszczenie jarzma zacisku.', o: 'Miejsca osadzenia płytek i klocków zostają oczyszczone z brudu i korozji.', t: 'Szczotka druciana, zmywacz do układów hamulcowych.', w: '—', u: 'Po użyciu zmywacza odczekać kilka minut.', f: 'czyszczenie jarzma zacisku hamulcowego', s: '[2]', img: 'autodoc_wspornik.jpg', q: 'szczotka druciana, zmywacz do układów hamulcowych' },
   { n: 'Smarowanie i montaż sworzni prowadzących.', o: 'Części ślizgowe sworzni zostają pokryte smarem, a sworznie osadzone w jarzmie.', t: 'Smar litowy na bazie glikolu.', w: '—', u: 'Sprawdzić swobodny przesuw sworzni po montażu.', f: 'smarowanie sworzni prowadzących', s: '[1]' },
   { n: 'Montaż płytek podporowych.', o: 'Oczyszczone lub nowe płytki podporowe zostają osadzone w jarzmie.', t: 'Ręczny montaż.', w: '—', u: 'Płytki muszą być osadzone pewnie, bez luzu.', f: null },
   { n: 'Wciśnięcie tłoczka.', o: 'Tłoczek zostaje cofnięty mechanicznie za pomocą przyrządu do cofania tłoczków.', t: 'Przyrząd do cofania tłoczków zacisku.', w: '—', u: 'Kontrolować poziom płynu w zbiorniku, aby nie doszło do przelania.', f: 'cofnięcie tłoczka zacisku hamulcowego', s: '[2]', q: 'przyrząd do wciskania tłoczka hamulcowego zacisku' },
@@ -478,7 +485,7 @@ function stepRow(s, i, figNo) {
   if (s.f) {
     const kids = [
       P(`Na rysunku numer ${figNo} poniżej pokazano ${s.f}.`, { size: 20, after: 80 }),
-      photoBox(6400, 3300, `Wkleić: ${s.f} – ${s.s === '[2]' ? 'kadr z poradnika / filmu AUTODOC dla Corolli E120 [2], [3]' : 'rysunek z instrukcji naprawy Toyota ' + s.s}`),
+      s.img ? fotoMax(s.img, 400, 215) : photoBox(6400, 3300, `Wkleić: ${s.f} – ${s.s === '[2]' ? 'kadr z poradnika / filmu AUTODOC dla Corolli E120 [2], [3]' : 'rysunek z instrukcji naprawy Toyota ' + s.s}`),
       P(`Rysunek ${figNo}. ${s.f.charAt(0).toUpperCase() + s.f.slice(1)}, ${s.s}`, { size: 16, bold: true, before: 40, after: 40, align: AlignmentType.LEFT }),
     ];
     inner.push(new TableRow({ cantSplit: true, children: [new TableCell({ borders: { ...BORDERS, top: NONE }, columnSpan: 4,
@@ -552,6 +559,7 @@ for (let i = 0; i < stepFig.length; i++) if (stepFig[i]) stepFig[i] += 1;
 const flowNo = stepFig.find(Boolean) - 1;
 
 const H62 = H2('6.2. Karta instrukcyjna operacji');
+let kartaPolowa = 0;
 const karta = [
   H1('6. Proces technologiczny wymiany klocków hamulcowych'),
   H2('6.1. Schemat procesu technologicznego'),
@@ -571,6 +579,7 @@ sheets.forEach((idxs, k) => {
   kids.push(new Table({ width: { size: PW, type: WidthType.DXA }, columnWidths: [KW[0], MID, KW[5]], rows }));
   kids.push(sheetFooter());
   karta.push(...kids);
+  if (k === 7) kartaPolowa = karta.length;
 });
 
 // ---------- 7. KONTROLA JAKOŚCI ----------
@@ -740,7 +749,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1000, bottom: 1000, left: 1134, right: 1134, footer: 400 } } },
     footers: { default: footer, first: new Footer({ children: [] }) },
-    children: CZESC3 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, karta.indexOf(H62) + 1), ...bib] : CZESC2 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag.slice(0, diag.indexOf(H41) + 1), ...bib] : CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
+    children: CZESC4 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, kartaPolowa), ...bib] : CZESC3 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, karta.indexOf(H62) + 1), ...bib] : CZESC2 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag.slice(0, diag.indexOf(H41) + 1), ...bib] : CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
       ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib],
   }],
 });
