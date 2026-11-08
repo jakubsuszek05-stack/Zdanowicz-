@@ -11,7 +11,7 @@
 3. Warunki techniczne – wymiary nominalne/dopuszczalne, momenty + klucze, **środki smarne wg producenta**
 4. Diagnostyka – **macierz diagnostyczna objawów** + **karta weryfikacji części** (dobra / do naprawy / do wymiany)
 5. Wyposażenie stanowiska – narzędzia przypisane do **numerów czynności w karcie**
-6. Proces technologiczny – **schemat z punktami decyzyjnymi** + karta instrukcyjna (16 arkuszy, 32 czynności)
+6. Proces technologiczny – **schemat z punktami decyzyjnymi** + karta instrukcyjna (15 arkuszy, 32 czynności)
 7. **Kontrola jakości po naprawie** – pedał wg Toyoty, stanowisko rolkowe (≥50%, ≤30%), protokół
 8. **Typowe błędy wykonawcze i ich skutki**
 9. Analiza kosztów – **3 warianty części** (326 / 383 / 453 zł brutto)
