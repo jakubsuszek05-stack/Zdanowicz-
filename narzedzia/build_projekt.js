@@ -14,7 +14,8 @@ const CZESC1 = process.argv[4] === 'czesc1';
 const CZESC2 = process.argv[4] === 'czesc2'; // wersja cząstkowa 2: rozdz. 1–3 w całości, rozdz. 4 – wstęp i nagłówek 4.1
 const CZESC3 = process.argv[4] === 'czesc3'; // wersja cząstkowa 3: rozdz. 1–5 w całości, 6.1 i nagłówek 6.2
 const CZESC4 = process.argv[4] === 'czesc4'; // wersja cząstkowa 4: jak część 3 + arkusze 1–8 karty (czynności 1–16)
-const CZESC = CZESC1 || CZESC2 || CZESC3 || CZESC4; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
+const CALOSC = process.argv[4] === 'calosc'; // wersja końcowa: cały projekt w układzie części (wstęp, spis bez %, bibliografia w kolejności cytowania)
+const CZESC = CZESC1 || CZESC2 || CZESC3 || CZESC4 || CALOSC; // wersja cząstkowa: strona tytułowa, spis treści z udziałem %, rozdz. 1, 2.1 (+ nagłówek 2.2), bibliografia
 const FONT = 'Calibri';
 const PW = 11906 - 2 * 1134; // szerokość tekstu A4, marginesy 2 cm = 9638 DXA
 const AUTOR = 'Jakub Suszek';
@@ -29,7 +30,7 @@ const NOB = { top: NONE, bottom: NONE, left: NONE, right: NONE };
 const REMAP1 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10 };
 const REMAP2 = { 1: 1, 2: 2, 7: 3, 8: 4, 9: 5, 10: 6, 26: 7, 13: 8, 14: 9, 5: 10, 11: 11, 6: 12, 4: 13 };
 // REMAP3 – kolejność pierwszego cytowania w części 3, wyznaczana w 1. przebiegu (plik JSON w 5. argumencie)
-const REMAP3 = (CZESC3 || CZESC4) && process.argv[5] && fs.existsSync(process.argv[5]) ? JSON.parse(fs.readFileSync(process.argv[5])) : null;
+const REMAP3 = (CZESC3 || CZESC4 || CALOSC) && process.argv[5] && fs.existsSync(process.argv[5]) ? JSON.parse(fs.readFileSync(process.argv[5])) : null;
 const REMAP = CZESC1 ? REMAP1 : CZESC2 ? REMAP2 : REMAP3;
 // zakres [a]–[b] rozwijany na pozycje, po przenumerowaniu sortowany i scalany w ciągłe zakresy
 const remapZakres = (a, b) => {
@@ -161,8 +162,8 @@ const UDZIAL = { '1. Wstęp': 3, '2. Charakterystyka obiektu naprawy': 9, '3. Wa
   '4. Diagnostyka i kwalifikacja pojazdu do naprawy': 6, '5. Wyposażenie stanowiska pracy': 4,
   '6. Proces technologiczny wymiany klocków hamulcowych': 50, '7. Kontrola jakości po naprawie': 7,
   '8. Typowe błędy wykonawcze i ich skutki': 4, '9. Analiza kosztów naprawy': 4, '10. Wnioski': 3, 'Bibliografia': 4 };
-const GOTOWE = CZESC3 || CZESC4 ? ['1.', '2.', '3.', '4.', '5.', '6. ', '6.1.', '6.2.', 'Bibliografia'] : CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
-const PROC = !(CZESC3 || CZESC4); // od części 3 spis treści bez kolumny udziału %
+const GOTOWE = CALOSC ? [''] : CZESC3 || CZESC4 ? ['1.', '2.', '3.', '4.', '5.', '6. ', '6.1.', '6.2.', 'Bibliografia'] : CZESC2 ? ['1.', '2.', '3.', '4. ', '4.1.', 'Bibliografia'] : ['1.', '2.', 'Bibliografia'];
+const PROC = !(CZESC3 || CZESC4 || CALOSC); // od części 3 spis treści bez kolumny udziału %
 const TAB_STR = PROC ? PW - 1300 : PW, TAB_PROC = PW;
 const tocCzesc1 = [
   P('Spis treści', { size: 30, bold: false, align: AlignmentType.LEFT, after: 160, before: 0 }),
@@ -749,7 +750,7 @@ const doc = new Document({
   sections: [{
     properties: { titlePage: true, page: { size: { width: 11906, height: 16838 }, margin: { top: 1000, bottom: 1000, left: 1134, right: 1134, footer: 400 } } },
     footers: { default: footer, first: new Footer({ children: [] }) },
-    children: CZESC4 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, kartaPolowa), ...bib] : CZESC3 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, karta.indexOf(H62) + 1), ...bib] : CZESC2 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag.slice(0, diag.indexOf(H41) + 1), ...bib] : CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
+    children: CALOSC ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib] : CZESC4 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, kartaPolowa), ...bib] : CZESC3 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag, ...narz, ...karta.slice(0, karta.indexOf(H62) + 1), ...bib] : CZESC2 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu, ...uklad, ...diag.slice(0, diag.indexOf(H41) + 1), ...bib] : CZESC1 ? [...title, new Paragraph({ children: [new PageBreak()] }), ...tocCzesc1, ...wstep1, ...opisPojazdu.slice(0, opisPojazdu.indexOf(H22) + 1), ...bib] : [...title, new Paragraph({ children: [new PageBreak()] }), ...tocPage, ...wstep, ...opisPojazdu, ...uklad, ...diag, ...narz,
       ...karta, ...kontrola, ...bledy, ...koszty, ...wnioski, ...bib],
   }],
 });

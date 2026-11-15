@@ -1,7 +1,7 @@
 # Projekt procesu technologicznego naprawy – wymiana przednich klocków hamulcowych
 
 **Pojazd:** Toyota Corolla IX (E12) Hatchback 1.6 VVT-i (silnik 3ZZ-FE, 81 kW / 110 KM), kod ZZE121
-**Plik projektu:** `Projekt_wymiana_klockow_Toyota_Corolla_E12.docx` (35 stron, układ jak we wzorze z zajęć)
+**Plik projektu:** `Projekt_wymiana_klockow_Toyota_Corolla_E12.docx` (34 strony – wersja końcowa)
 
 **Temat dla prowadzącego:** Jakub Suszek – Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy – Toyota Corolla IX (E12) 1.6 VVT-i
 
@@ -15,7 +15,7 @@
 7. **Kontrola jakości po naprawie** – pedał wg Toyoty, stanowisko rolkowe (≥50%, ≤30%), protokół
 8. **Typowe błędy wykonawcze i ich skutki**
 9. Analiza kosztów – **3 warianty części** (326 / 383 / 453 zł brutto)
-10. Wnioski · Bibliografia (25 pozycji)
+10. Wnioski · Bibliografia (24 pozycje, numerowane w kolejności cytowania)
 
 Ze wzoru zostawiono tylko formularz karty (nagłówek uczelni, Arkusz/Arkuszy, stopka Opracował/Sprawdził/Zatwierdził) i sposób podpisywania rysunków.
 
