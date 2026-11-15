@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><title>Ściąga 5 – cały projekt, wszystkie pytania</title>
+<style>
+@page{size:A5;margin:11mm 10mm 12mm}
+body{font-family:Calibri,Carlito,"DejaVu Sans",sans-serif;font-size:13.5px;line-height:1.45;color:#111;background:#fff;margin:0}
+h1{font-size:22px;margin:0 0 4px;color:#1f3a63}
+h2{font-size:17px;margin:20px 0 6px;border-bottom:2px solid #2f4f7f;padding-bottom:2px;color:#1f3a63;page-break-after:avoid;break-after:avoid}
+h2.nowa,h3.etap{page-break-before:always;break-before:page}
+h3{font-size:14.5px;margin:13px 0 4px;color:#1f3a63;page-break-after:avoid;break-after:avoid}
+h3.etap{font-size:15.5px;background:#2f4f7f;color:#fff;padding:3px 8px;border-radius:4px}
+p{margin:4px 0 6px}
+ul,ol{margin:4px 0 6px;padding-left:20px}
+li{margin:2px 0}
+.say{background:#eef3fb;border-left:4px solid #2f4f7f;padding:6px 10px;margin:7px 0}
+.tip{background:#fff6e0;border-left:4px solid #a66b00;padding:6px 10px;margin:7px 0}
+.zle{background:#fdecec;border-left:4px solid #b3261e;padding:6px 10px;margin:7px 0}
+.ok{background:#e8f4ea;border-left:4px solid #2e7d32;padding:6px 10px;margin:7px 0}
+.why{background:#eef3fb;border-left:4px solid #2f4f7f;padding:4px 8px;margin:4px 0}
+table{border-collapse:collapse;width:100%;margin:5px 0 8px;font-size:12.5px;page-break-inside:avoid;break-inside:avoid}
+td,th{border:1px solid #999;padding:3px 6px;vertical-align:top}
+th{background:#dfe7f3;text-align:left}
+.q{font-weight:bold;margin:8px 0 1px;color:#7a1f1f}
+.q+p{margin-top:0}
+.krok{border:1px solid #c9d3e3;border-radius:6px;padding:6px 9px 4px;margin:10px 0;page-break-inside:avoid;break-inside:avoid}
+.krok h3{font-size:15px;margin:0 0 3px;color:#1f3a63}
+.nr{display:inline-block;background:#2f4f7f;color:#fff;border-radius:10px;padding:0 7px;margin-right:5px;font-size:13px}
+.czym{font-size:12.5px;color:#444;margin:0 0 4px}
+.big{font-size:15px;font-weight:bold;text-align:center;margin:6px 0}
+small{color:#555}
+</style></head><body>
+
+<h1>Ściąga 5 – cały projekt, wszystkie pytania</h1>
+<small>Jeden plik do nauki: projekt od wstępu do bibliografii, w tej samej kolejności co w pliku projektu. Przy każdym rozdziale i każdej z 32 czynności karty masz: <b>co tam jest</b> → <b>dlaczego tak</b> → pytania „a co jeśli…” / „a czemu nie…” (na czerwono). Na końcu: pytania podchwytliwe, słowniczek i wszystkie liczby na jednej stronie.</small>
+
+<h2>Szybka powtórka – 15 pytań, które padną prawie na pewno</h2>
+<table>
+<tr><th>Pytanie</th><th>Odpowiedź w jednym zdaniu</th></tr>
+<tr><td>Jaki jest temat?</td><td>Proces weryfikacji i wymiany przednich klocków z kontrolą jakości – Toyota Corolla IX (E12) 1.6 VVT-i, 3ZZ-FE, 110 KM, ZZE121.</td></tr>
+<tr><td>Skąd dane?</td><td>Wymiary i momenty – instrukcja naprawy Toyoty; klucze i zdjęcia – poradnik AUTODOC (zdjęcia z Priusa II, ta sama procedura); dane auta – katalogi.</td></tr>
+<tr><td>Jak działa zacisk pływający?</td><td>Jeden tłoczek dociska klocek wewnętrzny, reakcja przesuwa korpus na sworzniach i dociska klocek zewnętrzny.</td></tr>
+<tr><td>Wymiary graniczne?</td><td>Okładzina 11,0 → min 1,0 mm; tarcza 25,0 → min 23,0 mm; bicie max 0,05 mm.</td></tr>
+<tr><td>Momenty i klucze?</td><td>Zacisk 34,3 N·m – klucz 13 z kontrą 17; koła 103 N·m – nasadka 21, na krzyż.</td></tr>
+<tr><td>Po co kontra 17?</td><td>Żeby sworzeń nie obrócił się razem ze śrubą i nie zerwał osłony → rdza → zapieczenie.</td></tr>
+<tr><td>Co to „zapieczony”?</td><td>Element, który powinien się ruszać, a nie może – przez rdzę, brud, brak smaru albo zły smar.</td></tr>
+<tr><td>Czym smarujesz sworznie i czemu?</td><td>Smarem litowym na bazie glikolu – nie niszczy gum; smar mineralny = spuchnięta osłona = zapieczenie.</td></tr>
+<tr><td>Czemu wymieniasz też klocek z 1,4 mm?</td><td>Kompletem na oś – drugi ma 0,9 mm; inaczej koła hamują z różną siłą i auto ściąga.</td></tr>
+<tr><td>Czemu auto ściągało w lewo?</td><td>Zapieczone lewe sworznie – lewy klocek wewnętrzny stale dociśnięty, koło ciągle przyhamowane.</td></tr>
+<tr><td>Czemu nie trzeba komputera?</td><td>Postojowy mechaniczny (bez EPB), wskaźnik zużycia mechaniczny, tłoczek cofam ręcznym przyrządem.</td></tr>
+<tr><td>Czemu nie odpowietrzasz?</td><td>Przewód nie był odłączany – powietrze nie weszło do układu.</td></tr>
+<tr><td>Czemu pompujesz pedał przed jazdą?</td><td>Tłoczki są cofnięte – pierwsze naciśnięcie tylko je dosuwa i auto nie hamuje.</td></tr>
+<tr><td>Kryteria kontroli jakości?</td><td>Pedał wg Toyoty (134,9–144,9 / 1–6 / &gt; 70 mm), skuteczność ≥ 50% (ΣT ≥ 8,12 kN), różnica lewo/prawo ≤ 30%.</td></tr>
+<tr><td>Ile to kosztuje?</td><td>326 / 383 / 453 zł brutto; wybrany TRW – 383 zł; robocizna 246 zł (1 rbh).</td></tr>
+</table>
+
+<div class="say"><b>Temat:</b> Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy – Toyota Corolla IX (E12) 1.6 VVT-i</div>
+
+<div class="say"><b>Gdy pyta „co Pan robi?” (20 sekund):</b> „Wymiana przednich klocków w Corolli E12 jeden i sześć. Najpierw diagnoza po objawach, potem po demontażu pomiary: okładziny, grubość i bicie tarczy, sworznie. Porównuję z wartościami z instrukcji naprawy Toyoty. Wymieniam klocki, czyszczę i smaruję sworznie, tarcze zostają, bo są w normie. Na koniec kontrola jakości: pedał według Toyoty i stanowisko rolkowe, czyli skuteczność co najmniej 50% i różnica sił lewo/prawo do 30%.”</div>
+
+<div class="tip"><b>Gdy czegoś nie wiesz:</b> „Tego w projekcie nie ujmowałem, bo jest poza zakresem – zakres to wymiana klocków z weryfikacją. Wartość sprawdziłbym w instrukcji naprawy producenta.” Nigdy nie zmyślaj liczby – lepiej powiedzieć, gdzie byś ją sprawdził.</div>
+
+<h3>Podstawowe pojęcia (mogą zapytać na start)</h3>
+<table>
+<tr><th>Pojęcie</th><th>Co znaczy</th></tr>
+<tr><td><b>Proces technologiczny naprawy</b></td><td>uporządkowany ciąg operacji, który przywraca pojazdowi sprawność; u mnie: przyjęcie → demontaż → weryfikacja → montaż → kontrola jakości → wydanie</td></tr>
+<tr><td><b>Operacja</b></td><td>część procesu wykonywana na jednym stanowisku, przez jednego pracownika, bez przerwy na inną pracę (u mnie: wymiana klocków osi przedniej)</td></tr>
+<tr><td><b>Zabieg / czynność</b></td><td>mniejsze części operacji; u mnie karta ma 32 czynności</td></tr>
+<tr><td><b>Weryfikacja</b></td><td>ocena części przez porównanie z warunkami technicznymi → część <b>dobra / do naprawy / do wymiany</b></td></tr>
+<tr><td><b>Wymiar nominalny</b></td><td>wymiar nowej części (okładzina 11,0 mm, tarcza 25,0 mm)</td></tr>
+<tr><td><b>Wymiar dopuszczalny (graniczny)</b></td><td>do tej wartości część może pracować, poniżej – wymiana (okładzina min 1,0 mm, tarcza min 23,0 mm)</td></tr>
+<tr><td><b>Warunki techniczne</b></td><td>zbiór wymagań: wymiary, luzy, momenty, środki smarne – wszystko, z czym porównuję i czego pilnuję przy montażu</td></tr>
+</table>
+
+<!-- ===================================================== 1 -->
+<h2 class="nowa">1. Wstęp</h2>
+<p><b>Dlaczego temat jest ważny:</b> przedni hamulec przenosi większą część hamowania, bo przy hamowaniu ciężar auta „przenosi się” na przód. Klocki zużywają się cały czas. Wymiana jest krótka, ale łatwo o błędy, które wychodzą dopiero w jeździe (rozdział 8).</p>
+<p><b>Cel:</b> kompletny proces technologiczny weryfikacji i wymiany przednich klocków dla Corolli E12 1.6, zakończony <b>mierzalną kontrolą jakości</b>.</p>
+<p><b>Co wyróżnia projekt:</b> nie sama wymiana, tylko: weryfikacja z wymiarami dopuszczalnymi + szukanie <b>przyczyny</b> zużycia (sworznie) + kontrola jakości na stanowisku rolkowym + koszty w 3 wariantach.</p>
+<h3>Skąd dane – hierarchia źródeł</h3>
+<ol>
+<li><b>Instrukcja naprawy Toyoty</b> (Toyota Repair Manual Corolla E120, strona tcorolla.net; oficjalnie przez toyota-tech.eu) → wymiary, luzy, momenty, smary, pedał.</li>
+<li><b>Poradnik AUTODOC</b> dla Corolli IX Hatchback E120 → rozmiary kluczy, kolejność, zdjęcia. Toyota rozmiarów kluczy nie podaje.</li>
+<li><b>Katalogi</b> (AutoCentrum, Autokatalog, cars-data, Schaeffler, Inter Cars) → dane auta, wymiary klocków i tarcz, ceny.</li>
+<li><b>Artykuły o badaniach technicznych</b> (Warsztat.pl, A. Gajek – Archiwum Motoryzacji) → kryteria stanowiska rolkowego.</li>
+</ol>
+<p>Gdy źródła się różnią → biorę <b>producenta</b>. Przykład: śruby zacisku – Toyota 34,3 N·m, AUTODOC 35 N·m → w karcie 34,3 N·m, a 35 w uwagach.</p>
+<div class="q">Ma Pan to auto / robił Pan to?</div><p>Nie. Przypadek naprawy (pisk + ściąganie w lewo, wyniki pomiarów) to <b>założenie projektowe</b>. Wszystkie wartości graniczne są z instrukcji producenta.</p>
+<div class="q">Skąd ma Pan instrukcję Toyoty?</div><p>Fabryczna instrukcja naprawy Corolli E120 – dostępna w serwisie tcorolla.net; oficjalnie Toyota udostępnia ją warsztatom przez portal toyota-tech.eu. Linki są w bibliografii.</p>
+<div class="q">Czy zdjęcia AUTODOC są z Corolli?</div><p>Nie wszystkie – AUTODOC sam pisze w poradniku, że zdjęcia wykonano na <b>Toyocie Prius II (XW20)</b>, a procedura dotyczy Corolli IX E120, w tym 1.6 VVT-i ZZE121. Zaznaczyłem to w podpisach i w bibliografii. Wartości liczbowe biorę z instrukcji Toyoty dla Corolli, a rysunki techniczne są z instrukcji Corolli.</p>
+<div class="q">Dlaczego Corolla?</div><p>Popularne auto i jest do niego fabryczna instrukcja z kompletem wymiarów i momentów – niczego nie muszę zgadywać.</p>
+
+<!-- ===================================================== 2 -->
+<h2 class="nowa">2. Charakterystyka obiektu naprawy</h2>
+<h3>2.1. Dane pojazdu (Tabela 1)</h3>
+<div class="say">„Toyota Corolla <b>dziewiątej generacji</b>, <b>E dwanaście</b>, hatchback pięciodrzwiowy, silnik <b>jeden i sześć wu-wu-te-i</b>, <b>sto dziesięć koni</b>, kod silnika <b>trzy zet-zet ef-e</b>, kod typu <b>ZZE121</b>, lata 2001–2007.”</div>
+<table>
+<tr><th>Parametr</th><th>Wartość</th></tr>
+<tr><td>Kod typu</td><td>ZZE121, 2001–2007</td></tr>
+<tr><td>Silnik</td><td>3ZZ-FE, benzyna, R4, 16 zaworów, DOHC, VVT-i, 1598 cm³</td></tr>
+<tr><td>Moc / moment</td><td>81 kW (110 KM) / 6000 obr/min · 150 N·m / 4800 obr/min</td></tr>
+<tr><td>Skrzynia / napęd</td><td>manualna 5-biegowa / przedni</td></tr>
+<tr><td>V-max / 0–100</td><td>190 km/h / 10,2 s</td></tr>
+<tr><td>Wymiary</td><td>4180 × 1710 × 1475 mm, rozstaw osi 2600 mm</td></tr>
+<tr><td>Masa / <b>DMC</b></td><td>od 1115 kg / <b>1655 kg</b></td></tr>
+<tr><td>Opony</td><td>195/60 R15</td></tr>
+<tr><td><b>Hamulce przód</b></td><td><b>tarczowe wentylowane Ø 255 mm, zacisk pływający jednotłoczkowy</b></td></tr>
+<tr><td>Hamulce tył</td><td>bębnowe albo tarczowe pełne Ø 258 mm (zależnie od wersji)</td></tr>
+<tr><td><b>Postojowy</b></td><td><b>mechaniczny, linkowy, na koła tylne – brak EPB</b></td></tr>
+<tr><td>Wspomaganie</td><td>serwo podciśnieniowe, ABS z EBD</td></tr>
+<tr><td>Płyn</td><td>DOT 3</td></tr>
+</table>
+<table>
+<tr><td><b>VVT-i</b></td><td>zmienne fazy rozrządu Toyoty – sterownik przestawia wałek rozrządu dolotowego → więcej mocy, mniej spalania</td></tr>
+<tr><td><b>3ZZ-FE</b></td><td>3ZZ – rodzina ZZ, wersja 1.6 · F – DOHC 4 zawory/cylinder („ekonomiczny”) · E – wtrysk elektroniczny</td></tr>
+<tr><td><b>DOHC / R4</b></td><td>dwa wałki rozrządu w głowicy / 4 cylindry w rzędzie</td></tr>
+<tr><td><b>DMC</b></td><td>dopuszczalna masa całkowita – auto z pełnym obciążeniem</td></tr>
+<tr><td><b>ABS</b></td><td>nie pozwala zablokować kół przy hamowaniu → auto da się skręcać</td></tr>
+<tr><td><b>EBD</b></td><td>elektroniczny rozdział siły hamowania między osie (żeby tył nie blokował się pierwszy)</td></tr>
+<tr><td><b>EPB</b></td><td>elektryczny hamulec postojowy – Corolla E12 go NIE ma</td></tr>
+</table>
+<div class="q">Po co w tabeli DMC?</div><p>Do kontroli jakości: wymagana siła hamowania na stanowisku rolkowym liczy się z DMC (rozdział 7).</p>
+<div class="q">Po co w tabeli hamulec postojowy?</div><p>Bo jest mechaniczny → do wymiany klocków nie potrzeba komputera diagnostycznego. W autach z EPB trzeba elektronicznie cofnąć tłoczki tylnych zacisków (tryb serwisowy) – tu tego nie ma, a poza tym wymieniam przód.</p>
+<div class="q">Dlaczego tył może być bęben albo tarcza?</div><p>Zależy od wersji wyposażenia. Mój proces dotyczy tylko przodu, więc to nie zmienia karty.</p>
+
+<h3>2.2. Budowa hamulca przedniego</h3>
+<p><b>Droga siły – od nogi do koła:</b> pedał → <b>serwo</b> (wzmacnia siłę podciśnieniem z kolektora) → <b>pompa hamulcowa</b> (zamienia siłę na ciśnienie płynu) → przewody sztywne → <b>moduł ABS</b> → <b>przewód elastyczny</b> → <b>zacisk</b> → tłoczek → klocek → tarcza. Płyn jest nieściśliwy, ciśnienie rozchodzi się wszędzie jednakowo (prawo Pascala).</p>
+<p><b>Jak działa zacisk pływający (to MUSISZ umieć opowiedzieć):</b></p>
+<ol>
+<li>Ciśnienie płynu wypycha <b>jeden tłoczek</b> po stronie wewnętrznej.</li>
+<li>Tłoczek dociska <b>klocek wewnętrzny</b> do tarczy.</li>
+<li>Siła reakcji „odpycha” korpus zacisku w drugą stronę – korpus <b>przesuwa się na dwóch sworzniach prowadzących</b>.</li>
+<li>Korpus ciągnie za sobą i dociska <b>klocek zewnętrzny</b>. Oba klocki ściskają tarczę z tą samą siłą.</li>
+<li>Po puszczeniu pedału <b>uszczelniacz tłoczka</b> (pierścień o przekroju prostokątnym) lekko się odkształca z powrotem i cofa tłoczek o ułamek milimetra → klocki odchodzą od tarczy. Dzięki temu hamulec sam kasuje luz, gdy okładziny się zużywają.</li>
+</ol>
+<table>
+<tr><th>Element</th><th>Co robi</th><th>Co w naprawie</th></tr>
+<tr><td>Klocki (2 szt./koło) z płytką wskaźnika</td><td>wytwarzają tarcie; płytka piszczy przy zużyciu</td><td><b>wymiana obowiązkowa, kompletem na oś</b></td></tr>
+<tr><td>Podkładki przeciwpiskowe nr 1 i 2</td><td>tłumią drgania i piski</td><td>ponowny montaż po posmarowaniu</td></tr>
+<tr><td>Płytki podporowe (2 szt.)</td><td>prowadzą klocki w jarzmie, sprężynują</td><td>weryfikacja: sprężystość, odkształcenia, pęknięcia</td></tr>
+<tr><td>Sworznie prowadzące z osłonami</td><td>po nich przesuwa się korpus</td><td>weryfikacja, czyszczenie, smarowanie</td></tr>
+<tr><td>Korpus z tłoczkiem i osłoną</td><td>docisk klocka wewnętrznego</td><td>kontrola szczelności, tłoczek cofany</td></tr>
+<tr><td>Jarzmo (mocowanie zacisku)</td><td>przenosi moment hamowania na zwrotnicę</td><td>bez demontażu, czyszczenie</td></tr>
+<tr><td>Tarcza wentylowana</td><td>powierzchnia cierna</td><td>pomiar grubości i bicia</td></tr>
+<tr><td>Śruby zacisku (2 szt.)</td><td>mocują korpus do sworzni</td><td>ponownie, 34,3 N·m</td></tr>
+</table>
+<p><b>Rysunki w 2.2:</b> Rysunek 3 – zdjęcie AUTODOC (krok 10, zdejmowanie zacisku: widać tarczę, piastę ze szpilkami, zacisk, jarzmo). Rysunek 4 – rysunek Toyoty F41561 z moimi numerami: 1 tarcza, 2 śruby koła w piaście, 3 jarzmo, 4 osłony sworzni, 5 śruby jarzma do zwrotnicy.</p>
+
+<div class="q">Zacisk pływający a stały?</div><p><b>Pływający</b> (u mnie): tłoczek tylko z jednej strony, korpus przesuwa się na sworzniach. Tani, mały, mieści się w kole. Słaby punkt: sworznie mogą się zapiec. <b>Stały</b>: tłoczki po obu stronach tarczy, korpus przykręcony na sztywno, nic się nie przesuwa. Mocniejszy, droższy – auta sportowe i ciężkie.</p>
+<div class="q">Jednotłoczkowy?</div><p>Tak – przód Corolli E12 ma zacisk pływający z jednym tłoczkiem.</p>
+<div class="q">Tarcza wentylowana a pełna?</div><p><b>Wentylowana</b>: dwie tarcze cierne połączone żeberkami, między nimi kanały – powietrze przepływa i chłodzi. Z przodu, bo przód przenosi większość hamowania i bardziej się grzeje. <b>Pełna</b>: jedna lita tarcza – z tyłu (w wersjach z tylnymi tarczami, Ø 258 mm).</p>
+<div class="q">Jarzmo a korpus – co to jest?</div><p><b>Jarzmo</b> (mocowanie zacisku, wspornik) – przykręcone na stałe do zwrotnicy dwiema śrubami (106,8 N·m), trzyma klocki i sworznie, przejmuje siłę hamowania. <b>Korpus</b> (cylinder) – część z tłoczkiem, „pływa” na sworzniach osadzonych w jarzmie. Przy wymianie klocków odkręcam tylko korpus, jarzmo zostaje.</p>
+<div class="q">Piasta, łożysko, zwrotnica?</div><p><b>Zwrotnica</b> – element zawieszenia, który skręca kołem; jest w nią wciśnięte <b>łożysko</b>, a w łożysku obraca się <b>piasta</b>. Do piasty przykręca się tarczę i koło (śruby/szpilki koła). Łożysko przodu E12 to <b>łożysko kulkowe skośne dwurzędowe</b> 40 × 74 × 42 mm (np. SKF VKBA 6831). Dwa rzędy kulek ustawione skośnie przenoszą siły promieniowe i osiowe w obu kierunkach (np. w zakrętach). Luz łożyska i bicie piasty ≤ 0,05 mm – sprawdzam tylko, gdy tarcza bije za mocno.</p>
+<div class="q">Jak działa wskaźnik zużycia?</div><p>Mechaniczna blaszka na klocku wewnętrznym. Gdy okładzina jest prawie starta, blaszka dotyka tarczy i <b>piszczy</b> przy hamowaniu. Corolla E12 nie ma czujnika elektrycznego ani kontrolki – dlatego nic nie kasuję w komputerze.</p>
+<div class="q">Z czego jest klocek?</div><p>Stalowa <b>płyta nośna</b> + przyklejona/przynitowana <b>okładzina cierna</b> (11,0 mm nowa) + <b>podkładki przeciwpiskowe</b> + na wewnętrznym <b>płytka wskaźnika</b>. Klocek TRW GDB3288: 131,7 × 57,4 × 17,8 mm (17,8 = cała grubość z płytą).</p>
+
+<!-- ===================================================== 3 -->
+<h2 class="nowa">3. Warunki techniczne</h2>
+<h3>3.1. Wymiary nominalne i dopuszczalne (Tabela 3)</h3>
+<table>
+<tr><th>Co</th><th>Nominal</th><th>Dopuszcz.</th><th>Czym</th></tr>
+<tr><td>Okładzina klocka</td><td>11,0 mm</td><td>min 1,0 mm</td><td>suwmiarka</td></tr>
+<tr><td>Grubość tarczy</td><td>25,0 mm</td><td>min 23,0 mm</td><td>mikrometr</td></tr>
+<tr><td>Bicie tarczy (10 mm od krawędzi)</td><td>–</td><td>max 0,05 mm</td><td>czujnik zegarowy</td></tr>
+<tr><td>Luz łożyska piasty</td><td>–</td><td>max 0,05 mm</td><td>czujnik zegarowy</td></tr>
+<tr><td>Bicie piasty</td><td>–</td><td>max 0,05 mm</td><td>czujnik zegarowy</td></tr>
+<tr><td>Płytki podporowe</td><td>sprężyste</td><td>bez pęknięć</td><td>oględziny</td></tr>
+<tr><td>Wysokość pedału</td><td colspan="2">M/T 134,9–144,9 mm (A/T 136,0–146,0)</td><td>przymiar</td></tr>
+<tr><td>Luz swobodny pedału</td><td colspan="2">1–6 mm</td><td>przymiar</td></tr>
+<tr><td>Odległość rezerwowa (490 N)</td><td>–</td><td>&gt; 70 mm</td><td>przymiar</td></tr>
+</table>
+<div class="q">Dlaczego mikrometr do tarczy, a suwmiarka do klocka?</div><p>Tarcza: graniczna różnica to 2 mm, a liczy się każda dziesiątka – mikrometr ma dokładność 0,01 mm. Klocek: granica 1,0 mm, suwmiarka 0,1 mm wystarczy.</p>
+<div class="q">Gdzie mierzyć tarczę?</div><p>Na pasie roboczym, w kilku punktach na obwodzie. <b>Nie na zewnętrznym rancie</b> (wystający rdzawy brzeg) – zawyżyłby wynik. Kilka punktów, bo tarcza może się zużyć nierówno (różnica grubości daje drgania).</p>
+<div class="q">Jak mierzy się bicie i dlaczego 10 mm od krawędzi?</div><p>Tarcza dociśnięta nakrętkami kół (103 N·m), czujnik zegarowy na statywie magnetycznym, końcówka 10 mm od zewnętrznej krawędzi, obracam tarczę o pełny obrót, odczytuję różnicę max–min. 10 mm, bo tak każe Toyota: na zewnętrznym promieniu bicie jest największe, a 10 mm omija rant.</p>
+<div class="q">Co to jest bicie i czym grozi?</div><p>Tarcza nie obraca się idealnie w jednej płaszczyźnie, tylko „faluje” na boki. Ociera o klocki w jednym miejscu mocniej → z czasem nierówna grubość → <b>pulsowanie pedału i drgania kierownicy</b> przy hamowaniu.</p>
+<div class="q">Co to odległość rezerwowa pedału?</div><p>Ile pedał zostaje nad podłogą przy mocnym nacisku (490 N, silnik pracuje). Musi być &gt; 70 mm. Mniej = pedał „ucieka” (zużycie, powietrze, wyciek).</p>
+<div class="q">Luz swobodny pedału?</div><p>Ruch pedału, zanim zacznie działać pompa – 1–6 mm. Mierzy się przy wyłączonym silniku po kilku naciśnięciach (żeby w serwie nie było podciśnienia).</p>
+
+<h3>3.2. Momenty i klucze (Tabela 4)</h3>
+<table>
+<tr><th>Połączenie</th><th>Klucz</th><th>Moment</th></tr>
+<tr><td>Nakrętki koła (4 szt.)</td><td>nasadka udarowa <b>21</b> + dynamometr</td><td><b>103 N·m</b> (1050 kgf·cm / 76 ft·lbf)</td></tr>
+<tr><td>Śruby zacisku (2 szt.)</td><td>nasadka/oczko <b>13</b> + kontra płasko-oczkowy <b>17</b></td><td><b>34,3 N·m</b> (350 kgf·cm / 25 ft·lbf)</td></tr>
+<tr><td>Śruby jarzma do zwrotnicy*</td><td>–</td><td>106,8 N·m</td></tr>
+<tr><td>Śruba banjo przewodu*</td><td>–</td><td>29 N·m</td></tr>
+<tr><td>Nakrętka popychacza pedału*</td><td>–</td><td>26 N·m</td></tr>
+</table>
+<p><small>* poza zakresem karty – dla kompletności (wymiana tarczy, regeneracja zacisku, regulacja pedału).</small></p>
+<div class="q">Po co kontra 17?</div><p>Śruba zacisku wkręca się w sworzeń. Bez przytrzymania sworzeń obraca się razem ze śrubą → skręca i rwie gumową osłonę → woda i brud → korozja → <b>sworzeń się zapieka</b>. Toyota każe go przytrzymać.</p>
+<div class="q">Dlaczego Toyota podaje 34,3, a nie 35?</div><p>Bo Toyota liczy w kgf·cm: 350 kgf·cm × 0,098 = 34,3 N·m. To ta sama wartość, tylko przeliczona. AUTODOC zaokrąglił do 35.</p>
+<div class="q">Toyota nie podaje kluczy – skąd 21, 13, 17?</div><p>Z poradnika AUTODOC dla tego modelu – tam przy każdym kroku jest rozmiar klucza.</p>
+<div class="q">Za mocno / za słabo dokręcone – co się stanie?</div><p><b>Za słabo:</b> śruba się poluzuje – zacisk może się obluzować, koło odkręcić. <b>Za mocno:</b> zerwany gwint, rozciągnięta śruba; przy kołach – nierówny docisk może odkształcić tarczę → bicie. Dlatego <b>klucz dynamometryczny</b>, a koła <b>na krzyż</b>.</p>
+<div class="q">Dlaczego nakrętki dokręca się na krzyż i po opuszczeniu auta?</div><p>Na krzyż – koło dociska się równo do piasty, bez bicia. Po opuszczeniu – na podniesionym aucie koło by się obracało, nie da się dać pełnego momentu.</p>
+
+<h3>3.3. Środki smarne i eksploatacyjne (Tabela 5)</h3>
+<table>
+<tr><th>Gdzie</th><th>Czym</th><th>Czynn.</th></tr>
+<tr><td>Sworznie prowadzące (części ślizgowe, uszczelniające)</td><td><b>smar litowy na bazie glikolu</b> (Toyota: lithium soap base glycol grease)</td><td>17</td></tr>
+<tr><td>Podkładki przeciwpiskowe nr 1</td><td>smar do hamulców tarczowych</td><td>20</td></tr>
+<tr><td>Styk płyty nośnej klocka z jarzmem</td><td>pasta przeciwpiskowa</td><td>20</td></tr>
+<tr><td>Styk felgi z piastą</td><td>smar miedziany</td><td>25</td></tr>
+<tr><td>Tarcza, jarzmo</td><td>zmywacz do układów hamulcowych</td><td>16, 21</td></tr>
+<tr><td>Zapieczone gwinty</td><td>środek penetrujący (WD-40)</td><td>6</td></tr>
+<tr><td>Układ hydrauliczny</td><td>płyn DOT 3 (SAE J1703 / FMVSS 116)</td><td>30</td></tr>
+</table>
+<div class="zle"><b>Na okładzinę i powierzchnię roboczą tarczy – NIC. Żadnego smaru, pasty, oleju.</b></div>
+<div class="q">Dlaczego na sworznie smar glikolowy, a nie zwykły?</div><p>Bo sworznie pracują w <b>gumowych osłonach</b>. Smar na bazie glikolu nie niszczy gumy. Zwykły <b>smar mineralny</b> (np. ŁT-43, smar do łożysk, olej) sprawia, że guma <b>pęcznieje i mięknie</b> → osłona ściska sworzeń, ten się zacina → korpus nie pływa → <b>zapieczenie, ściąganie, nierówne zużycie klocków</b>.</p>
+<div class="q">A smar miedziany na sworznie?</div><p>Nie. Miedziany jest do gwintów i styku felga–piasta (żeby nic nie przywarło). Nie jest przeznaczony do prowadnic z gumowymi osłonami.</p>
+<div class="q">Po co smar miedziany na piastę?</div><p>Żeby felga nie „przyrdzewiała” do piasty i dała się później zdjąć. Cienka warstwa, tylko na płaszczyźnie styku.</p>
+<div class="q">Po co pasta przeciwpiskowa?</div><p>Na tył płyty nośnej i miejsca styku z jarzmem – tłumi drgania, które dają pisk, i chroni przed korozją, żeby klocek nie zaciął się w płytkach. Cienko – za dużo zbiera brud.</p>
+<div class="q">Smar dostał się na okładzinę – co teraz?</div><p>Okładzina jest porowata i wchłania smar – <b>takiego klocka się nie czyści, wymienia się go</b> (kompletem na oś). Tarczę odtłuszczam zmywaczem. Skutek, gdybym zostawił: słabsze tarcie → dłuższa droga hamowania, a jak tylko jedna strona → ściąganie.</p>
+<div class="q">Czy WD-40 to smar do sworzni?</div><p>Nie – to środek penetrujący do odrdzewiania zapieczonych gwintów. Rozpuszcza i wypłukuje smar, więc na sworzeń się nie nadaje.</p>
+<div class="q">DOT 3 – co to i co jeśli wleję inny płyn?</div><p>DOT 3 – płyn na bazie glikolu wg normy FMVSS 116. Jest <b>higroskopijny</b> (chłonie wodę z powietrza) → spada temperatura wrzenia, dlatego płyn wymienia się okresowo (zwykle co 2 lata). DOT 4 i 5.1 też są glikolowe (wyższa temp. wrzenia). <b>Nie wolno</b>: DOT 5 (silikonowy) ani olej mineralny – oleje mineralne niszczą gumowe uszczelnienia w całym układzie (pompa, zaciski) → awaria hamulców. Płyn niszczy lakier – rozlany od razu zmyć.</p>
+
+<!-- ===================================================== 4 -->
+<h2 class="nowa">4. Diagnostyka i kwalifikacja do naprawy</h2>
+<p>Corolla E12 nie ma elektronicznego czujnika klocków ani kontrolki → kierowca wie o zużyciu tylko z objawów. Dlatego diagnoza jest <b>dwuetapowa</b>: najpierw objawy (macierz, 4.1), potem pomiary po demontażu (karta weryfikacji, 4.2).</p>
+<h3>4.1. Macierz diagnostyczna (Tabela 6)</h3>
+<table>
+<tr><th>Objaw</th><th>Przyczyna</th><th>Sprawdzam</th><th>Kryterium</th></tr>
+<tr><td>Wysoki pisk, znika po puszczeniu pedału</td><td>płytka wskaźnika ociera tarczę</td><td>okładzina suwmiarką</td><td>≥ 1,0 mm</td></tr>
+<tr><td>Metaliczny zgrzyt</td><td>starta okładzina, metal po tarczy</td><td>oględziny, pomiar tarczy</td><td>tarcza ≥ 23,0 mm</td></tr>
+<tr><td>Drgania pedału / kierownicy</td><td>bicie tarczy, nierówna grubość</td><td>czujnik zegarowy 10 mm od krawędzi</td><td>≤ 0,05 mm</td></tr>
+<tr><td>Ściąganie przy hamowaniu</td><td>zapieczony sworzeń lub tłoczek, różne zużycie L/P</td><td>stanowisko rolkowe, przesuw sworzni</td><td>różnica sił ≤ 30%</td></tr>
+<tr><td>Wydłużony skok pedału</td><td>zużycie, wyciek, powietrze</td><td>odległość rezerwowa</td><td>&gt; 70 mm przy 490 N</td></tr>
+<tr><td>Różne zużycie klocka wewn. i zewn.</td><td>utrudniony przesuw korpusu</td><td>przesuw ręką, osłony</td><td>swobodnie, osłony całe</td></tr>
+<tr><td>Spada poziom płynu</td><td>zużycie okładzin (tłoczki wysunięte) lub wyciek</td><td>zbiornik, szczelność</td><td>MIN–MAX, brak wycieku</td></tr>
+</table>
+<div class="q">Dlaczego przy zużyciu klocków spada poziom płynu?</div><p>Tłoczek wysuwa się coraz dalej, żeby dosięgnąć cieńszego klocka – za nim w cylindrze jest więcej płynu, który ubywa ze zbiornika. Po wymianie i cofnięciu tłoczka płyn wraca do zbiornika – dlatego pilnuję, żeby się nie przelał.</p>
+<div class="q">Pisk a zgrzyt – różnica?</div><p><b>Pisk</b> = ostrzeżenie (blaszka wskaźnika), jeszcze jest okładzina. <b>Zgrzyt</b> = okładziny nie ma, metal trze o tarczę → tarcza prawie na pewno do wymiany.</p>
+
+<h3>Co to znaczy „zapieczone” (ZAPYTA na pewno)</h3>
+<div class="say"><b>Zapieczony</b> = element, który powinien się ruszać (przesuwać, obracać), a nie może, bo „przywarł”: przez <b>korozję, brud, brak smaru, zły smar</b> (spuchnięta guma) albo przegrzanie.</div>
+<table>
+<tr><th>Co zapieczone</th><th>Skutek</th><th>Co robię</th></tr>
+<tr><td><b>Sworzeń prowadzący</b></td><td>korpus nie pływa → klocek wewnętrzny stale dociśnięty, zewnętrzny słabo → klocek wewn. zużywa się szybciej, koło jest stale przyhamowane i hamuje nierówno → <b>ściąganie</b>, grzanie</td><td>wyjąć, oczyścić, sprawdzić osłonę, posmarować smarem glikolowym (czynność 15, 17); jeśli uszkodzony/skorodowany – wymiana sworznia/osłony</td></tr>
+<tr><td><b>Tłoczek</b></td><td>nie cofa się → klocki stale trą → <b>koło gorące</b>, zapach, auto „ciągnie”, większe spalanie; albo nie wysuwa się → słabe hamowanie tego koła</td><td>regeneracja albo wymiana zacisku + odpowietrzenie – <b>poza zakresem karty</b></td></tr>
+<tr><td><b>Klocek w jarzmie</b> (rdza w płytkach)</td><td>klocek nie odchodzi od tarczy / nie dochodzi</td><td>czyszczenie jarzma, kontrola płytek, pasta (12, 16, 20)</td></tr>
+<tr><td><b>Śruba / nakrętka</b></td><td>nie da się odkręcić, ryzyko zerwania</td><td>szczotka druciana + środek penetrujący, odczekać (czynność 6)</td></tr>
+<tr><td><b>Felga do piasty</b></td><td>koła nie da się zdjąć</td><td>zapobiegam: smar miedziany na styk (25)</td></tr>
+</table>
+
+<h3>4.2. Karta weryfikacji – mój przypadek (Tabela 7)</h3>
+<p>Założenie projektowe: klient zgłasza <b>pisk</b> przy hamowaniu i <b>lekkie ściąganie w lewo</b>.</p>
+<table>
+<tr><th>Część</th><th>Lewe</th><th>Prawe</th><th>Ocena</th></tr>
+<tr><td>Okładzina wewn. (min 1,0)</td><td>0,9 mm</td><td>1,4 mm</td><td><b>do wymiany</b> – lewy poniżej granicy, komplet na oś</td></tr>
+<tr><td>Okładzina zewn.</td><td>2,2 mm</td><td>2,5 mm</td><td><b>do wymiany</b> – w komplecie</td></tr>
+<tr><td>Tarcza (min 23,0)</td><td>24,2 mm</td><td>24,4 mm</td><td>dobra</td></tr>
+<tr><td>Bicie (max 0,05)</td><td>0,02 mm</td><td>0,03 mm</td><td>dobra</td></tr>
+<tr><td>Sworznie</td><td>opór</td><td>swobodne</td><td><b>do naprawy</b> (lewe) – czyszczenie, smar</td></tr>
+<tr><td>Osłony, płytki, podkładki</td><td colspan="2">bez uwag</td><td>dobre – ponowny montaż</td></tr>
+</table>
+<div class="say"><b>Logika (powiedz to płynnie):</b> lewy klocek wewnętrzny zużyty najbardziej + opór lewych sworzni → lewy korpus nie pływał, klocek wewnętrzny pracował z większym dociskiem → to tłumaczy ściąganie. Tarcze w normie → zostają. Decyzja: <b>wymiana klocków osi + czyszczenie i smarowanie lewych sworzni, bez wymiany tarcz.</b> Czy naprawa pomogła, potwierdza różnica sił na rolkach (rozdz. 7).</div>
+<div class="q">Klocek ma 1,4 mm, czyli w normie – czemu wymieniam?</div><p>Bo klocki wymienia się <b>kompletem na oś</b> (4 sztuki), a lewy ma 0,9 mm. Inaczej koła hamowałyby z różną siłą.</p>
+<div class="q">Dlaczego ściąga akurat w lewo?</div><p>Bo lewy korpus nie pływał: klocek wewnętrzny był stale mocno dociśnięty i nie odchodził od tarczy. Lewe koło było więc ciągle lekko przyhamowane, a przy hamowaniu dostawało dodatkowy opór – auto ściąga w stronę koła, które mocniej hamuje, czyli w lewo. Potwierdza to najbardziej zużyty lewy klocek wewnętrzny (0,9 mm). Ja tego nie zgaduję: po naprawie <b>mierzę na rolkach</b> siłę każdego koła i sprawdzam, czy różnica jest ≤ 30%.</p>
+<div class="q">Trzy kategorie weryfikacji?</div><p><b>Dobra</b> – wraca bez naprawy. <b>Do naprawy</b> – da się przywrócić (czyszczenie, smarowanie). <b>Do wymiany</b> – poniżej wymiaru dopuszczalnego lub uszkodzona.</p>
+<p><b>Rysunek 5</b> – zdjęcie AUTODOC (krok 11): wyjmowanie klocków z jarzma; po tym mierzę okładziny.</p>
+
+<!-- ===================================================== 5 -->
+<h2 class="nowa">5. Wyposażenie stanowiska (Tabela 8)</h2>
+<p>Każde narzędzie ma przypisane <b>numery czynności karty</b> – przed pracą przygotowuję wszystko i widzę, że niczego nie brakuje.</p>
+<table>
+<tr><th>Grupa</th><th>Co</th></tr>
+<tr><td>A. Podnoszenie</td><td>podnośnik (DMC 1655 kg), 2 kozły, 2 kliny</td></tr>
+<tr><td>B. Montażowe</td><td>nasadka udarowa 21 + pokrętło; płasko-oczkowe 13 i 17; nasadka 13; klucz dynamometryczny (34,3 i 103 N·m); przyrząd do cofania tłoczków; łom, wkrętak; hak/drut</td></tr>
+<tr><td>C. Pomiarowe</td><td>suwmiarka 0,1 mm; mikrometr 0,01 mm (zakres 23–25 mm); czujnik zegarowy 0,01 mm ze statywem magnetycznym; przymiar do 300 mm; stanowisko rolkowe</td></tr>
+<tr><td>D. Chemia</td><td>szczotka druciana; zmywacz, penetrant; smar glikolowy, smar do hamulców, pasta przeciwpiskowa, smar miedziany; płyn DOT 3</td></tr>
+<tr><td>E. BHP</td><td>rękawice, okulary</td></tr>
+</table>
+<div class="q">Dlaczego nie trzeba komputera?</div><p>(1) postojowy mechaniczny, nie EPB – nie trzeba trybu serwisowego; (2) wskaźnik zużycia mechaniczny – nic się nie kasuje; (3) tłoczek przedni cofam ręcznym przyrządem. Jedyne urządzenie elektroniczne to stanowisko rolkowe w kontroli jakości.</p>
+<div class="q">Po co czujnik zegarowy na statywie magnetycznym?</div><p>Statyw przyczepiam do zwrotnicy/wahacza – czujnik stoi nieruchomo, a tarcza się obraca. Magnes trzyma bez śrub.</p>
+<div class="q">Po co hak/drut?</div><p>Żeby zacisk nie wisiał na przewodzie elastycznym – ciężar mógłby go uszkodzić → wyciek, utrata hamulca.</p>
+<div class="q">Dlaczego nasadka udarowa?</div><p>Bo jest wytrzymalsza (czarna, grubsza) – nakrętki kół są mocno dokręcone, zwykła nasadka mogłaby pęknąć, zwłaszcza przy kluczu pneumatycznym.</p>
+
+<!-- ===================================================== 6 -->
+<h2 class="nowa">6. Proces technologiczny</h2>
+<h3>6.1. Schemat – 7 etapów, 2 decyzje</h3>
+<ol>
+<li>Przyjęcie, wywiad, diagnoza (rozdz. 4)</li>
+<li>Przygotowanie stanowiska i pojazdu – czynności 1–4</li>
+<li>Demontaż koła, zacisku, klocków – 5–10</li>
+<li>Weryfikacja (pomiary) – 11–15 → <b>DECYZJA 1: tarcza ≥ 23,0 mm i bicie ≤ 0,05 mm?</b> NIE → wymiana lub przetoczenie tarczy (poza kartą). TAK → dalej.</li>
+<li>Czyszczenie, smarowanie, przygotowanie – 16–21</li>
+<li>Montaż klocków, zacisku i koła – 22–28 (34,3 i 103 N·m)</li>
+<li>Czynności końcowe – 29–32</li>
+</ol>
+<p>→ <b>Kontrola jakości</b> (rozdz. 7) → <b>DECYZJA 2: skuteczność ≥ 50% i różnica sił ≤ 30%?</b> NIE → powrót do weryfikacji. TAK → wydanie pojazdu.</p>
+<div class="q">Przetoczenie tarczy – kiedy można?</div><p>Gdy tarcza bije lub ma rowki, ale po przetoczeniu będzie miała nadal ≥ 23,0 mm. Jeśli wyszłoby mniej – tylko wymiana, kompletem na oś.</p>
+
+<h3>6.2. Karta instrukcyjna – 32 czynności, 15 arkuszy</h3>
+<p><b>Forma karty</b> (z uczelni): nagłówek – Politechnika / Wydział / Zakład, nazwa zespołu „Układ hamulcowy – przód”, Arkusz x / Arkuszy 15. Kolumny: Lp. · nazwa czynności · opis · narzędzie (rozmiar i typ klucza) · wymiar nominalny/dopuszczalny lub moment · uwagi. Stopka: Opracował / Sprawdził / Zatwierdził.</p>
+<div class="tip"><b>Złota zasada odpowiedzi:</b> na każde „a czemu?” odpowiadasz <b>skutkiem</b>: „bo inaczej stanie się X”. Na każde „a co jeśli się nie da?” odpowiadasz: <b>najpierw delikatnie</b> (penetrant, czas, odpowiednie narzędzie), <b>nigdy na siłę</b>, a gdy część jest uszkodzona → wymiana albo naprawa poza zakresem karty.</div>
+<!-- ============================================ PRZYGOTOWANIE -->
+<h3 class="etap">Etap 1: przygotowanie (czynności 1–4)</h3>
+
+<div class="krok"><h3><span class="nr">1</span>Odkręcenie korka zbiornika płynu hamulcowego</h3>
+<p class="czym">Czym: ręką. Sprawdzam poziom: między MIN a MAX, płyn DOT 3.</p>
+<div class="why"><b>Dlaczego:</b> później (czynność 19) cofam tłoczek. Płyn, który był za tłoczkiem, wraca wtedy do zbiornika. Przy otwartym korku wraca swobodnie, a ja widzę, czy poziom nie podchodzi za wysoko.</div>
+<p class="q">A jak nie odkręcę?</p><p>Tłoczek cofa się ciężej, w układzie rośnie ciśnienie, płyn może wyciec spod korka. Nie widzę też poziomu, więc nie zauważę, że płyn zaraz się przeleje.</p>
+<p class="q">Poziom jest niski – dolewać od razu?</p><p><b>Nie.</b> Niski poziom przy zużytych klockach jest normalny, bo tłoczki są mocno wysunięte. Po cofnięciu tłoczków płyn sam się podniesie. Gdybym dolał teraz, przelałby się. Poziom sprawdzam i uzupełniam na końcu (czynność 30).</p>
+<p class="q">Poziom jest przy MAX – co wtedy?</p><p>Przed cofaniem tłoczka odsysam trochę płynu strzykawką. Wokół zbiornika kładę szmatkę.</p>
+<p class="q">Czemu tak uważać na płyn?</p><p>Płyn hamulcowy <b>niszczy lakier</b>, a rozlany od razu zmywam wodą. Jest też <b>higroskopijny</b>, czyli chłonie wilgoć z powietrza. Dlatego nie zostawiam zbiornika otwartego dłużej, niż trzeba (zakręcam w czynności 30).</p>
+<p class="q">Korek się nie odkręca?</p><p>Jest plastikowy, odkręcam ręką. Nie łapię go kombinerkami, bo pęknie.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">2</span>Kliny pod koła tylne</h3>
+<p class="czym">Czym: 2 kliny.</p>
+<div class="why"><b>Dlaczego:</b> podnoszę przód, więc na ziemi zostaje tylko tył. Auto nie może się przetoczyć, kiedy je podnoszę i kiedy przy nim pracuję.</div>
+<p class="q">Przecież jest zaciągnięty ręczny?</p><p>Tak, ręczny też, a w manualu wrzucony bieg. Kliny to <b>drugie, niezależne zabezpieczenie</b>. Ręczny może być słabo wyregulowany, a przy podnoszeniu auto dostaje szarpnięcia. To zasada BHP: dwa zabezpieczenia zamiast jednego.</p>
+<p class="q">Czemu pod tył, a nie pod przód?</p><p>Bo przód podnoszę, więc koła przednie będą w powietrzu. Klin musi być pod kołami, które zostają na ziemi.</p>
+<p class="q">A jak nie dam klinów?</p><p>Auto może się przesunąć i spaść z podnośnika albo z kozłów. Grozi to wypadkiem i uszkodzeniem auta.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">3</span>Poluzowanie nakrętek koła (auto jeszcze stoi na ziemi)</h3>
+<p class="czym">Czym: nasadka udarowa 21 mm i pokrętło (albo klucz do kół). Moment montażowy 103 N·m.</p>
+<div class="why"><b>Dlaczego na ziemi:</b> koło stoi na podłożu i <b>nie obraca się</b>, bo trzyma je tarcie opony. Po podniesieniu kręciłoby się razem z kluczem i nie dałoby się odkręcić nakrętek. Do tego nakrętki są dokręcone dużym momentem (103 N·m) i trzeba mocno szarpnąć. Na podniesionym aucie takie szarpanie mogłoby zrzucić je z podnośnika.</div>
+<p class="q">Czemu tylko poluzować, a nie odkręcić całkiem?</p><p>Bo auto jeszcze stoi na tym kole. Luzuję o ćwierć albo pół obrotu, żeby nakrętka „puściła”. Całkiem odkręcam dopiero po podniesieniu (czynność 5).</p>
+<p class="q">Nakrętka nie chce puścić?</p><p>Dłuższe pokrętło (większa dźwignia), środek penetrujący, chwila odczekania. Nie skaczę po kluczu i nie przedłużam go rurą „na siłę”, bo mogę zerwać szpilkę albo zaokrąglić nakrętkę.</p>
+<p class="q">Czemu nasadka udarowa?</p><p>Jest grubsza i wytrzymalsza (czarna, z twardej stali). Przy dużym momencie albo kluczu pneumatycznym zwykła nasadka może pęknąć.</p>
+<p class="q">W którą stronę?</p><p>Gwint prawy, czyli odkręcam w lewo (przeciwnie do ruchu wskazówek zegara).</p>
+</div>
+
+<div class="krok"><h3><span class="nr">4</span>Podniesienie pojazdu i postawienie na kozłach</h3>
+<p class="czym">Czym: podnośnik (nośność dla DMC 1655 kg), 2 kozły warsztatowe.</p>
+<div class="why"><b>Dlaczego kozły:</b> podnośnik hydrauliczny może powoli opaść, np. przy nieszczelności. Kozły są mechaniczne i same nie opadną. <b>Nigdy nie pracuje się przy aucie, które stoi tylko na podnośniku.</b></div>
+<p class="q">Gdzie podstawić podnośnik i kozły?</p><p>W punktach podparcia wskazanych przez producenta (wzmocnione miejsca przy progach). Nie pod podłogę ani pod wahacz.</p>
+<p class="q">A jak podstawię źle?</p><p>Mogę wgnieść próg albo podłogę, a podnośnik może się ześlizgnąć i auto spadnie.</p>
+<p class="q">Czemu przy tej czynności nie ma zdjęcia?</p><p>Poradnik AUTODOC nie ma zdjęcia tego kroku. Zdjęcie nie jest potrzebne przy każdej czynności, opis wystarcza.</p>
+</div>
+
+<!-- ============================================ DEMONTAŻ -->
+<h3 class="etap">Etap 2: demontaż (czynności 5–10)</h3>
+
+<div class="krok"><h3><span class="nr">5</span>Odkręcenie nakrętek i zdjęcie koła</h3>
+<p class="czym">Czym: nasadka udarowa 21 mm, pokrętło.</p>
+<div class="why"><b>Dlaczego przytrzymuję koło:</b> przy ostatniej nakrętce koło może spaść na nogi albo uderzyć w gwinty szpilek i je uszkodzić.</div>
+<p class="q">Koło nie chce zejść z piasty?</p><p>Felga <b>przywarła do piasty</b> (zapieczona od rdzy). Uderzam gumowym młotkiem w oponę albo od środka w felgę, nigdy w tarczę. Żeby to się nie powtórzyło, przy montażu smaruję styk smarem miedzianym (czynność 25).</p>
+<p class="q">Gdzie odkładam nakrętki?</p><p>W jedno miejsce, żeby żadna nie zginęła. Sprawdzam przy okazji, czy gwinty nie są uszkodzone.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">6</span>Oczyszczenie zacisku i środek penetrujący</h3>
+<p class="czym">Czym: szczotka druciana, WD-40. Odczekać kilka minut.</p>
+<div class="why"><b>Dlaczego:</b> na śrubach i sworzniach jest brud i rdza. Brud wpadłby do środka przy demontażu, a rdza utrudnia odkręcenie. Środek penetrujący wnika w gwint i rozluźnia rdzę. Odczekuję, bo musi mieć czas, żeby zadziałać.</div>
+<p class="q">Śruba dalej zapieczona?</p><p>Jeszcze raz penetrant i dłuższe czekanie. Nie zrywam jej na siłę: śruba wkręca się w sworzeń, więc zerwany gwint to wymiana sworznia.</p>
+<p class="q">WD-40 nie zabrudzi tarczy?</p><p>Psikam na śruby i sworznie, nie na tarczę. A tarczę i tak odtłuszczam zmywaczem przed montażem (czynność 21).</p>
+<p class="q">Czy WD-40 to smar do sworzni?</p><p>Nie. To środek penetrujący, nie smar. Sworznie smaruję smarem glikolowym (czynność 17).</p>
+</div>
+
+<div class="krok"><h3><span class="nr">7</span>Odkręcenie 2 śrub zacisku</h3>
+<p class="czym">Czym: klucz płasko-oczkowy <b>13 mm</b> na śrubę, klucz płasko-oczkowy <b>17 mm</b> jako kontra na sworzeń. Moment przy montażu 34,3 N·m.</p>
+<div class="why"><b>Dlaczego kontra 17:</b> śruba wkręca się w sworzeń prowadzący. Jak go nie przytrzymam, sworzeń obraca się razem ze śrubą, a gumowa osłona sworznia się skręca i pęka. Wtedy do środka dostaje się woda, sworzeń rdzewieje i się <b>zapieka</b>. Toyota w instrukcji każe przytrzymać sworzeń.</div>
+<p class="q">Czemu klucz oczkowy, a nie płaski, na śrubę?</p><p>Oczko obejmuje łeb śruby ze wszystkich stron i nie zaokrągli go przy dużym oporze.</p>
+<p class="q">Skąd wiem, że 13 i 17?</p><p>Toyota nie podaje rozmiarów kluczy. Wziąłem je z poradnika AUTODOC dla Corolli E120.</p>
+<p class="q">A jak odkręcę bez kontry?</p><p>To jeden z błędów w tabeli 12: obrót sworznia, zerwana osłona, później zapieczenie i ściąganie auta.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">8</span>Zdjęcie korpusu zacisku i podwieszenie go na haku</h3>
+<p class="czym">Czym: hak albo drut. Przewodu hamulcowego <b>nie odłączam</b>.</p>
+<div class="why"><b>Dlaczego podwieszam:</b> przewód elastyczny nie jest zrobiony do trzymania ciężaru zacisku, który waży kilka kilogramów. Zwisający zacisk może przewód naderwać od środka i później pojawi się wyciek albo przewód będzie się „pompował”. <b>Dlaczego nie odłączam przewodu:</b> układ hydrauliczny zostaje zamknięty, nie dostaje się do niego powietrze, więc <b>nie trzeba odpowietrzać</b>.</div>
+<p class="q">Czemu nie wolno teraz naciskać pedału?</p><p>Tłoczek nie ma się o co oprzeć (nie ma klocka ani tarczy), więc ciśnienie go wypchnie. Może wypaść z cylindra i wtedy jest wyciek płynu, regeneracja zacisku i odpowietrzanie.</p>
+<p class="q">A jak ktoś nacisnął?</p><p>Jeśli tłoczek tylko się wysunął, cofam go przyrządem i sprawdzam osłonę i szczelność. Jeśli wypadł, trzeba złożyć zacisk i odpowietrzyć układ. To już poza zakresem karty.</p>
+<p class="q">Zacisk nie chce zejść?</p><p>Klocki zahaczają o rant tarczy. Najpierw lekko rozpycham klocki łomem, co trochę cofa tłoczek, i dopiero wtedy zdejmuję zacisk.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">9</span>Wyjęcie klocków z podkładkami przeciwpiskowymi</h3>
+<p class="czym">Czym: ręką albo łomem montażowym. Podkładki nr 1 i nr 2 zachowuję.</p>
+<div class="why"><b>Dlaczego zapamiętuję położenie klocka z płytką wskaźnika:</b> nowy klocek ze wskaźnikiem montuję w tym samym miejscu (czynność 22). <b>Dlaczego nie mieszam klocków:</b> zostawiam je w kolejności lewy/prawy i wewnętrzny/zewnętrzny, bo ich zużycie mówi, <b>co jest przyczyną</b>. W moim przypadku lewy wewnętrzny był najbardziej zużyty, czyli sworznie.</div>
+<p class="q">Czemu podkładki zachowuję?</p><p>Są w dobrym stanie (karta weryfikacji), więc wracają po posmarowaniu (czynność 20).</p>
+<p class="q">Klocek siedzi ciasno?</p><p>Rdza w płytkach podporowych. Podważam go łomem, a później czyszczę jarzmo (czynność 16).</p>
+</div>
+
+<div class="krok"><h3><span class="nr">10</span>Wyjęcie płytek podporowych</h3>
+<p class="czym">Czym: wkrętak płaski.</p>
+<div class="why"><b>Dlaczego wyjmuję:</b> żeby sprawdzić płytki (czynność 12) i oczyścić jarzmo pod nimi (czynność 16). <b>Dlaczego nie zamieniam górnej z dolną:</b> każda jest dopasowana do swojego miejsca.</div>
+<p class="q">Płytka się połamała przy wyjmowaniu?</p><p>Zakładam nową. Płytki są tanie i często są w zestawie montażowym do klocków.</p>
+</div>
+
+<!-- ============================================ WERYFIKACJA -->
+<h3 class="etap">Etap 3: weryfikacja (czynności 11–15)</h3>
+
+<div class="krok"><h3><span class="nr">11</span>Pomiar okładzin klocków</h3>
+<p class="czym">Czym: suwmiarka (0,1 mm). Nominalnie <b>11,0 mm</b>, minimum <b>1,0 mm</b>.</p>
+<div class="why"><b>Dlaczego mierzę, skoro i tak wymieniam:</b> (1) to <b>dowód</b>, że wymiana była potrzebna (wpis do karty weryfikacji); (2) <b>porównanie zużycia</b> pokazuje przyczynę: wewnętrzny bardziej zużyty od zewnętrznego oznacza zapieczone sworznie, a lewy inaczej niż prawy oznacza różne siły hamowania.</div>
+<p class="q">Mierzę razem z płytą nośną?</p><p>Nie, tylko sam materiał cierny. Płyty nośnej nie wliczam.</p>
+<p class="q">Czemu w kilku punktach?</p><p>Klocek może się zużyć skośnie (klinowo), wtedy liczy się najcieńsze miejsce.</p>
+<p class="q">Prawy klocek ma 1,4 mm, czyli jest dobry. Czemu go wymieniam?</p><p>Klocki wymienia się <b>kompletem na oś</b>, czyli 4 sztuki. Lewy ma 0,9 mm, więc wymieniam wszystkie, żeby obie strony hamowały tak samo.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">12</span>Kontrola płytek podporowych</h3>
+<p class="czym">Czym: oględziny, szczotka druciana.</p>
+<div class="why"><b>Dlaczego:</b> płytka, która straciła sprężystość albo jest wygięta, nie trzyma klocka. Klocek luźno chodzi, stuka i piszczy. Rdza pod płytką sprawia, że klocek się zakleszcza i stale ociera o tarczę.</div>
+<p class="q">Co sprawdzam?</p><p>Sprężystość, odkształcenia, pęknięcia, zużycie, rdzę. Jeśli płytka nie spełnia wymagań, wymieniam ją.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">13</span>Pomiar grubości tarczy</h3>
+<p class="czym">Czym: mikrometr (0,01 mm). Nominalnie <b>25,0 mm</b>, minimum <b>23,0 mm</b>. Mierzę w kilku punktach.</p>
+<div class="why"><b>Dlaczego przed montażem nowych klocków:</b> nowe klocki na za cienkiej tarczy to błąd. Cienka tarcza gorzej odprowadza ciepło, przegrzewa się i może zacząć drgać. Gdybym zmierzył dopiero po montażu, musiałbym wszystko rozbierać od nowa.</div>
+<p class="q">Czemu mikrometr, a nie suwmiarka?</p><p>Liczą się setne części milimetra, a mikrometr ma dokładność 0,01 mm.</p>
+<p class="q">Gdzie przykładam mikrometr?</p><p>Na pasie, po którym trze klocek. Nie mierzę na <b>rancie</b>, czyli wystającym brzegu z rdzą na krawędzi, bo zawyżyłby wynik.</p>
+<p class="q">Czemu w kilku punktach?</p><p>Tarcza może się zużyć nierówno. Różna grubość na obwodzie daje pulsowanie pedału przy hamowaniu.</p>
+<p class="q">Wyszło 22,8 mm – co robię?</p><p>To poniżej 23,0, więc wymieniam tarcze, <b>kompletem na oś</b>. To ścieżka „NIE” na schemacie i jest już poza kartą.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">14</span>Pomiar bicia tarczy</h3>
+<p class="czym">Czym: czujnik zegarowy na statywie magnetycznym, nasadka 21 mm, klucz dynamometryczny. Tarczę dociskam nakrętkami momentem 103 N·m. Czujnik 10 mm od krawędzi, pełny obrót. Maksimum <b>0,05 mm</b>.</p>
+<div class="why"><b>Dlaczego dociskam tarczę nakrętkami:</b> bez koła tarcza tylko luźno leży na piaście, więc pomiar nic by nie dał. Dociśnięta siedzi tak jak po założeniu koła. <b>Dlaczego 10 mm od krawędzi:</b> tak każe Toyota. Blisko krawędzi bicie jest największe, a 10 mm omija rant.</div>
+<p class="q">Co to bicie i czym grozi?</p><p>Tarcza przy obrocie „faluje” na boki. W jednym miejscu ociera o klocek mocniej, z czasem robi się nierównej grubości. Skutek to drgania kierownicy i pulsowanie pedału.</p>
+<p class="q">Wyszło 0,08 mm – co robię?</p><p>Najpierw szukam przyczyny w piaście: czy pod tarczą nie było rdzy albo brudu, jaki jest luz łożyska i bicie piasty (max 0,05 mm). Toyota radzi też przełożyć tarczę o jeden otwór, w położenie najmniejszego bicia. Jeśli piasta jest w porządku, a bicie dalej za duże, tarcza idzie do przetoczenia (jeśli zostanie ≥ 23,0 mm) albo do wymiany.</p>
+<p class="q">Czemu statyw magnetyczny?</p><p>Przyczepiam go do zwrotnicy bez śrub. Czujnik stoi wtedy nieruchomo, a obraca się tylko tarcza.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">15</span>Kontrola sworzni, osłon i tłoczka</h3>
+<p class="czym">Czym: oględziny. Wymaganie: sworzeń przesuwa się swobodnie, osłony bez pęknięć.</p>
+<div class="why"><b>Dlaczego:</b> <b>zapieczony sworzeń</b> to najczęstsza przyczyna ściągania i nierównego zużycia klocków. Jak tego nie naprawię, nowe klocki zużyją się tak samo, a auto dalej będzie ściągać. U mnie lewe sworznie stawiały opór, więc są „do naprawy”.</div>
+<p class="q">Osłona sworznia pęknięta?</p><p>Wymieniam osłonę (zestaw naprawczy). Z pękniętą osłoną sworzeń szybko zardzewieje i znowu się zapiecze.</p>
+<p class="q">Spod osłony tłoczka cieknie płyn?</p><p>Uszczelniacz tłoczka jest uszkodzony. Trzeba zregenerować albo wymienić zacisk, a potem odpowietrzyć układ. To poza zakresem karty, zapisuję to w uwagach.</p>
+<p class="q">Sworzeń zardzewiały, nie chce wyjść?</p><p>Penetrant, czas, oczyszczenie. Jeśli powierzchnia jest zniszczona, wymieniam sworzeń.</p>
+</div>
+
+<!-- ============================================ CZYSZCZENIE / SMAROWANIE -->
+<h3 class="etap">Etap 4: czyszczenie, smarowanie, przygotowanie (16–21)</h3>
+
+<div class="krok"><h3><span class="nr">16</span>Czyszczenie jarzma</h3>
+<p class="czym">Czym: szczotka druciana, zmywacz do układów hamulcowych. Odczekać, aż odparuje.</p>
+<div class="why"><b>Dlaczego:</b> w miejscach, gdzie siedzą płytki i klocki, zbiera się rdza. Przez nią klocek nie przesuwa się swobodnie, zakleszcza się i stale ociera o tarczę. Nowa płytka położona na rdzy też nie siądzie równo.</div>
+<p class="q">Czemu zmywacz, a nie WD-40?</p><p>Zmywacz odparowuje i nie zostawia śladu. WD-40 zostawia tłusty film, a tego przy hamulcu nie chcę.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">17</span>Smarowanie i montaż sworzni prowadzących</h3>
+<p class="czym">Czym: <b>smar litowy na bazie glikolu</b> (wymaga go Toyota). Po montażu sprawdzam, czy sworzeń przesuwa się swobodnie.</p>
+<div class="why"><b>Dlaczego ten smar:</b> sworznie pracują w <b>gumowych osłonach</b>, a smar glikolowy nie niszczy gumy. <b>Zwykły smar mineralny</b> (np. ŁT, do łożysk) sprawia, że guma pęcznieje i mięknie, osłona ściska sworzeń i sworzeń się zapieka. Skutek: korpus nie pływa, auto ściąga, klocki zużywają się nierówno. Czyli wracam do tego, co naprawiałem.</div>
+<p class="q">A smar miedziany?</p><p>Nie. Miedziany jest do styku felgi z piastą, nie do sworzni w gumowych osłonach.</p>
+<p class="q">Ile smaru?</p><p>Cienka warstwa na części, które się ślizgają. Za dużo smaru też szkodzi: sworzeń trudniej się wsuwa, a smar wypycha osłonę.</p>
+<p class="q">Co sprawdzam po montażu?</p><p>Sworzeń musi się przesuwać lekko, ręką, a osłona musi dobrze siedzieć w rowkach.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">18</span>Montaż płytek podporowych</h3>
+<p class="czym">Ręcznie. Każda płytka na swoje miejsce, pewnie, bez luzu.</p>
+<div class="why"><b>Dlaczego bez luzu:</b> luźna płytka razem z klockiem stuka przy zmianie kierunku jazdy i hamowaniu, i piszczy.</div>
+</div>
+
+<div class="krok"><h3><span class="nr">19</span>Cofnięcie (wciśnięcie) tłoczka</h3>
+<p class="czym">Czym: przyrząd do cofania tłoczków. Patrzę na poziom płynu w zbiorniku.</p>
+<div class="why"><b>Dlaczego:</b> tłoczek był wysunięty, bo dosięgał cienkich, zużytych klocków. Nowe mają 11 mm okładziny i bez cofnięcia tłoczka nie zmieszczą się między nim a tarczą.</div>
+<p class="q">Czemu przyrządem, a nie np. śrubokrętem?</p><p>Przyrząd wciska tłoczek równo, bez przekoszenia. Krzywo wciśnięty tłoczek może porysować cylinder albo uszkodzić uszczelniacz i osłonę, a wtedy pojawi się wyciek.</p>
+<p class="q">Tłoczek nie chce się cofnąć?</p><p>Tłoczek jest zapieczony (korozja pod osłoną). Nie wciskam go na siłę. Trzeba zregenerować albo wymienić zacisk, to poza zakresem karty.</p>
+<p class="q">Płyn podchodzi pod sam korek?</p><p>Przerywam cofanie i odsysam nadmiar strzykawką. Jeśli się przelał, od razu zmywam, bo niszczy lakier.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">20</span>Przygotowanie nowych klocków</h3>
+<p class="czym">Czym: smar do hamulców tarczowych na podkładki przeciwpiskowe nr 1, pasta przeciwpiskowa na miejsca, gdzie płyta klocka styka się z jarzmem. Klocki TRW GDB3288.</p>
+<div class="why"><b>Dlaczego:</b> pisk to drgania klocka. Podkładki i smar je tłumią, a pasta na styku z jarzmem chroni przed korozją, więc klocek się nie zakleszcza.</div>
+<p class="q">Gdzie absolutnie nie wolno?</p><p><b>Na okładzinę cierną i na tarczę.</b> Smar na okładzinie zmniejsza tarcie, więc droga hamowania się wydłuża. Okładzina jest porowata i wchłania smar, więc takiego klocka się nie czyści, tylko wymienia.</p>
+<p class="q">Skąd wiem, że nowe klocki pasują?</p><p>Porównuję je ze starymi (kształt, wskaźnik zużycia) i sprawdzam numer wymienności <b>WVA 23766</b>.</p>
+<p class="q">Ile pasty?</p><p>Cienko. Nadmiar zbiera brud i może się dostać na okładzinę.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">21</span>Odtłuszczenie tarczy</h3>
+<p class="czym">Czym: zmywacz do układów hamulcowych. Odczekać, aż wyschnie.</p>
+<div class="why"><b>Dlaczego:</b> na tarczy są odciski palców, ślady smaru, pasty, pył z klocków i może WD-40 z czynności 6. Zmniejszyłyby tarcie i nowe klocki źle by się dotarły.</div>
+<p class="q">A jak pominę?</p><p>Słabsze hamowanie na początku, nierówne docieranie i piski.</p>
+</div>
+
+<!-- ============================================ MONTAŻ -->
+<h3 class="etap">Etap 5: montaż (czynności 22–28)</h3>
+
+<div class="krok"><h3><span class="nr">22</span>Montaż nowych klocków</h3>
+<p class="czym">Ręcznie. Okładziną do tarczy, <b>płytka wskaźnika zużycia skierowana do góry</b>, klocek ze wskaźnikiem w tym samym miejscu co stary.</p>
+<div class="why"><b>Dlaczego wskaźnik do góry:</b> tak każe Toyota. Wtedy blaszka dotknie tarczy w odpowiednim momencie i zapiszczy, kiedy klocek będzie zużyty.</div>
+<p class="q">A jak założę klocek ze wskaźnikiem odwrotnie?</p><p>Przy następnym zużyciu wskaźnik może nie zadziałać i kierowca nie usłyszy ostrzeżenia (błąd z tabeli 12).</p>
+<p class="q">A jak klocek odwrotnie, płytą do tarczy?</p><p>Metal trze o metal. Hamowania praktycznie nie ma, a tarcza od razu się niszczy. Dlatego sprawdzam, czy okładzina jest od strony tarczy.</p>
+<p class="q">Co jeszcze sprawdzam?</p><p>Czy klocek przesuwa się swobodnie w płytkach podporowych.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">23</span>Nałożenie korpusu, wkręcenie śrub ręcznie</h3>
+<div class="why"><b>Dlaczego najpierw ręką:</b> żeby śruba weszła prosto w gwint. Kluczem łatwo ją przekosić i zniszczyć gwint w sworzniu.</div>
+<p class="q">Na co uważam?</p><p>Przewód hamulcowy nie może być skręcony. Skręcony pracuje pod naprężeniem, ociera i może pęknąć. Osłony sworzni nie mogą się zakleszczyć ani przyciąć.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">24</span>Dokręcenie śrub zacisku</h3>
+<p class="czym">Czym: nasadka 13 mm i klucz dynamometryczny, kontra 17 mm. Moment <b>34,3 N·m</b> (350 kgf·cm).</p>
+<div class="why"><b>Dlaczego dynamometrem:</b> za słabo, a śruba się poluzuje i zacisk będzie luźny, co jest groźne. Za mocno, a zerwę gwint albo uszkodzę sworzeń. <b>Dlaczego znowu kontra:</b> z tego samego powodu co przy odkręcaniu, żeby nie skręcić osłony sworznia.</div>
+<p class="q">AUTODOC pisze 35 N·m, a Pan 34,3 – czemu?</p><p>Biorę wartość producenta. Toyota podaje 350 kgf·cm, a 350 × 0,098 = 34,3 N·m. AUTODOC zaokrąglił do 35.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">25</span>Czyszczenie i smarowanie styku felga–piasta</h3>
+<p class="czym">Czym: szczotka druciana, cienko smar miedziany, tylko na płaszczyznę styku.</p>
+<div class="why"><b>Dlaczego czyszczę:</b> rdza i brud między felgą a piastą nie pozwalają kołu przylegać równo. Koło wtedy bije i jest drganie. <b>Dlaczego smar miedziany:</b> nie pozwala, żeby felga przyrdzewiała do piasty, więc przy następnej wymianie koło łatwo zejdzie.</div>
+<p class="q">Ile smaru?</p><p>Cienka warstwa. Grubej warstwy nie daję i nie smaruję tarczy w miejscu, gdzie trze klocek.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">26</span>Druga strona osi</h3>
+<p class="czym">Powtarzam czynności 3–25 po drugiej stronie.</p>
+<div class="why"><b>Dlaczego zawsze obie strony:</b> klocki wymienia się <b>kompletem na oś</b>. Nowe z jednej strony, a stare z drugiej, to różne siły hamowania i auto ściąga. Na rolkach wyszłaby różnica &gt; 30%.</div>
+<p class="q">Klient chce tylko jedną stronę, bo taniej?</p><p>Odmawiam. To kwestia bezpieczeństwa i auto nie przeszłoby kontroli jakości.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">27</span>Założenie koła i wkręcenie nakrętek</h3>
+<p class="czym">Czym: nasadka udarowa 21 mm. Najpierw ręką, potem lekko kluczem.</p>
+<div class="why"><b>Dlaczego ręką:</b> żeby nie przekosić gwintu na szpilce. <b>Dlaczego tylko lekko:</b> pełny moment daję dopiero po opuszczeniu auta, bo na podniesionym koło by się obracało.</div>
+<p class="q">Na co uważam przy nakrętkach?</p><p>Nakrętka ma stożek i zakładam ją stożkiem do felgi. Ten stożek centruje koło.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">28</span>Opuszczenie auta i dokręcenie nakrętek</h3>
+<p class="czym">Czym: klucz dynamometryczny, nasadka 21 mm. Moment <b>103 N·m</b>, dokręcam <b>na krzyż</b>.</p>
+<div class="why"><b>Dlaczego po opuszczeniu:</b> koło stoi na ziemi i się nie kręci. <b>Dlaczego na krzyż:</b> koło dociska się do piasty równo z każdej strony i samo się wycentruje. Gdybym dokręcał po kolei dookoła, mogłoby się przekrzywić, a docisk byłby nierówny i tarcza mogłaby bić.</div>
+<p class="q">Czemu nie kluczem pneumatycznym „do oporu”?</p><p>Bo nie kontroluję wtedy momentu. Za mocno dokręcone nakrętki rozciągają szpilki i mogą odkształcić tarczę (bicie, drgania). Za słabo, a koło może się poluzować.</p>
+<p class="q">Coś jeszcze z nakrętkami?</p><p>Dobra praktyka to sprawdzić moment po kilkudziesięciu kilometrach. Na kontroli statycznej też sprawdzam 103 N·m.</p>
+</div>
+
+<!-- ============================================ KOŃCOWE -->
+<h3 class="etap">Etap 6: czynności końcowe (29–32)</h3>
+
+<div class="krok"><h3><span class="nr">29</span>Pompowanie pedałem hamulca</h3>
+<p class="czym">Naciskam pedał kilka razy, aż poczuję opór. <b>Robię to przed ruszeniem z miejsca.</b></p>
+<div class="why"><b>Dlaczego:</b> tłoczki są cofnięte do końca, a klocki stoją daleko od tarczy. Pierwsze naciśnięcia tylko dosuwają tłoczki do klocków. Pedał „wpada w podłogę” i auto <b>nie hamuje</b>. Dopiero kilka naciśnięć ustawia tłoczki tak, że klocki dotykają tarczy.</div>
+<p class="q">A jak ruszę bez pompowania?</p><p>Przy pierwszym hamowaniu auto nie zahamuje, co grozi wypadkiem (błąd z tabeli 12).</p>
+<p class="q">Pedał po pompowaniu dalej miękki?</p><p>To może być powietrze albo wyciek. Nie otwierałem układu, więc nie powinno go tam być. Sprawdzam szczelność zacisków i przewodów oraz poziom płynu, a w razie potrzeby odpowietrzam.</p>
+<p class="q">Czemu nie odpowietrzam za każdym razem?</p><p>Bo przewód nie był odłączany i powietrze nie miało jak wejść do układu.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">30</span>Poziom płynu, zakręcenie korka, zamknięcie maski</h3>
+<p class="czym">Poziom MIN–MAX, płyn DOT 3.</p>
+<div class="why"><b>Dlaczego sprawdzam dopiero teraz:</b> po napompowaniu pedału tłoczki znowu się wysunęły i poziom w zbiorniku trochę spadł. Dopiero teraz widać, ile naprawdę jest płynu. Uzupełniam tylko <b>DOT 3</b> i nie przekraczam MAX.</div>
+<p class="q">Czemu akurat DOT 3? Można dolać inny?</p><p>Toyota wymaga DOT 3. DOT 4 też jest na bazie glikolu i da się go zmieszać, ale trzymam się producenta. <b>Nigdy</b> nie dolewam DOT 5 (silikonowy) ani oleju, bo niszczą uszczelki w całym układzie.</p>
+<p class="q">Czemu zakręcam od razu?</p><p>Płyn chłonie wilgoć z powietrza, więc spada jego temperatura wrzenia. Rozlany zmywam, bo niszczy lakier.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">31</span>Kontrola pedału hamulca</h3>
+<p class="czym">Czym: przymiar. Wysokość M/T <b>134,9–144,9 mm</b>, luz <b>1–6 mm</b>, rezerwa <b>&gt; 70 mm</b> przy 490 N.</p>
+<div class="why"><b>Dlaczego:</b> to pierwszy, statyczny dowód, że układ działa: klocki są dosunięte, w układzie nie ma powietrza ani wycieku. Wartości są z instrukcji Toyoty (szczegóły w rozdziale 7.1).</div>
+<p class="q">Rezerwa wyszła 60 mm?</p><p>Za mało, pedał „ucieka”. Szukam powietrza, wycieku albo źle cofniętych tłoczków. Takie auto nie może jechać na rolki, dopóki tego nie naprawię.</p>
+</div>
+
+<div class="krok"><h3><span class="nr">32</span>Usunięcie klinów i przekazanie do kontroli jakości</h3>
+<p class="czym">Następnie stanowisko rolkowe: skuteczność ≥ 50%, różnica sił ≤ 30%. Klientowi mówię o docieraniu przez 150–200 km.</p>
+<div class="why"><b>Dlaczego kliny dopiero na końcu:</b> wyjmuję je wtedy, gdy auto stoi na wszystkich kołach, hamulec jest napompowany i działa. <b>Dlaczego rolki:</b> część błędów (zapieczony sworzeń, smar na okładzinie) nie jest widoczna przy montażu, wychodzi dopiero jako różnica sił lewo/prawo.</div>
+<p class="q">Czemu docieranie?</p><p>Nowa okładzina musi się dopasować do tarczy całą powierzchnią. Gwałtowne hamowanie od razu ją przegrzewa i powstaje <b>zeszklenie</b>: twarda, śliska warstwa, przez którą auto gorzej hamuje i piszczy.</p>
+</div>
+
+<h3 class="etap">Pytania o całą kartę i kolejność</h3>
+<p class="q">Czemu najpierw pomiary, a potem czyszczenie i montaż?</p><p>Bo wynik pomiaru tarczy decyduje, co dalej (punkt decyzyjny 1 na schemacie). Gdyby tarcza była za cienka, czyszczenie i smarowanie przed jej wymianą byłoby stratą czasu.</p>
+<p class="q">Czemu nie odkręcam jarzma?</p><p>Do wymiany klocków nie trzeba. Klocki wyjmuję z jarzma po zdjęciu samego korpusu. Jarzmo odkręca się (106,8 N·m) dopiero przy wymianie tarczy.</p>
+<p class="q">Czemu ta sama czynność ma czasem zdjęcie z Priusa?</p><p>Poradnik AUTODOC dla Corolli E120 zrobiono na zdjęciach z Priusa II. Procedura i budowa hamulca są te same i jest to zaznaczone w podpisach. Liczby biorę z instrukcji Toyoty dla Corolli.</p>
+<p class="q">Która czynność jest najważniejsza?</p><p>Dla bezpieczeństwa: <b>24 i 28</b> (momenty) oraz <b>29</b> (pompowanie pedału przed jazdą). Dla jakości naprawy: <b>15 i 17</b> (sworznie), bo usuwają <b>przyczynę</b> ściągania, a nie tylko jej skutek.</p>
+<p class="q">Ile to wszystko trwa?</p><p>Przyjąłem 1,0 roboczogodziny na oś, razem z pomiarami i kontrolą (rozdział 9).</p>
+
+<div class="ok"><b>Do zapamiętania jednym zdaniem na każdy etap:</b><br>
+1–4: bezpiecznie przygotować (korek, kliny, luzowanie na ziemi, kozły).<br>
+5–10: rozebrać bez szkód (kontra 17, zacisk na haku, bez pedału).<br>
+11–15: zmierzyć i znaleźć przyczynę (1,0 / 23,0 / 0,05 mm, sworznie).<br>
+16–21: oczyścić i posmarować właściwymi środkami (glikolowy na sworznie, nic na okładzinę).<br>
+22–28: złożyć z właściwym momentem (34,3 i 103 N·m na krzyż).<br>
+29–32: napompować, sprawdzić płyn i pedał, przekazać na rolki.</div>
+
+<!-- ===================================================== 7 -->
+<h2 class="nowa">7. Kontrola jakości po naprawie</h2>
+<p>Cel: <b>obiektywny dowód</b>, że hamulce działają. Trzy części: kontrola statyczna → stanowisko rolkowe → jazda próbna. Wyniki do protokołu.</p>
+<h3>7.1. Kontrola statyczna (przed pierwszym ruszeniem)</h3>
+<ul>
+<li>wysokość pedału od podłogi: M/T <b>134,9–144,9 mm</b> (A/T 136,0–146,0),</li>
+<li>luz swobodny <b>1–6 mm</b> (silnik wyłączony, kilka naciśnięć – usunąć podciśnienie z serwa),</li>
+<li>odległość rezerwowa <b>&gt; 70 mm</b> przy 490 N, silnik pracuje,</li>
+<li>płyn MIN–MAX, szczelność (mocno naciskam kilka razy, patrzę na zaciski i przewody),</li>
+<li>koła obracają się swobodnie (klocki nie trą stale),</li>
+<li>kontrola momentu nakrętek 103 N·m.</li>
+</ul>
+<h3>7.2. Stanowisko rolkowe</h3>
+<p><b>Jak działa:</b> koła jednej osi stają na parach rolek. Silnik elektryczny kręci rolki powoli (kilka km/h), koła się obracają. Naciskam hamulec – koło stawia opór, a urządzenie mierzy siłę, jaką musi pokonać silnik → <b>siła hamowania każdego koła osobno</b> (lewe i prawe). Trzecia mała rolka pilnuje poślizgu – gdy koło się zablokuje, pomiar się kończy. Stanowisko pokazuje też wahania siły w czasie obrotu – tak wychodzi bicie/owalizacja tarczy.</p>
+<div class="big">z = ΣT / (m<sub>DMC</sub> · g) · 100% ≥ 50%</div>
+<p>ΣT – suma sił hamowania <b>wszystkich kół</b> (przód + tył) [N], m<sub>DMC</sub> = 1655 kg, g = 9,81 m/s². 50% – dla aut osobowych zarejestrowanych przed 28.07.2010 (Corolla E12 to 2001–2007).</p>
+<div class="big">ΣT<sub>min</sub> = 0,5 · 1655 · 9,81 ≈ 8118 N ≈ 8,12 kN</div>
+<div class="big">ΔT = (T<sub>max</sub> − T<sub>min</sub>) / T<sub>max</sub> · 100% ≤ 30%</div>
+<p>Różnica sił kół <b>tej samej osi</b> (lewe/prawe).</p>
+<div class="tip"><b>Przykład do policzenia na głos</b> (liczby przykładowe): T<sub>L</sub> = 2,4 kN, T<sub>P</sub> = 2,1 kN → ΔT = (2,4 − 2,1) / 2,4 = 0,125 = <b>12,5%</b> ≤ 30% ✓.</div>
+<div class="q">Skąd te kryteria 50% i 30%?</div><p>To kryteria stosowane przy badaniach technicznych na stacjach kontroli pojazdów – oparłem się na artykułach o diagnozowaniu układu hamulcowego (Warsztat.pl) i o ocenie skuteczności hamowania na SKP (A. Gajek, Archiwum Motoryzacji). Wynikają z rozporządzenia o badaniach technicznych.</p>
+<div class="q">Dlaczego DMC, a nie rzeczywista masa?</div><p>Bo wymaganie odnosi się do auta w pełni załadowanego – hamulce muszą zatrzymać auto także z pełnym obciążeniem.</p>
+<div class="q">Pusty samochód blokuje koła, zanim osiągnie wymaganą siłę – i co?</div><p>Lekkie auto ma mały nacisk na koła, więc koła zaczynają się ślizgać przy mniejszej sile. Przepisy dopuszczają wtedy wyznaczenie wskaźnika obliczeniowo, na podstawie siły nacisku na pedał.</p>
+<div class="q">Co, jeśli różnica sił &gt; 30%?</div><p>Proces wraca do weryfikacji (schemat): sprawdzam sworznie (zapieczone?), czy klocek dobrze siedzi, czy na tarczy/okładzinie nie ma smaru, tłoczek. Po poprawce – ponownie rolki.</p>
+<div class="q">Po co rolki, skoro wszystko dobrze złożyłem?</div><p>Bo część błędów (zapieczony sworzeń, smar na okładzinie, klocki tylko z jednej strony) <b>nie jest widoczna przy montażu</b> – wychodzi dopiero jako różnica sił L/P. Rolki to dowód liczbowy, nie „na oko”.</p>
+<h3>7.3. Protokół (Tabela 11)</h3>
+<p>11 pozycji: pedał (3), płyn, szczelność, obrót kół, siła T<sub>L</sub>, siła T<sub>P</sub>, ΔT, z, jazda próbna. Kolumny: wymaganie · wynik · <b>spełnia / nie spełnia</b>. Auto wydaję <b>tylko gdy wszystko „spełnia”</b>. Na dole: data, nr rej./VIN, podpis.</p>
+<h3>7.4. Jazda próbna i docieranie</h3>
+<p>Sprawdzam: nie ściąga, nie piszczy, nie drga, pedał twardy. Klientowi mówię: <b>przez 150–200 km unikać gwałtownego hamowania</b> – okładzina musi się dopasować do tarczy (pełna powierzchnia styku). Gwałtowne hamowanie od razu → przegrzanie i <b>zeszklenie</b> okładzin (twarda, śliska warstwa, gorsze hamowanie, piski).</p>
+
+<!-- ===================================================== 8 -->
+<h2 class="nowa">8. Typowe błędy wykonawcze (Tabela 12)</h2>
+<table>
+<tr><th>Błąd</th><th>Skutek</th><th>Jak zapobiegam (czynn.)</th></tr>
+<tr><td>Odkręcanie śruby bez kontry sworznia</td><td>obrót sworznia, rwie osłonę → korozja, zapieczenie</td><td>kontra 17 mm (7, 24)</td></tr>
+<tr><td>Zacisk wisi na przewodzie</td><td>uszkodzenie przewodu, wyciek</td><td>hak (8)</td></tr>
+<tr><td>Pedał przy zdjętym zacisku</td><td>tłoczek wyskakuje, wyciek</td><td>zakaz naciskania (8)</td></tr>
+<tr><td>Cofanie tłoczka bez kontroli płynu</td><td>przelanie, zniszczony lakier</td><td>otwarty korek, kontrola, zmyć (1, 19)</td></tr>
+<tr><td>Smar/pasta na okładzinie lub tarczy</td><td>mniejsze tarcie, dłuższa droga hamowania</td><td>ostrożnie, odtłuścić tarczę (20, 21)</td></tr>
+<tr><td><b>Smar mineralny na sworzniach/gumach</b></td><td>pęcznienie osłon, zapieczenie, ściąganie</td><td>smar glikolowy (17)</td></tr>
+<tr><td>Pominięcie pomiaru tarczy</td><td>nowe klocki na zużytej/bijącej tarczy – drgania, grzanie</td><td>pomiar grubości i bicia (13, 14)</td></tr>
+<tr><td>Klocek ze wskaźnikiem odwrotnie</td><td>brak pisku przy kolejnym zużyciu</td><td>wskaźnik do góry (22)</td></tr>
+<tr><td>Klocki tylko z jednej strony</td><td>różnica sił, ściąganie</td><td>komplet na oś (26)</td></tr>
+<tr><td>Bez klucza dynamometrycznego</td><td>zerwany gwint lub poluzowanie</td><td>34,3 / 103 N·m (24, 28)</td></tr>
+<tr><td>Ruszenie bez pompowania pedału</td><td>brak hamowania przy 1. naciśnięciu</td><td>pompowanie (29)</td></tr>
+<tr><td>Gwałtowne hamowanie od razu</td><td>przegrzanie, zeszklenie</td><td>docieranie 150–200 km (32)</td></tr>
+</table>
+<div class="tip">Każdy błąd ma w tabeli <b>numer czynności</b>, w której zabezpieczenie jest w karcie – tabela błędów i karta są ze sobą powiązane.</div>
+
+<!-- ===================================================== 9 -->
+<h2 class="nowa">9. Koszty</h2>
+<p>Wszystkie klocki mają ten sam numer <b>WVA 23766</b> – branżowy numer kształtu klocka: ten sam kształt i wymiary, pasują do zacisku. Różnią się producentem i ceną.</p>
+<table>
+<tr><th>Wariant</th><th>Klocki</th><th>Części</th><th>Robocizna</th><th>Razem</th></tr>
+<tr><td>Ekonomiczny</td><td>Ridex 402B0107</td><td>79,99</td><td>246,00</td><td><b>325,99 zł</b></td></tr>
+<tr><td>Standardowy ✓</td><td>TRW GDB3288 (średnia 116 / 140 / 154,99)</td><td>137,00</td><td>246,00</td><td><b>383,00 zł</b></td></tr>
+<tr><td>Premium</td><td>ATE 13.0460-5815.2</td><td>206,99</td><td>246,00</td><td><b>452,99 zł</b></td></tr>
+</table>
+<p><b>Robocizna:</b> 1,0 rbh × 200 zł netto × 1,23 (VAT) = <b>246 zł brutto</b>. Stawki: 100–150 zł netto małe miejscowości, 150–250 zł duże miasta. Czas: zwykle 0,5–1 rbh; norma egzaminacyjna – 1,0 rbh; biorę górną, bo są pomiary, sworznie i kontrola jakości.</p>
+<p>Robocizna = <b>54% (premium) do 75% (ekonomiczny)</b> kosztu → tanie klocki niewiele oszczędzają. Wybór: <b>TRW</b> – znany producent, akustyczny wskaźnik zużycia, umiarkowana cena. Materiały (smary, zmywacz) są w stawce rbh. Kalkulacja <b>bez wymiany tarcz</b>.</p>
+
+<!-- ===================================================== 10 -->
+<h2>10. Wnioski</h2>
+<ol>
+<li>Każda liczba ma źródło: wymiary i momenty – Toyota; klucze 21/13/17 – AUTODOC.</li>
+<li>Macierz objawów + karta weryfikacji odróżniają <b>zużycie</b> od jego <b>przyczyny</b> (zapieczone sworznie). Sama wymiana klocków nie usunęłaby ściągania.</li>
+<li>Kontrola jakości (pedał wg Toyoty, z ≥ 50% → ΣT ≥ 8,12 kN, ΔT ≤ 30%) daje obiektywny dowód i wyłapuje błędy niewidoczne przy montażu.</li>
+<li>Bez komputera; koszt 326–453 zł brutto; robocizna przeważa, więc oszczędność na klockach jest mała, a może pogorszyć trwałość i komfort.</li>
+</ol>
+
+<!-- ===================================================== Q&A -->
+<h2 class="nowa">Pytania podchwytliwe – „a co jeśli…”</h2>
+<div class="q">Tarcza ma 22,8 mm. Co robię?</div><p>Poniżej 23,0 → <b>wymiana tarcz kompletem na oś</b> (obie strony). To już poza moją kartą – według schematu ścieżka „NIE”. Przetoczenie odpada, bo i tak jest za cienka.</p>
+<div class="q">Bicie 0,08 mm?</div><p>Za dużo (max 0,05). Najpierw sprawdzam, czy to nie wina piasty: czystość płaszczyzny piasty (rdza pod tarczą), <b>luz łożyska i bicie piasty ≤ 0,05 mm</b>. Toyota radzi też przełożyć tarczę w położenie najmniejszego bicia. Jeśli piasta OK – tarcza do przetoczenia (jeśli zostanie ≥ 23,0) albo wymiany.</p>
+<div class="q">Sworzeń nie chce wyjść / jest skorodowany?</div><p>Penetrant, czas, oczyszczenie. Jeśli powierzchnia zniszczona albo osłona pęknięta – wymiana sworznia i osłony (zestaw naprawczy). Inaczej zapiecze się znowu.</p>
+<div class="q">Osłona tłoczka pęknięta, płyn spod niej?</div><p>Tłoczek/uszczelniacz uszkodzony → regeneracja lub wymiana zacisku, potem odpowietrzenie i banjo 29 N·m. Poza zakresem karty – zaznaczam w uwagach.</p>
+<div class="q">Klocek wewnętrzny dużo bardziej zużyty niż zewnętrzny?</div><p>Klasyczny objaw zapieczonych sworzni – korpus nie pływa, dociska głównie tłoczek. Tak jest w moim przypadku (lewe).</p>
+<div class="q">Klocki zużyte na skos (klin)?</div><p>Klocek zacina się w jarzmie/płytkach albo sworzeń pracuje ciężko → czyszczenie jarzma, płytki, pasta.</p>
+<div class="q">Po wymianie piszczy?</div><p>Sprawdzam: podkładki przeciwpiskowe założone i posmarowane, pasta na styku z jarzmem, płytki podporowe, czy tarcza odtłuszczona; nowe klocki mogą chwilę piszczeć do dotarcia.</p>
+<div class="q">Po wymianie pedał miękki?</div><p>Najpierw: czy napompowałem. Jeśli dalej miękki – powietrze albo wyciek (nie powinno być, bo nie otwierałem układu) → szczelność, poziom płynu, ewentualnie odpowietrzenie.</p>
+<div class="q">Po wymianie koło gorące?</div><p>Klocki stale trą: tłoczek się nie cofa (zapieczony), sworzeń zapieczony, klocek zakleszczony w płytkach. Sprawdzam swobodny obrót koła.</p>
+<div class="q">Płyn przelał się przy cofaniu tłoczka?</div><p>Natychmiast zmyć wodą – płyn niszczy lakier. Nadmiar odessać strzykawką do poziomu MAX.</p>
+<div class="q">Klient chce tylko jeden klocek / jedną stronę?</div><p>Nie – zawsze komplet na oś, inaczej różnica sił i ściąganie (wyjdzie na rolkach &gt; 30%).</p>
+<div class="q">Wymieniam też tarcze – czy zmienia się karta?</div><p>Dochodzi demontaż jarzma (śruby 106,8 N·m) i tarczy, czyszczenie piasty, nowa tarcza, pomiar bicia nowej tarczy. Koszt rośnie o tarcze. W mojej karcie tarcze zostają, bo są w normie.</p>
+<div class="q">Dlaczego przód zużywa się szybciej niż tył?</div><p>Przy hamowaniu ciężar auta przenosi się do przodu → przednie koła mają większy nacisk i przenoszą większą część siły hamowania (ok. 2/3). Dlatego z przodu są większe, wentylowane tarcze.</p>
+<div class="q">Skąd siła hamowania? (fizyka)</div><p>Tarcie: T = μ · N, gdzie N – siła docisku klocka (z ciśnienia płynu × powierzchnia tłoczka), μ – współczynnik tarcia okładziny o tarczę (typowo ok. 0,3–0,5). Smar na okładzinie obniża μ → mniejsza siła.</p>
+<div class="q">Co to „fading”?</div><p>Spadek skuteczności hamulców przy przegrzaniu (długie zjazdy) – maleje tarcie okładzin. Tarcza wentylowana zmniejsza to ryzyko.</p>
+<div class="q">Dlaczego klucz dynamometryczny też przy nakrętkach kół, nie tylko „mocno”?</div><p>Nierówno dokręcone koło dociska tarczę nierówno → może pojawić się bicie i drgania. Za mocno – rozciągnięte szpilki.</p>
+<div class="q">Co to rant na tarczy?</div><p>Wystający brzeg na zewnętrznej krawędzi, gdzie klocek nie dochodzi – zbiera się rdza. Nie mierzę na nim.</p>
+<div class="q">Czy można jeździć z klockiem 1,5 mm?</div><p>Formalnie jest powyżej 1,0 mm, ale niewiele zostało i zaraz będzie wskaźnik. Ja w projekcie wymieniam, bo drugi klocek na osi ma 0,9 mm i wymienia się komplet.</p>
+<div class="q">Czemu nie wymieniam płynu przy okazji?</div><p>Nie jest częścią wymiany klocków; sprawdzam tylko poziom i uzupełniam DOT 3. Wymiana płynu to osobna usługa okresowa.</p>
+<div class="q">Gdzie tu jest „technologia”, a nie tylko instrukcja?</div><p>Weryfikacja z wymiarami dopuszczalnymi, decyzje (punkty decyzyjne na schemacie), narzędzia przypisane do czynności, momenty i klucze dla każdego połączenia, kontrola jakości z kryteriami i protokołem, analiza błędów i kosztów.</p>
+<div class="q">Czym się różni karta weryfikacji od karty instrukcyjnej?</div><p><b>Weryfikacji</b> (4.2) – wyniki pomiarów części i ocena dobra/naprawa/wymiana. <b>Instrukcyjna</b> (6.2) – co po kolei robić, czym, z jaką wartością.</p>
+
+<!-- ===================================================== słowniczek -->
+<h2 class="nowa">Pytania o formę projektu</h2>
+<div class="q">Ile ma stron i co jest w środku?</div><p>34 strony: strona tytułowa, spis treści, 10 rozdziałów, bibliografia z 24 pozycjami. 28 rysunków, 14 tabel, karta technologiczna na 15 arkuszach (32 czynności).</p>
+<div class="q">Jak są numerowane źródła?</div><p>W kolejności, w jakiej pierwszy raz pojawiają się w tekście: [1] instrukcja Toyoty (hamulec przedni), [2] poradnik AUTODOC itd. W bibliografii są tylko źródła, które faktycznie cytuję.</p>
+<div class="q">Czemu karta ma taki nagłówek i stopkę?</div><p>To formularz uczelni: Politechnika / Wydział / Zakład, nazwa zespołu, Arkusz x z 15, a na dole Opracował / Sprawdził / Zatwierdził z podpisem i datą.</p>
+<div class="q">Czemu nie każda czynność ma zdjęcie?</div><p>Zdjęcie albo rysunek ma 22 z 32 czynności. Przy prostych czynnościach (podnoszenie auta, pedał, korek, kontrole) żadne źródło nie ma zdjęcia, a opis wystarcza.</p>
+<div class="q">Czym różni się rysunek Toyoty od zdjęcia AUTODOC?</div><p>Rysunki techniczne (np. F42895 – pomiar tarczy) są z instrukcji naprawy Corolli E120 – źródło [1]. Zdjęcia są z poradnika AUTODOC, wykonane na Priusie II z tą samą procedurą – źródło [2]. Oba są podpisane.</p>
+<div class="q">Czym się różni Pana projekt od zwykłej instrukcji wymiany?</div><p>Ma weryfikację z wymiarami dopuszczalnymi, szukanie przyczyny zużycia (sworznie), narzędzia przypisane do czynności, kontrolę jakości z kryteriami liczbowymi i protokołem, analizę błędów i koszty w 3 wariantach.</p>
+
+<h2 class="nowa">Słowniczek</h2>
+<table>
+<tr><td><b>Jarzmo</b></td><td>wspornik zacisku przykręcony do zwrotnicy; trzyma klocki i sworznie</td></tr>
+<tr><td><b>Korpus (cylinder)</b></td><td>część zacisku z tłoczkiem; pływa na sworzniach</td></tr>
+<tr><td><b>Sworzeń prowadzący</b></td><td>„prowadnica”, po której przesuwa się korpus; w gumowej osłonie</td></tr>
+<tr><td><b>Płytki podporowe</b></td><td>blaszki w jarzmie, po których ślizgają się klocki</td></tr>
+<tr><td><b>Podkładki przeciwpiskowe</b></td><td>blaszki na tyle klocka, tłumią drgania</td></tr>
+<tr><td><b>Płyta nośna</b></td><td>stalowa część klocka, do której przymocowana jest okładzina</td></tr>
+<tr><td><b>Okładzina cierna</b></td><td>materiał, który trze o tarczę i się zużywa</td></tr>
+<tr><td><b>Zwrotnica</b></td><td>element zawieszenia z łożyskiem, skręca kołem</td></tr>
+<tr><td><b>Piasta</b></td><td>obraca się w łożysku; przykręca się do niej tarczę i koło</td></tr>
+<tr><td><b>Przewód elastyczny</b></td><td>gumowy przewód hamulcowy do zacisku (ruchomy, bo koło skręca i pracuje zawieszenie)</td></tr>
+<tr><td><b>Śruba banjo</b></td><td>drążona śruba łącząca przewód z zaciskiem (29 N·m, nowa uszczelka)</td></tr>
+<tr><td><b>Serwo</b></td><td>wspomaganie: podciśnienie z silnika zwiększa siłę nacisku na pedał</td></tr>
+<tr><td><b>Pompa hamulcowa</b></td><td>zamienia nacisk pedału na ciśnienie płynu</td></tr>
+<tr><td><b>Odpowietrzanie</b></td><td>usunięcie powietrza z układu (potrzebne tylko, gdy układ był otwierany)</td></tr>
+<tr><td><b>Higroskopijny</b></td><td>chłonie wodę z powietrza (płyn DOT)</td></tr>
+<tr><td><b>Zeszklenie</b></td><td>utwardzona, śliska warstwa na okładzinie po przegrzaniu</td></tr>
+<tr><td><b>Docieranie</b></td><td>pierwsze 150–200 km łagodnego hamowania nowych klocków</td></tr>
+<tr><td><b>WVA</b></td><td>numer kształtu klocka – klocki z tym samym numerem są zamienne</td></tr>
+<tr><td><b>rbh</b></td><td>roboczogodzina – jednostka czasu pracy mechanika do wyceny</td></tr>
+<tr><td><b>kgf·cm / ft·lbf</b></td><td>inne jednostki momentu: 1 kgf·cm ≈ 0,098 N·m; 1 ft·lbf ≈ 1,36 N·m</td></tr>
+</table>
+
+<!-- ===================================================== liczby -->
+<h2 class="nowa">Wszystkie liczby na jednej stronie</h2>
+<table>
+<tr><th>Co</th><th>Wartość</th></tr>
+<tr><td>Okładzina klocka</td><td>11,0 mm → <b>min 1,0 mm</b></td></tr>
+<tr><td>Tarcza przód</td><td>Ø 255 mm, wentylowana, 25,0 mm → <b>min 23,0 mm</b></td></tr>
+<tr><td>Bicie tarczy</td><td><b>max 0,05 mm</b>, 10 mm od krawędzi</td></tr>
+<tr><td>Luz łożyska / bicie piasty</td><td>max 0,05 mm</td></tr>
+<tr><td>Łożysko przód</td><td>kulkowe skośne dwurzędowe 40 × 74 × 42 mm</td></tr>
+<tr><td>Śruby zacisku</td><td><b>34,3 N·m</b> (350 kgf·cm) – klucz <b>13</b> + kontra <b>17</b></td></tr>
+<tr><td>Nakrętki kół</td><td><b>103 N·m</b> (1050 kgf·cm) – nasadka <b>21</b>, na krzyż</td></tr>
+<tr><td>Śruby jarzma</td><td>106,8 N·m</td></tr>
+<tr><td>Banjo / popychacz</td><td>29 N·m / 26 N·m</td></tr>
+<tr><td>Pedał – wysokość</td><td>M/T 134,9–144,9 mm (A/T 136,0–146,0)</td></tr>
+<tr><td>Pedał – luz</td><td>1–6 mm</td></tr>
+<tr><td>Pedał – rezerwa</td><td>&gt; 70 mm przy 490 N</td></tr>
+<tr><td>Płyn</td><td>DOT 3, MIN–MAX</td></tr>
+<tr><td>DMC</td><td>1655 kg</td></tr>
+<tr><td>Skuteczność</td><td><b>≥ 50%</b> → ΣT ≥ <b>8,12 kN</b></td></tr>
+<tr><td>Różnica sił L/P</td><td><b>≤ 30%</b></td></tr>
+<tr><td>Docieranie</td><td>150–200 km</td></tr>
+<tr><td>Moje pomiary</td><td>okładz. wewn. L 0,9 / P 1,4; zewn. 2,2 / 2,5; tarcza 24,2 / 24,4; bicie 0,02 / 0,03 mm</td></tr>
+<tr><td>Klocki TRW GDB3288</td><td>131,7 × 57,4 × 17,8 mm, WVA 23766</td></tr>
+<tr><td>Koszty</td><td>326 / <b>383</b> / 453 zł brutto; robocizna 246 zł (1 rbh × 200 netto)</td></tr>
+<tr><td>Karta</td><td>32 czynności, 15 arkuszy, 7 etapów, 2 punkty decyzyjne</td></tr>
+<tr><td>Silnik / auto</td><td>3ZZ-FE 1598 cm³, 81 kW / 110 KM, ZZE121, 2001–2007</td></tr>
+</table>
+<div class="ok"><b>Najważniejsze 5 zdań, gdyby zapomniał wszystkiego:</b> (1) zacisk pływający, jeden tłoczek, korpus na dwóch sworzniach; (2) klocek 11 → min 1 mm, tarcza 25 → min 23 mm, bicie 0,05; (3) zacisk 34,3 N·m kluczem 13 z kontrą 17, koła 103 N·m nasadką 21; (4) sworznie tylko smarem glikolowym – mineralny = zapieczenie; (5) kontrola: skuteczność ≥ 50% (8,12 kN), różnica L/P ≤ 30%.</div>
+
+</body></html>
