@@ -40,8 +40,9 @@ const remapZakres = (a, b) => {
   return out.join(', ');
 };
 const remap = t => (REMAP ? String(t).replace(/\[(\d+)\](?:–\[(\d+)\])?/g, (m, a, b) => remapZakres(a, b)) : String(t));
+const spojniki = t => t.replace(/(^|[\s(„])([aiouwzAIOUWZ]) /g, '$1$2\u00A0').replace(/(^|[\s(„])([aiouwzAIOUWZ]) /g, '$1$2\u00A0');
 function runs(text, o = {}) {
-  return remap(text).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => new TextRun({
+  return spojniki(remap(text)).split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => new TextRun({
     text: p.startsWith('**') ? p.slice(2, -2) : p,
     bold: p.startsWith('**') || o.bold, italics: o.italics, font: FONT, size: o.size || 22, color: o.color,
   }));
@@ -50,7 +51,7 @@ function P(text, o = {}) {
   return new Paragraph({
     alignment: o.align || AlignmentType.JUSTIFIED,
     spacing: { before: o.before || 0, after: o.after === undefined ? 120 : o.after, line: o.line || 276 },
-    indent: o.indent, keepNext: o.keepNext,
+    indent: o.indent, keepNext: o.keepNext, widowControl: true,
     children: runs(text, o),
   });
 }
@@ -77,7 +78,7 @@ function TCAP(t) { return P(t, { size: 18, bold: true, after: 80, align: Alignme
 
 function cell(content, width, o = {}) {
   const paras = (Array.isArray(content) ? content : [content]).map(c =>
-    typeof c === 'string' ? P(c, { size: o.size || 20, bold: o.bold, align: o.align || AlignmentType.LEFT, after: 0, line: 240 }) : c);
+    typeof c === 'string' ? P(c, { size: o.size || 20, bold: o.bold, align: o.align || AlignmentType.LEFT, after: 0, line: 240, keepNext: o.keepNext }) : c);
   return new TableCell({
     borders: o.borders || BORDERS, width: { size: width, type: WidthType.DXA },
     columnSpan: o.colSpan, rowSpan: o.rowSpan,
@@ -95,6 +96,7 @@ function table(widths, rows, o = {}) {
       children: r.map((c, j) => cell(c, widths[j], {
         bold: i === 0, fill: i === 0 ? (o.fill || 'C9D7EE') : undefined, size: o.size || 20,
         align: i === 0 || (o.center || []).includes(j) ? AlignmentType.CENTER : AlignmentType.LEFT,
+        keepNext: rows.length <= 12 && i < rows.length - 1,
       })),
     })),
   });
@@ -278,7 +280,6 @@ const opisPojazdu = [
       ['Płyn hamulcowy', 'SAE J1703 / FMVSS No. 116 DOT 3 [5]'],
     ]],
   ]),
-  P('', { after: 60 }),
   H22,
   P('Hamulec przedni jest hamulcem tarczowym z zaciskiem pływającym. Korpus cylindra z jednym tłoczkiem osadzony jest na dwóch sworzniach prowadzących, które przesuwają się w jarzmie przykręconym do zwrotnicy. Podczas hamowania tłoczek dociska klocek wewnętrzny, a reakcja przesuwa korpus na sworzniach i dociska klocek zewnętrzny. Klocki prowadzone są w jarzmie przez dwie płytki podporowe, a drgania tłumią podkładki przeciwpiskowe nr 1 i nr 2 [1]. Zużycie okładzin sygnalizuje mechanicznie płytka wskaźnika zużycia, zamocowana na klocku wewnętrznym [1], [11].'),
   P(`Na rysunku numer ${f3} poniżej pokazano hamulec przedni po zdjęciu koła, a na rysunku numer ${f4} – jarzmo zacisku ze sworzniami prowadzącymi po zdjęciu korpusu cylindra i klocków, według instrukcji producenta. Zdjęcia z poradnika AUTODOC [2] wykonano na pojeździe Toyota Prius II (XW20); autor poradnika wskazuje, że procedura i budowa hamulca są takie same dla Corolli IX (E120), w tym wersji 1.6 VVT-i (ZZE121).`, { keepNext: true }),
@@ -321,7 +322,6 @@ const uklad = [
     ['Luz swobodny pedału hamulca', '1–6 mm', '–', 'przymiar', '[4]'],
     ['Odległość rezerwowa pedału (490 N)', '–', '> 70 mm', 'przymiar', '[4]'],
   ], { center: [1, 2, 3, 4], size: 19 }),
-  P('', { after: 60 }),
   H2('3.2. Momenty dokręcania oraz rozmiar i typ kluczy'),
   P('Producent podaje momenty dokręcania w N·m, kgf·cm i ft·lbf, nie podaje natomiast rozmiarów kluczy. Rozmiary i typy kluczy przyjęto z instrukcji krok po kroku dla analizowanego modelu [2]. Momenty dokręcania wraz z rozmiarem i typem klucza dla każdego połączenia zestawiono w tabeli numer 4.'),
   TCAP('Tabela 4. Momenty dokręcania oraz rozmiar i typ kluczy, [1], [2], [4]'),
@@ -369,7 +369,6 @@ const diag = [
     ['Różne zużycie klocka wewnętrznego i zewnętrznego', 'Utrudniony przesuw korpusu na sworzniach', 'Ręczna kontrola przesuwu, oględziny osłon', 'Swobodny przesuw, osłony bez pęknięć [1]'],
     ['Spadek poziomu płynu w zbiorniku', 'Zużycie okładzin (wysunięcie tłoczków) lub wyciek', 'Kontrola zbiornika i szczelności', 'Poziom MIN–MAX, brak wycieków [5]'],
   ], { size: 18 }),
-  P('', { after: 60 }),
   H2('4.2. Karta weryfikacji części'),
   P('Na potrzeby projektu przyjęto przypadek, w którym użytkownik zgłosił pisk przy hamowaniu oraz lekkie ściąganie pojazdu w lewo. Zgodnie z macierzą diagnostyczną po demontażu wykonano pomiary, których **przykładowe wyniki (założenie projektowe)** wraz z kwalifikacją części zestawiono w tabeli numer 7. Kwalifikacja przyjmuje trzy kategorie: część dobra, część do naprawy (czyszczenie, smarowanie) i część do wymiany.'),
   TCAP('Tabela 7. Karta weryfikacji części hamulca przedniego – przykładowe wyniki pomiarów, opracowanie własne na podstawie [1], [6]'),
@@ -384,8 +383,7 @@ const diag = [
     ['Płytki podporowe', '–', 'bez odkształceń', 'bez uwag', 'bez uwag', 'Dobre – ponowny montaż'],
     ['Podkładki przeciwpiskowe', '–', 'bez deformacji', 'bez uwag', 'bez uwag', 'Dobre – ponowny montaż po posmarowaniu'],
   ], { center: [1, 2, 3, 4], size: 18 }),
-  P('', { after: 60 }),
-  P('Wyniki są ze sobą spójne: większe zużycie klocka wewnętrznego po stronie lewej oraz opór przesuwu lewych sworzni wskazują, że korpus zacisku nie przesuwał się swobodnie i klocek wewnętrzny pracował z większym dociskiem. Tłumaczy to zgłoszone ściąganie pojazdu. Tarcze mieszczą się w wymiarach dopuszczalnych, więc pojazd zakwalifikowano do wymiany klocków osi przedniej z naprawą (czyszczeniem i smarowaniem) sworzni prowadzących, bez wymiany tarcz. Skuteczność tej naprawy weryfikuje pomiar różnicy sił hamowania w rozdziale 7.'),
+  P('Wyniki są ze sobą spójne: większe zużycie klocka wewnętrznego po stronie lewej oraz opór przesuwu lewych sworzni wskazują, że korpus zacisku nie przesuwał się swobodnie i klocek wewnętrzny pracował z większym dociskiem. Tłumaczy to zgłoszone ściąganie pojazdu. Tarcze mieszczą się w wymiarach dopuszczalnych, więc pojazd zakwalifikowano do wymiany klocków osi przedniej z naprawą (czyszczeniem i smarowaniem) sworzni prowadzących, bez wymiany tarcz. Skuteczność tej naprawy weryfikuje pomiar różnicy sił hamowania w rozdziale 7.', { before: 160 }),
   P(`Na rysunku numer ${f5} poniżej pokazano demontaż klocków z jarzma zacisku – po nim mierzy się grubość okładzin obu klocków.`, { keepNext: true }),
   foto('autodoc_klocki.jpg', 400),
   CAP(`Rysunek ${f5}. Demontaż klocków hamulcowych osi przedniej z jarzma zacisku, [2]`),
@@ -429,8 +427,7 @@ const narz = [
       ['21.', 'Rękawice ochronne, okulary ochronne', '–', 'wszystkie'],
     ]],
   ], { center: [0, 3] }),
-  P('', { after: 60 }),
-  P('Proces nie wymaga testera diagnostycznego. Pojazd ma mechaniczny hamulec postojowy (bez elektrycznego napędu tłoczków tylnych zacisków), mechaniczny wskaźnik zużycia klocków, którego nie trzeba kasować w sterowniku, a tłoczek zacisku przedniego cofa się przyrządem ręcznym. Jedynym urządzeniem elektronicznym wykorzystywanym w procesie jest stanowisko rolkowe użyte w kontroli jakości.'),
+  P('Proces nie wymaga testera diagnostycznego. Pojazd ma mechaniczny hamulec postojowy (bez elektrycznego napędu tłoczków tylnych zacisków), mechaniczny wskaźnik zużycia klocków, którego nie trzeba kasować w sterowniku, a tłoczek zacisku przedniego cofa się przyrządem ręcznym. Jedynym urządzeniem elektronicznym wykorzystywanym w procesie jest stanowisko rolkowe użyte w kontroli jakości.', { before: 160 }),
 ];
 
 // ---------- 6. KARTA INSTRUKCYJNA ----------
@@ -620,7 +617,6 @@ const kontrola = [
     ['Wskaźnik skuteczności hamulca roboczego', '≥ 50%', '[16]'],
     ['Różnica sił hamowania kół osi przedniej', '≤ 30%', '[15]'],
   ], { center: [1, 2] }),
-  P('', { after: 60 }),
   H2('7.3. Protokół kontroli jakości'),
   P('Wyniki kontroli wpisuje się do protokołu przedstawionego w tabeli numer 11. Pojazd może zostać wydany klientowi wyłącznie wtedy, gdy wszystkie pozycje mają ocenę „spełnia”.'),
   TCAP('Tabela 11. Protokół kontroli jakości po wymianie klocków hamulcowych osi przedniej – opracowanie własne'),
@@ -638,8 +634,7 @@ const kontrola = [
     ['10.', 'Wskaźnik skuteczności hamowania z', '≥ 50%', '……… %', ''],
     ['11.', 'Jazda próbna – brak ściągania i pisków', 'brak', '', ''],
   ], { center: [0, 2, 3, 4], size: 19 }),
-  P('', { after: 60 }),
-  P('Data kontroli: ................  Numer rejestracyjny / VIN: ................................  Podpis kontrolującego: ................', { size: 20, align: AlignmentType.LEFT }),
+  P('Data kontroli: ................  Numer rejestracyjny / VIN: ................................  Podpis kontrolującego: ................', { before: 160, size: 20, align: AlignmentType.LEFT }),
   H2('7.4. Jazda próbna i docieranie klocków'),
   P('Ostatnim etapem kontroli jest jazda próbna, podczas której sprawdza się, czy pojazd nie ściąga przy hamowaniu, czy nie występują piski ani drgania oraz czy pedał ma prawidłowy, twardy punkt działania. Kierowcę należy poinformować, że nowe klocki wymagają docierania – przez pierwsze 150–200 km należy unikać gwałtownego hamowania [2].'),
 ];
@@ -664,8 +659,7 @@ const bledy = [
     ['Ruszenie bez przywrócenia skoku pedału', 'Brak hamowania przy pierwszym naciśnięciu pedału', 'Kilkukrotne naciśnięcie pedału przed jazdą [2]', '29'],
     ['Gwałtowne hamowanie bezpośrednio po wymianie', 'Przegrzanie i zeszklenie okładzin', 'Docieranie przez pierwsze 150–200 km [2]', '32'],
   ], { center: [3], size: 18 }),
-  P('', { after: 60 }),
-  P('Część z wymienionych błędów (np. zapieczone sworznie, smar na okładzinie, wymiana po jednej stronie) nie daje się zauważyć bezpośrednio po zakończeniu montażu, natomiast ujawnia się jako różnica sił hamowania kół osi. Jest to dodatkowe uzasadnienie dla badania na stanowisku rolkowym opisanego w rozdziale 7.'),
+  P('Część z wymienionych błędów (np. zapieczone sworznie, smar na okładzinie, wymiana po jednej stronie) nie daje się zauważyć bezpośrednio po zakończeniu montażu, natomiast ujawnia się jako różnica sił hamowania kół osi. Jest to dodatkowe uzasadnienie dla badania na stanowisku rolkowym opisanego w rozdziale 7.', { before: 160 }),
 ];
 
 // ---------- 9. KOSZTY ----------
@@ -681,7 +675,6 @@ const koszty = [
     ['Standardowy', 'TRW GDB3288 – średnia z trzech ofert (116,00 zł; 140,00 zł; 154,99 zł)', '137,00 zł', '[12], [18], [19]'],
     ['Premium', 'ATE 13.0460-5815.2', '206,99 zł', '[25]'],
   ], { center: [0, 2, 3] }),
-  P('', { after: 60 }),
   H2('9.2. Koszt robocizny'),
   P('Stawki roboczogodziny w warsztatach niezależnych wynoszą 100–150 zł netto w mniejszych miejscowościach i 150–250 zł netto w dużych miastach [20]. Przyjęto stawkę 200 zł netto, czyli 246 zł brutto. Czas wymiany klocków jednej osi wynosi zwykle 0,5–1 roboczogodziny [21], a w normie egzaminacyjnej dla zawodu mechanika przyjęto 1,0 rbh [22]. Ponieważ proces obejmuje pomiary tarcz, czyszczenie i smarowanie sworzni oraz kontrolę jakości, przyjęto górną wartość – 1,0 rbh, co daje koszt robocizny 246 zł brutto.'),
   H2('9.3. Zestawienie kosztów'),
@@ -693,8 +686,7 @@ const koszty = [
     ['Standardowy', '137,00 zł', '246,00 zł', '**383,00 zł**'],
     ['Premium', '206,99 zł', '246,00 zł', '**452,99 zł**'],
   ], { center: [0, 1, 2, 3] }),
-  P('', { after: 60 }),
-  P('Robocizna stanowi od 54% (wariant premium) do 75% (wariant ekonomiczny) kosztu usługi, więc różnica cen klocków zmienia koszt całkowity w mniejszym stopniu niż wynikałoby z samych cen części. Do realizacji przyjęto wariant standardowy (TRW GDB3288, ok. 383 zł brutto) – klocki znanego producenta układów hamulcowych z akustycznym wskaźnikiem zużycia, przy umiarkowanej cenie. Kalkulacja nie obejmuje wymiany tarcz, która byłaby konieczna przy grubości poniżej 23,0 mm.'),
+  P('Robocizna stanowi od 54% (wariant premium) do 75% (wariant ekonomiczny) kosztu usługi, więc różnica cen klocków zmienia koszt całkowity w mniejszym stopniu niż wynikałoby z samych cen części. Do realizacji przyjęto wariant standardowy (TRW GDB3288, ok. 383 zł brutto) – klocki znanego producenta układów hamulcowych z akustycznym wskaźnikiem zużycia, przy umiarkowanej cenie. Kalkulacja nie obejmuje wymiany tarcz, która byłaby konieczna przy grubości poniżej 23,0 mm.', { before: 160 }),
 ];
 
 // ---------- 10. WNIOSKI ----------
