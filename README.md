@@ -1,7 +1,7 @@
 # Projekt procesu technologicznego naprawy – wymiana przednich klocków hamulcowych
 
 **Pojazd:** Toyota Corolla IX (E12) Hatchback 1.6 VVT-i (silnik 3ZZ-FE, 81 kW / 110 KM), kod ZZE121
-**Plik projektu:** `Projekt_wymiana_klockow_Toyota_Corolla_E12.docx` (34 strony – wersja końcowa)
+**Plik projektu:** `Projekt_wymiana_klockow_Toyota_Corolla_E12.docx` (35 stron – wersja końcowa)
 
 **Temat dla prowadzącego:** Jakub Suszek – Proces technologiczny weryfikacji i wymiany przednich klocków hamulcowych wraz z kontrolą jakości naprawy – Toyota Corolla IX (E12) 1.6 VVT-i
 

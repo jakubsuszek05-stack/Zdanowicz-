@@ -250,6 +250,7 @@ const opisPojazdu = [
   CAP(`Rysunek ${f1}. Toyota Corolla IX (E12) hatchback 5-drzwiowy – widok z przodu, [26]`),
   foto('corolla_tyl.jpg', 420),
   CAP(`Rysunek ${f2}. Toyota Corolla IX (E12) hatchback 5-drzwiowy – widok z tyłu, [26]`),
+  P('Dane techniczne analizowanego pojazdu, istotne z punktu widzenia procesu naprawy, zestawiono w tabeli numer 1.', { keepNext: true }),
   TCAP('Tabela 1. Dane techniczne pojazdu Toyota Corolla IX (E12) 1.6 VVT-i, [7]–[10]'),
   grpTable([4300, 5338], ['Parametr', 'Wartość'], [
     ['Identyfikacja', [
@@ -306,6 +307,7 @@ const uklad = [
   H1('3. Warunki techniczne weryfikacji i montażu'),
   P('Warunki techniczne określają wartości, z którymi porównuje się wyniki pomiarów podczas weryfikacji, oraz wymagania, które należy spełnić przy montażu. Wszystkie wartości liczbowe pochodzą z instrukcji naprawy producenta.'),
   H2('3.1. Wymiary nominalne i dopuszczalne'),
+  P('Wymiary nominalne i dopuszczalne elementów sprawdzanych podczas weryfikacji oraz parametry pedału hamulca zestawiono w tabeli numer 3. Wartości te stanowią kryteria oceny w karcie weryfikacji części (punkt 4.2) i w kontroli jakości (rozdział 7).', { keepNext: true }),
   TCAP('Tabela 3. Wymiary nominalne i dopuszczalne elementów podlegających weryfikacji, [1], [4], [6]'),
   table([3000, 1700, 1700, 1838, 1400], [
     ['Element / parametr', 'Wymiar nominalny', 'Wymiar dopuszczalny', 'Przyrząd pomiarowy', 'Źródło'],
@@ -321,7 +323,7 @@ const uklad = [
   ], { center: [1, 2, 3, 4], size: 19 }),
   P('', { after: 60 }),
   H2('3.2. Momenty dokręcania oraz rozmiar i typ kluczy'),
-  P('Producent podaje momenty dokręcania w N·m, kgf·cm i ft·lbf, nie podaje natomiast rozmiarów kluczy. Rozmiary i typy kluczy przyjęto z instrukcji krok po kroku dla analizowanego modelu [2].'),
+  P('Producent podaje momenty dokręcania w N·m, kgf·cm i ft·lbf, nie podaje natomiast rozmiarów kluczy. Rozmiary i typy kluczy przyjęto z instrukcji krok po kroku dla analizowanego modelu [2]. Momenty dokręcania wraz z rozmiarem i typem klucza dla każdego połączenia zestawiono w tabeli numer 4.'),
   TCAP('Tabela 4. Momenty dokręcania oraz rozmiar i typ kluczy, [1], [2], [4]'),
   table([2900, 2600, 1250, 1600, 1288], [
     ['Połączenie', 'Rozmiar i typ klucza', 'Moment [N·m]', 'Moment [kgf·cm / ft·lbf]', 'Źródło'],
@@ -671,7 +673,7 @@ const koszty = [
   H1('9. Analiza kosztów naprawy'),
   P('Koszt usługi obejmuje części i robociznę. Materiały eksploatacyjne z tabeli 5 oraz narzędzia stanowią wyposażenie warsztatu i są wliczone w stawkę roboczogodziny. Ponieważ cena klocków zależy przede wszystkim od klasy producenta, koszt przeanalizowano w trzech wariantach doboru części.'),
   H2('9.1. Warianty doboru części'),
-  P('Wszystkie porównywane zestawy klocków mają ten sam numer wymienności WVA 23766, co oznacza identyczny kształt i wymiary klocka oraz zgodność z zaciskiem pojazdu [12], [24], [25].'),
+  P('Wszystkie porównywane zestawy klocków mają ten sam numer wymienności WVA 23766, co oznacza identyczny kształt i wymiary klocka oraz zgodność z zaciskiem pojazdu [12], [24], [25]. Porównywane warianty i ich ceny przedstawiono w tabeli numer 13.'),
   TCAP('Tabela 13. Warianty zestawów klocków przednich dla Toyoty Corolla E12 (ceny brutto), [12], [18], [19], [24], [25]'),
   table([1800, 3700, 1800, 2338], [
     ['Wariant', 'Zestaw klocków', 'Cena brutto', 'Źródło'],
@@ -683,6 +685,7 @@ const koszty = [
   H2('9.2. Koszt robocizny'),
   P('Stawki roboczogodziny w warsztatach niezależnych wynoszą 100–150 zł netto w mniejszych miejscowościach i 150–250 zł netto w dużych miastach [20]. Przyjęto stawkę 200 zł netto, czyli 246 zł brutto. Czas wymiany klocków jednej osi wynosi zwykle 0,5–1 roboczogodziny [21], a w normie egzaminacyjnej dla zawodu mechanika przyjęto 1,0 rbh [22]. Ponieważ proces obejmuje pomiary tarcz, czyszczenie i smarowanie sworzni oraz kontrolę jakości, przyjęto górną wartość – 1,0 rbh, co daje koszt robocizny 246 zł brutto.'),
   H2('9.3. Zestawienie kosztów'),
+  P('Całkowity koszt usługi w trzech wariantach doboru części, obejmujący części i robociznę, zestawiono w tabeli numer 14.', { keepNext: true }),
   TCAP('Tabela 14. Koszt usługi w trzech wariantach doboru części (ceny brutto) – opracowanie własne'),
   table([2400, 2400, 2400, 2438], [
     ['Wariant', 'Części', 'Robocizna (1,0 rbh)', 'Razem'],
